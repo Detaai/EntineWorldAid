@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bluma Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .home-link {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+    }
+
+    .home-link:hover {
+      text-decoration: underline;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .image-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .image-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .image-card button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      display: flex;
+      background: white;
+      border-radius: 10px;
+      max-width: 900px;
+      width: 80%;
+      padding: 20px;
+      position: relative;
+    }
+
+    .popup-content img {
+      width: 50%;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+
+    .popup-content .description {
+      width: 50%;
+      text-align: left;
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="cast-member4.html" class="home-link">← Back</a>
+</header>
+
+<div class="gallery-container" id="gallery"></div>
+
+<!-- Popup Modal -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close-popup" onclick="closePopup()">&times;</span>
+    <img id="popup-img" src="" alt="Popup Image">
+    <div class="description">
+      <p id="popup-desc">Description</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const imageData = [
+    {
+      src: "Bluma-image1.jpg",
+      alt: "Bluma-Image 1",
+      desc: "This is the Original art for Bluma, Her ref sheet is plain showing few details of her early model, which was bought as an art adopt made by <a href='https://www.facebook.com/xy.pauig' target='_blank'>Zeph Pauig</a>. Bluma was the first <i>Humanoid</i> figure for the world of Entine. Her original story line would be that of a slave saved by the main character, however that was replaced by Gwen."
+    },
+    {
+      src: "Bluma-and-Beans.jpg",
+      alt: "Bluma-Image 2",
+      desc: "Beans and Bluma Are madly in love, they are incredibly sensitive to eachother, and are always looking out for eachother. People consider Bluma to be exremly scary person, however Beans has never once been afraid of her since the day they met. These two know eachother insdie and out... in more ways that one <i>wink</i>. Though the romance between a knoght and a squire is forbbiden, the King doesnt mind and the gaurds are too scared of her to tell the Queen. Art by <a href='https://www.facebook.com/xy.pauig' target='_blank'>Zeph Pauig</a>"
+    },
+    {
+      src: "image3.jpg",
+      alt: "Bluma-Image 3",
+      desc: "Bluma and beans are a well known dynamic duo known far outside their own kingdom. Whispers have her marked as the Red Devil, her skill in combat is nearly unmatch by any human she has ever faced. Known only to have been beaten by her General. (Which was by complete accident)  Bluma is known to only speak to select few people and when she does speak it is only in one worded sentances. However These two are so close a siple sigh or gesture from her will allow Beans to know exactly what she is thiking or wants to say. Art by <a href='https://www.facebook.com/xy.pauig' target='_blank'>Zeph Pauig</a>"
+    },
+    {
+      src: "image4.jpg",
+      alt: "Bluma-Image 4",
+      desc: "Outside of work duties, Beans and Bluma are rarly seen together, Beans will be found near the farms. While Bluma can be found by the streams outside the castle walls, soaking her feet and staring into the unknown. however she is never seen without her sword or some kind of armor. This picture was painted the day she finished training her squire Beans. That has been the only day any have known her to outwordly show her emotions. Some say that day, her pride was so palpable, it could be felt by all who were near her. Others say that day, she was so happy, she was glowing. But the truth is, she was just happy to have a friend who wasnt scared of her. Art by <a href='https://www.facebook.com/xy.pauig' target='_blank'>Zeph Pauig</a>"
+    },
+    {
+      src: "image5.jpg",
+      alt: "Bluma-Image 5",
+      desc: "Description for image 5 goes here."
+    },
+    {
+      src: "image6.jpg",
+      alt: "Bluma-Image 6",
+      desc: "Description for image 6 goes here."
+    },
+    {
+      src: "image7.jpg",
+      alt: "Bluma-Image 7",
+      desc: "Description for image 7 goes here."
+    },
+    {
+      src: "image8.jpg",
+      alt: "Bluma-Image 8",
+      desc: "Description for image 8 goes here."
+    },
+    {
+      src: "image9.jpg",
+      alt: "Bluma-Image 9",
+      desc: "Description for image 9 goes here."
+    },
+    {
+      src: "image10.jpg",
+      alt: "Bluma-Image 10",
+      desc: "Description for image 10 goes here."
+    }
+  ];
+
+  const gallery = document.getElementById("gallery");
+
+  imageData.forEach((img) => {
+    const card = document.createElement("div");
+    card.className = "image-card";
+    card.innerHTML = `
+      <img src="${img.src}" alt="${img.alt}">
+      <button onclick="openPopup('${img.src}', \`${img.desc}\`)">Read about</button>
+    `;
+    gallery.appendChild(card);
+  });
+
+  function openPopup(imgSrc, desc) {
+    document.getElementById('popup-img').src = imgSrc;
+    document.getElementById('popup-desc').innerHTML = desc;
+    document.getElementById('popup').style.display = 'flex';
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>

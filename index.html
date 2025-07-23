@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entine Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            background-image: url('tavern-backround.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #FFD700;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+        }
+        .welcome-message {
+            font-size: 2.3rem;
+            margin-bottom: 32px;
+            text-align: center;
+            background: rgba(36, 54, 39, 0.92);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #000a;
+            border: 2px solid #FFD700;
+            padding: 36px 32px 28px 32px;
+            max-width: 520px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 6px #000a;
+        }
+        .explore-btn {
+            padding: 14px 36px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            background-image: url('nameplate.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            margin-top: 18px;
+            box-shadow: 0 2px 8px #0004;
+            display: inline-block;
+        }
+        .explore-btn:hover {
+            transform: scale(1.07);
+            box-shadow: 0 4px 16px #0006;
+        }
+        @media (max-width: 600px) {
+            .welcome-message {
+                font-size: 1.2rem;
+                padding: 18px 8px 14px 8px;
+                max-width: 95vw;
+            }
+            .explore-btn {
+                font-size: 1rem;
+                padding: 10px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-message">
+        Welcome to the Entine Calculator!<br>
+        <span style="font-size:1.1rem; color:#fff; font-weight:400; text-shadow:1px 1px 2px #000a;">
+            Your all-in-one fantasy utility for currency, language, age, and more.<br>
+            Click below to explore!
+        </span>
+        <br>
+        <button class="explore-btn" onclick="window.location.href='home-page.html'">🏰 Enter the Tavern</button>
+    </div>
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>

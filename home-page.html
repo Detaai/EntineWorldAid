@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entine Calculator - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            background-image: url('tavern-backround.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #FFD700;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            text-align: center;
+            margin-top: 1px; /* Increased from 32px to 48px */
+        }
+        header h1 {
+            font-size: 3rem;
+            color: #FFD700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 12px #000a, 0 0 8px #FFD70055;
+            margin-bottom: 0;
+        }
+        main {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: rgba(36, 54, 39, 0.96);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px #000a;
+            border: 2.5px solid #FFD700;
+            max-width: 650px;
+            width: 95vw;
+            margin: 40px auto 0 auto;
+            padding: 48px 36px 36px 36px;
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 2.2rem;
+            color: #FFD700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 8px #000a;
+        }
+        .container p {
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 32px;
+            text-shadow: 1px 1px 4px #000a;
+        }
+        .button-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin: 32px 0 0 0;
+        }
+        .button-row {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+        }
+        .button-row button {
+            flex: 1 1 0;
+            min-width: 140px;
+            padding: 18px 0;
+            font-size: 1.15rem;
+            border: none;
+            border-radius: 10px;
+            background-image: url('nameplate.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+            cursor: pointer;
+            transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+            box-shadow: 0 2px 8px #0004;
+        }
+        .button-row button:hover {
+            transform: scale(1.07);
+            box-shadow: 0 4px 16px #0006;
+            background-color: #0056b3;
+        }
+        .home-badge {
+            display: inline-block;
+            font-size: 1.1rem;
+            color: #FFD700;
+            background: rgba(0,0,0,0.18);
+            border: 2px solid #FFD700;
+            border-radius: 12px;
+            padding: 8px 22px;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-shadow: 1px 1px 6px #000a;
+            box-shadow: 0 2px 8px #0004;
+        }
+        footer {
+            width: 100%;
+            text-align: center;
+            margin: 32px 0 12px 0;
+            color: #FFD700;
+            font-size: 1rem;
+            text-shadow: 1px 1px 4px #000a;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 18px 4vw 18px 4vw;
+            }
+            .container h1 {
+                font-size: 1.3rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header {
+                margin-top: 28px; /* Also increase for mobile */
+            }
+            .button-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .button-row button {
+                font-size: 1rem;
+                padding: 12px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="home-badge">🏰 Home Page</div>
+        <h1>Entine Calculator</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Welcome, Adventurer!</h1>
+            <p>
+                This is your central hub for all things Entine.<br>
+                Choose a tool below to begin your journey!
+            </p>
+            <div class="button-grid">
+                <div class="button-row">
+                    <button onclick="location.href='age-calculator.html'">Age Calculator</button>
+                    <button onclick="location.href='language-translator.html'">Language Translator</button>
+                    <button onclick="location.href='money-converter.html'">Money Converter</button>
+                </div>
+                <div class="button-row">
+                    <button onclick="location.href='name-generator.html'">Name Generator</button>
+                    <button onclick="location.href='fight.html'">Conflict Generator</button>
+                    <button onclick="location.href='cast.html'">The Cast</button>
+                </div>
+                <div class="button-row">
+                    <button onclick="location.href='index.html'">Back to Index</button>
+                    <button onclick="location.href='library.html'">The Library</button>
+                    <button onclick="location.href='home-maker.html'">Magic Codex</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>

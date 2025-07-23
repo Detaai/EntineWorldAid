@@ -1,0 +1,22 @@
+Hello grader! Pleasure to have you here in my little project! 
+
+This is my Entine Calculator, as ylu may or may not know I am a published author!
+
+I have released my first book on amazon titled: " Entine: Quest For the Soul Stone"
+
+This will be a HUGE work in progress for a long time coming as i continue to build and create!
+
+This site includes many things such as a language translator, Age convertor, 
+combat generator, an error list of things needing fixing, a cast list and much more to come!
+
+The Library is still underway as i have not written all the books yet, however you can find
+my first book ready to be read in there! If you can find the password in the code hehe
+
+Now to see this program in its full glory! I would recommend running it with five-server
+and opening it at the "Home-page.html" and feel free to explore! 
+
+However if you want to simply grade it and be done with it, you may just go to the 
+"School Creadit" folder, however it is also acsessible to see what it does 
+with running the server.
+
+I do hope you enjoy!

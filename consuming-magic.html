@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magical Creatures Encyclopedia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            color: #FFD700;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background: rgba(36, 54, 39, 0.97);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px #000a;
+            border: 2.5px solid #FFD700;
+            max-width: 700px;
+            width: 98vw;
+            margin: 40px auto 0 auto;
+            padding: 36px 32px 28px 32px;
+            text-align: center;
+        }
+        h1 {
+            color: #FFD700;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 8px #000a;
+        }
+        .creature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .creature-item {
+            margin: 12px 0;
+            padding: 12px 18px;
+            background: rgba(255, 215, 0, 0.09);
+            border-radius: 10px;
+            border: 1px solid #FFD700;
+            cursor: pointer;
+            font-size: 1.08rem;
+            font-weight: bold;
+            transition: background 0.18s;
+            color: #FFD700;
+            box-shadow: 0 2px 8px #0003;
+            text-align: left;
+        }
+        .creature-item:hover, .creature-item.active {
+            background: rgba(255, 215, 0, 0.22);
+            color: #fffbe7;
+        }
+        .creature-details {
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            border: 1.5px solid #FFD700;
+            padding: 18px 18px;
+            color: #FFD700;
+            font-size: 1.08rem;
+            text-align: left;
+            margin-top: 12px;
+            box-shadow: 0 2px 8px #0003;
+            min-height: 120px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .creature-img {
+            display: block;
+            margin: 18px auto 0 auto;
+            max-width: 320px;
+            max-height: 220px;
+            border-radius: 12px;
+            border: 2px solid #FFD700;
+            box-shadow: 0 2px 8px #0003;
+            background: #232526;
+        }
+        .creature-btns {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .creature-action-btn {
+            padding: 10px 18px;
+            background: #FFD700;
+            color: #232526;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #0003;
+            transition: background 0.18s, color 0.18s;
+        }
+        .creature-action-btn:hover {
+            background: #fffbe7;
+            color: #232526;
+        }
+        .home-link {
+            display: inline-block;
+            margin: 24px 0 0 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white !important;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #0003;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .home-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <a href="home-page.html" class="home-link">🏠 Home</a>
+    <div class="container">
+        <h1>Magical Creatures Encyclopedia</h1>
+        <ul id="creatureList" class="creature-list"></ul>
+        <div id="creatureDetails" class="creature-details" style="display:none;"></div>
+    </div>
+    <script type="module">
+        import CREATURES from './creatures.js';
+
+        function getImagePath(name) {
+            return `images/${name.toLowerCase().replace(/[^a-z0-9]/g, "-")}.jpg`;
+        }
+
+        const magicTypeFallback = {
+            "Frostwolf": { label: "Learn more about Ice Magic", hash: "ice" },
+            "Phoenix": { label: "Learn more about Fire Magic", hash: "fire" },
+            "Shadow Lynx": { label: "Learn more about Illusion Magic", hash: "illusion" },
+            "Thunder Roc": { label: "Learn more about Storm Magic", hash: "fire" },
+            "Dream Serpent": { label: "Learn more about Dream Magic", hash: "illusion" },
+            "Ironback Troll": { label: "Learn more about Earth Magic", hash: "transmutation" },
+            "Star Elk": { label: "Learn more about Divination Magic", hash: "divination" }
+        };
+
+        const sortedCreatures = [...CREATURES].sort((a, b) => a.name.localeCompare(b.name));
+        const creatureList = document.getElementById('creatureList');
+        const creatureDetails = document.getElementById('creatureDetails');
+
+        sortedCreatures.forEach((creature, idx) => {
+            const li = document.createElement('li');
+            li.className = 'creature-item';
+            li.textContent = creature.name;
+            li.onclick = () => showCreatureDetails(creature, li);
+            creatureList.appendChild(li);
+        });
+
+        function showCreatureDetails(creature, listItem) {
+            document.querySelectorAll('.creature-item').forEach(el => el.classList.remove('active'));
+            listItem.classList.add('active');
+            let html = `<h2 style="margin:0 0 10px 0; color:#FFD700;">${creature.name}</h2>`;
+            html += `<p>${creature.effect}</p>`;
+            const imgPath = getImagePath(creature.name);
+            html += `<img src="${imgPath}" alt="${creature.name}" class="creature-img" onerror="this.style.display='none'">`;
+
+            let magicBtn = '';
+            if (creature.magicType) {
+                magicBtn = `<button class="creature-action-btn" onclick="window.location.href='magic.html#${creature.magicType.hash}'">${creature.magicType.label}</button>`;
+            } else if (magicTypeFallback[creature.name]) {
+                const { label, hash } = magicTypeFallback[creature.name];
+                magicBtn = `<button class="creature-action-btn" onclick="window.location.href='magic.html#${hash}'">${label}</button>`;
+            }
+
+            html += `<div class="creature-btns">${magicBtn}</div>`;
+            creatureDetails.innerHTML = html;
+            creatureDetails.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>

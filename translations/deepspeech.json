@@ -1,0 +1,27 @@
+{
+    "combos": {
+        "TH": "Ghaz", 
+        "ST": "Khar", 
+        "ING": "Zhur", 
+        "ND": "Vrak", 
+        "LL": "Khal", 
+        "OR": "Xhor", 
+        "OO": "Ugh", 
+        "RE": "Zar", 
+        "SE": "Skar", 
+        "VE": "Vez"
+    },
+    "letters": {
+        "A": "Ah", "B": "Bru", "C": "Cra", "D": "Dru", "E": "Er", "F": "Fur",
+        "G": "Gar", "H": "Har", "I": "Ir", "J": "Jar", "K": "Kar", "L": "Lor",
+        "M": "Mor", "N": "Nar", "O": "Or", "P": "Par", "Q": "Qua", "R": "Rah",
+        "S": "Sar", "T": "Tar", "U": "Ur", "V": "Var", "W": "War", "X": "Xar",
+        "Y": "Yar", "Z": "Zar"
+    },
+    "suffixes": {
+        "ING": "Zhur", 
+        "ND": "Vrak", 
+        "ER": "Xar", 
+        "OR": "Xhor"
+    }
+}

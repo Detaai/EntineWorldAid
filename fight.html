@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conflict & War Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            background-image: url('tavern-backround.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background: rgba(36, 54, 39, 0.95);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #000a;
+            border: 2px solid #FFD700;
+            max-width: 540px;
+            margin: 60px auto 0 auto;
+            padding: 36px 32px 28px 32px;
+            text-align: center;
+        }
+        h1 {
+            color: #FFD700;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 6px #000a;
+        }
+        button {
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            background-image: url('nameplate.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            margin-top: 18px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px #0004;
+        }
+        button:hover {
+            transform: scale(1.07);
+            box-shadow: 0 4px 16px #0006;
+        }
+        .result {
+            margin-top: 28px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 22px 16px;
+            box-shadow: 0 2px 8px #0003;
+            color: #FFD700;
+            font-size: 1.08rem;
+            text-shadow: 1px 1px 4px #000a;
+            min-height: 120px;
+        }
+        .result h2 {
+            color: #FFD700;
+            margin-bottom: 12px;
+            text-shadow: 1px 1px 6px #000a;
+        }
+        .result p {
+            color: #fff;
+            margin: 8px 0;
+            font-size: 1.05rem;
+            text-shadow: 1px 1px 2px #000a;
+        }
+        .home-link {
+            display: inline-block;
+            margin: 24px 0 0 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white !important;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background 0.2s;
+        }
+        .home-link:hover {
+            background-color: #0056b3;
+        }
+        .return-home-btn {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            padding: 4px 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 18px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            z-index: 1000;
+            margin: 0;
+            min-width: 36px;
+            min-height: 36px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .return-home-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="home-page.html" class="home-link">← Back to Home</a>
+    </header>
+
+    <div class="container">
+        <h1>Conflict & War Generator</h1>
+        <button id="generateBtn" onclick="generateConflict()">Generate Conflict</button>
+        <div class="result" id="conflictResult"></div>
+    </div>
+    <button class="return-home-btn" onclick="window.location.href='home-page.html'">🏠</button>
+
+    <script>
+        function generateConflict() {
+            const factions = [
+                { name: "Kingdom of Eldoria", description: "a prosperous kingdom known for its knights and castles" },
+                { name: "Empire of Zarnath", description: "a militaristic empire with ambitions of conquest" },
+                { name: "Tribal Alliance of the North", description: "a coalition of nomadic tribes united by survival" },
+                { name: "Republic of Virelia", description: "a democratic republic with advanced technology" },
+                { name: "Order of the Crimson Sun", description: "a fanatical religious order seeking divine dominance" },
+                { name: "Shadow Guild", description: "a secretive organization of spies and assassins" },
+                { name: "Nomadic Clans of the Wastes", description: "wandering clans hardened by the harsh desert" },
+                { name: "Dwarven Halls of Karak", description: "a subterranean kingdom of master craftsmen and warriors" },
+                { name: "Elven Enclave of Sylvara", description: "a mystical forest realm of ancient elves" },
+                { name: "Orcish Horde of Grak'thor", description: "a brutal horde of orcs driven by conquest and plunder" }
+            ];
+
+            const faction1 = factions[Math.floor(Math.random() * factions.length)];
+            const faction2 = factions[Math.floor(Math.random() * factions.length)];
+
+            const reasons = [
+                "a territorial dispute over valuable land",
+                "a religious disagreement over sacred sites",
+                "a struggle for control of rare resources",
+                "a betrayal of a long-standing alliance",
+                "a quest for revenge after a dishonorable act",
+                "a political assassination that destabilized the region",
+                "a stolen artifact of immense power",
+                "an ancient prophecy that foretells doom",
+                "a trade embargo that crippled one faction's economy",
+                "a border skirmish that escalated into full-scale war"
+            ];
+
+            const outcomes = [
+                "a decisive victory for one side, reshaping the region",
+                "a prolonged stalemate, leaving both sides weakened",
+                "a peace treaty brokered by a neutral third party",
+                "the complete destruction of one faction, leaving a power vacuum",
+                "a new alliance formed between the factions to face a greater threat",
+                "a rebellion within one of the factions, changing the course of the war",
+                "a shift in power dynamics, with unexpected consequences",
+                "a mysterious third party intervening, altering the outcome",
+                "a catastrophic loss for both sides, leaving the region in chaos",
+                "an uneasy truce with lingering tensions that may reignite conflict"
+            ];
+
+            const conflictTypes = [
+                "a large-scale war involving thousands of soldiers",
+                "a small but intense skirmish between elite forces",
+                "a covert operation to sabotage the enemy",
+                "a siege on a heavily fortified stronghold",
+                "a naval battle on the high seas",
+                "an aerial assault using magical creatures or airships",
+                "a guerrilla campaign in enemy territory",
+                "a magical duel between powerful sorcerers",
+                "a diplomatic standoff that turned violent",
+                "a rebellion led by oppressed citizens"
+            ];
+
+            const battlefields = [
+                "a dense forest filled with hidden dangers",
+                "a vast desert under the scorching sun",
+                "a snowy mountain pass with treacherous terrain",
+                "a bustling city turned into a battlefield",
+                "a quiet village caught in the crossfire",
+                "a fortified castle under siege",
+                "a wide-open plain perfect for large-scale battles",
+                "a dark cavern echoing with the sounds of war",
+                "a raging river crossing that became a choke point",
+                "a mystical floating island surrounded by storms"
+            ];
+
+            const reason = reasons[Math.floor(Math.random() * reasons.length)];
+            const outcome = outcomes[Math.floor(Math.random() * outcomes.length)];
+            const conflictType = conflictTypes[Math.floor(Math.random() * conflictTypes.length)];
+            const battlefield = battlefields[Math.floor(Math.random() * battlefields.length)];
+
+            const resultDiv = document.getElementById('conflictResult');
+            // Hide the initial button after first generation
+            document.getElementById('generateBtn').style.display = 'none';
+
+            if (faction1.name === faction2.name) {
+                // Generate an internal conflict
+                resultDiv.innerHTML = `
+                    <h2>Internal Conflict</h2>
+                    <p><strong>Faction:</strong> ${faction1.name} - ${faction1.description}</p>
+                    <p><strong>Reason:</strong> ${reason}</p>
+                    <p><strong>Conflict Type:</strong> ${conflictType}</p>
+                    <p><strong>Battlefield:</strong> ${battlefield}</p>
+                    <p><strong>Outcome:</strong> ${outcome}</p>
+                    <button onclick="generateConflict()">Generate Again</button>
+                `;
+            } else {
+                // Generate a conflict between two factions
+                resultDiv.innerHTML = `
+                    <h2>Conflict</h2>
+                    <p><strong>Faction 1:</strong> ${faction1.name} - ${faction1.description}</p>
+                    <p><strong>Faction 2:</strong> ${faction2.name} - ${faction2.description}</p>
+                    <p><strong>Reason:</strong> ${reason}</p>
+                    <p><strong>Conflict Type:</strong> ${conflictType}</p>
+                    <p><strong>Battlefield:</strong> ${battlefield}</p>
+                    <p><strong>Outcome:</strong> ${outcome}</p>
+                    <button onclick="generateConflict()">Generate Again</button>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>

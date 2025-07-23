@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            background-image: url('tavern-backround.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Password prompt styles */
+        #passwordPrompt {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        #passwordBox {
+            background: rgba(40, 40, 40, 0.98);
+            padding: 36px 48px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px #000a;
+            text-align: center;
+            min-width: 320px;
+            border: 2px solid #4CAF50;
+        }
+        #passwordBox h1 {
+            margin-bottom: 18px;
+            color: #4CAF50;
+            letter-spacing: 1px;
+        }
+        #passwordInput {
+            padding: 10px;
+            font-size: 17px;
+            border-radius: 6px;
+            border: 1px solid #4CAF50;
+            margin-top: 10px;
+            width: 80%;
+            background: #222;
+            color: #fff;
+            outline: none;
+            transition: border 0.2s;
+        }
+        #passwordInput:focus {
+            border: 1.5px solid #81c784;
+        }
+        #passwordSubmit {
+            padding: 10px 24px;
+            font-size: 15px;
+            border: none;
+            border-radius: 6px;
+            background-image: url('nameplate.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 18px;
+            box-shadow: 0 2px 8px #0004;
+        }
+        #passwordSubmit:hover {
+            transform: scale(1.07);
+            box-shadow: 0 4px 16px #0006;
+        }
+        #passwordError {
+            color: #ff6666;
+            margin-top: 12px;
+            min-height: 20px;
+            font-size: 15px;
+        }
+        #passwordBox .return-home-btn {
+            margin-top: 18px;
+            padding: 8px 18px;
+            font-size: 15px;
+            border: none;
+            border-radius: 6px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px #0003;
+        }
+        #passwordBox .return-home-btn:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+        /* Protected content style */
+        #libraryScreen {
+            display: none;
+        }
+        .library-screen {
+            text-align: center;
+            background: rgba(36, 54, 39, 0.92);
+            padding: 32px 24px 24px 24px;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #000a;
+            border: 2px solid #4CAF50;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .library-screen h1 {
+            color: #4CAF50;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+        .books-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        .library-screen .book {
+            margin: 0;
+            padding: 18px 10px;
+            border: 1.5px solid #4CAF50;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #2e7d32 60%, #388e3c 100%);
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 2px 8px #0004;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            text-shadow: 1px 1px 2px #000a;
+        }
+        .library-screen .book:hover {
+            transform: scale(1.07);
+            box-shadow: 0 4px 16px #0006;
+            background: linear-gradient(135deg, #388e3c 60%, #2e7d32 100%);
+        }
+        .library-screen button {
+            padding: 10px 24px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 0 0 0;
+            font-weight: bold;
+            box-shadow: 0 2px 8px #0003;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+        .library-screen button:hover {
+            background-color: #388e3c;
+            transform: scale(1.05);
+        }
+        @media (max-width: 700px) {
+            .library-screen {
+                padding: 16px 4px;
+            }
+            .books-grid {
+                gap: 10px;
+            }
+            .library-screen .book {
+                width: 110px;
+                font-size: 0.95rem;
+                padding: 12px 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Password Prompt -->
+    <div id="passwordPrompt">
+        <form id="passwordBox" onsubmit="return checkPassword();">
+            <h1>Enter Password</h1>
+            <input type="password" id="passwordInput" placeholder="Enter the password here">
+            <br>
+            <button id="passwordSubmit" type="submit">Submit</button>
+            <div id="passwordError"></div>
+            <button type="button" class="return-home-btn" onclick="returnToHome()">Return to Home</button>
+        </form>
+    </div>
+
+    <!-- Library Screen -->
+    <div class="library-screen" id="libraryScreen">
+        <h1>Library</h1>
+        <div class="books-grid">
+            <a href="book1.html" class="book">Book 1</a>
+            <a href="book2.html" class="book">Book 2</a>
+            <a href="book3.html" class="book">Book 3</a>
+            <a href="book4.html" class="book">Book 4</a>
+            <a href="book5.html" class="book">Book 5</a>
+            <a href="book6.html" class="book">Book 6</a>
+            <a href="book7.html" class="book">Book 7</a>
+            <a href="book8.html" class="book">Book 8</a>
+            <a href="book9.html" class="book">Book 9</a>
+            <a href="cookbook.html" class="book">Tavern-side Cookbook</a>
+            <a href="otherworld.html" class="book">Other Worlds</a>
+        </div>
+        <button onclick="returnToHome()">Return to Home</button>
+    </div>
+
+    <script>
+        const correctPassword = "yourpassword"; // Replace with your actual password
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const errorMessage = document.getElementById('passwordError');
+            if (input === correctPassword) {
+                document.getElementById('passwordPrompt').style.display = 'none';
+                document.getElementById('libraryScreen').style.display = 'block';
+            } else {
+                errorMessage.textContent = "Incorrect password. Please try again.";
+            }
+            return false;
+        }
+
+        function returnToHome() {
+            window.location.href = "home-page.html";
+        }
+    </script>
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>

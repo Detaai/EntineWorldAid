@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cast</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Enable scrolling for the entire page */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        /* Section titles */
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        /* Parent container for Main Cast section */
+        .cast-sections {
+            display: flex;
+            flex-direction: column; /* Stack sections vertically */
+            align-items: center; /* Center sections horizontally */
+            gap: 50px; /* Add spacing between sections */
+            padding: 20px;
+        }
+
+        /* Cast container styles */
+        .cast-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Individual cast member card */
+        .cast-member {
+            text-align: center;
+            width: 150px;
+        }
+
+        .cast-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Circular profile picture */
+            object-fit: cover;
+            border: 2px solid #4CAF50; /* Optional border */
+            cursor: pointer; /* Make the image look clickable */
+            transition: transform 0.3s; /* Add a hover effect */
+        }
+
+        .cast-member img:hover {
+            transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+
+        /* Button styles for Main Cast */
+        .cast-member button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            background-image: url('nameplate.jpg'); /* Background image for nameplate */
+            background-size: cover; /* Ensure the image covers the button */
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgba(255, 255, 255, 0.635);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black; /* Add a shadow for better readability */
+            cursor: pointer;
+            transition: transform 0.3s; /* Add hover effect */
+        }
+
+        .cast-member button:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        /* Home button style */
+        .return-home-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .return-home-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Password prompt styles */
+        #passwordPrompt {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        #passwordBox {
+            background: #333;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px #000a;
+            text-align: center;
+        }
+
+        #passwordInput {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: none;
+            margin-top: 10px;
+        }
+
+        #passwordSubmit {
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        #passwordError {
+            color: #ff6666;
+            margin-top: 10px;
+            min-height: 20px;
+        }
+
+        /* Protected content style */
+        #protectedContent {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="home-page.html" class="home-link">← Back to Home</a>
+        <h1>The Cast</h1>
+    </header>
+    <main>
+        <!-- Parent container for Main Cast section -->
+        <div class="cast-sections">
+            <!-- Main Cast Section -->
+            <section>
+                <h2>Main Cast</h2>
+                <div class="cast-container">
+                    <div class="cast-member">
+                        <img src="main-cast-1.jpg" alt="Main Cast Member 1" onclick="location.href='cast-member1.html'">
+                        <button onclick="location.href='cast-member1.html'">Deta</button>
+                    </div>
+                    <div class="cast-member">
+                        <img src="main-cast-2.jpg" alt="Main Cast Member 2" onclick="location.href='cast-member2.html'">
+                        <button onclick="location.href='cast-member2.html'">Gwen</button>
+                    </div>
+                    <div class="cast-member">
+                        <img src="main-cast-4.jpg" alt="Main Cast Member 3" onclick="location.href='cast-member4.html'">
+                        <button onclick="location.href='cast-member4.html'">Bluma</button>
+                    </div>
+                    <div class="cast-member">
+                        <img src="main-cast-3.jpg" alt="Main Cast Member 4" onclick="location.href='cast-member3.html'">
+                        <button onclick="location.href='cast-member3.html'">Beans</button>
+                    </div>
+                    <div class="cast-member">
+                        <img src="main-cast-5.jpg" alt="Main Cast Member 5" onclick="location.href='cast-member5.html'">
+                        <button onclick="location.href='cast-member5.html'">Rinn</button>
+                    </div>
+                    <div class="cast-member">
+                        <img src="main-cast-6.jpg" alt="Main Cast Member 6" onclick="location.href='cast-member6.html'">
+                        <button onclick="location.href='cast-member6.html'">Tach'guf</button>
+                </div>
+                    <div class="cast-member">
+                        <img src="main-cast-7.jpg" alt="Main Cast Member 7" onclick="location.href='cast-member7.html'">
+                        <button onclick="location.href='cast-member7.html'">Fallen One</button>
+                    </div>
+                    <div class="cast-member">
+                        <img src="main-cast-8.jpg" alt="Main Cast Member 8" onclick="location.href='cast-member8.html'">
+                        <button onclick="location.href='cast-member8.html'">Godess</button>
+            </section>
+        </div>
+    </main>
+    <button class="return-home-btn" onclick="window.location.href='home-page.html'">🏠</button>
+    <footer>
+        <p>&copy; 2025 Entine Calculator</p>
+    </footer>
+
+    <!-- Password prompt HTML (for each cast member page) -->
+    <div id="passwordPrompt">
+        <form id="passwordBox" onsubmit="return checkPassword();">
+            <h2>Enter Password</h2>
+            <input type="password" id="passwordInput" placeholder="Password" autofocus>
+            <button id="passwordSubmit" type="submit">Enter</button>
+            <div id="passwordError"></div>
+        </form>
+    </div>
+    <div id="protectedContent" style="display:none;">
+        <!-- Your cast member content goes here -->
+        <h1>Cast Member</h1>
+        <!-- ... -->
+    </div>
+    <script>
+        function checkPassword() {
+            const correctPassword = "yourpassword"; // Change this to your desired password
+            const input = document.getElementById('passwordInput').value;
+            const error = document.getElementById('passwordError');
+            if (input === correctPassword) {
+                document.getElementById('passwordPrompt').style.display = 'none';
+                document.getElementById('protectedContent').style.display = '';
+                return false;
+            } else {
+                error.textContent = "Incorrect password. Try again.";
+                return false;
+            }
+        }
+        // Optional: allow Enter key to submit
+        document.getElementById('passwordInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>

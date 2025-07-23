@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deta Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .home-link {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+    }
+
+    .home-link:hover {
+      text-decoration: underline;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .image-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .image-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .image-card button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      display: flex;
+      background: white;
+      border-radius: 10px;
+      max-width: 900px;
+      width: 80%;
+      padding: 20px;
+      position: relative;
+    }
+
+    .popup-content img {
+      width: 320px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-right: 20px;
+      box-shadow: 0 2px 8px #0003;
+    }
+
+    .popup-content .description {
+      width: 50%;
+      text-align: left;
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="cast-member4.html" class="home-link">← Back</a>
+</header>
+
+<div class="gallery-container" id="gallery"></div>
+
+<!-- Popup Modal -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close-popup" onclick="closePopup()">&times;</span>
+    <img id="popup-img" src="" alt="Popup Image">
+    <div class="description">
+      <p id="popup-desc">Description</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const imageData = [
+    {
+      src: "deta-1.jpg",
+      alt: "Deta-Image 1",
+      desc: "This is Deta's main portrait. He is the Main character of the story, a young Randeth who has never left his home until a young girl came to his door and asked for help. His jorney is long and he ends up giving up more than he bargined for, After Saveing Gwen and Helping the Kingdom of Sumring. He is revered as a hero amoung the surviving townsfolk, but with his mother now gone, he is lost on where to go now. Art by <a href='https://www.facebook.com/karina.romero.794628' target='_blank'>Karina Romero</a>"
+    },
+    {
+      src: "Deta-image2.jpg",
+      alt: "Deta-Image 2",
+      desc: "Deta"
+    },
+    {
+      src: "Deta-image3.jpg",
+      alt: "Deta-Image 3",
+      desc: "Deta"
+    },
+    // Add more Deta images and descriptions as needed
+  ];
+
+  const gallery = document.getElementById("gallery");
+
+  imageData.forEach((img) => {
+    const card = document.createElement("div");
+    card.className = "image-card";
+    card.innerHTML = `
+      <img src="${img.src}" alt="${img.alt}">
+      <button onclick="openPopup('${img.src}', \`${img.desc}\`)">Read about</button>
+    `;
+    gallery.appendChild(card);
+  });
+
+  function openPopup(imgSrc, desc) {
+    document.getElementById('popup-img').src = imgSrc;
+    document.getElementById('popup-desc').innerHTML = desc;
+    document.getElementById('popup').style.display = 'flex';
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb

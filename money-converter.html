@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            background-image: url('tavern-backround.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: rgb(255, 255, 255);
+            cursor: url('mouse.jpg'), auto;
+            padding: 0;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+        .container-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .container {
+            background: rgba(36, 54, 39, 0.92);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #000a;
+            border: 2px solid #FFD700;
+            max-width: 480px;
+            min-width: 340px;
+            margin: 0 auto;
+            padding: 36px 32px 28px 32px;
+            text-align: center;
+        }
+        h1 {
+            color: #FFD700;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 6px #000a;
+        }
+        label {
+            font-size: 1rem;
+            color: #FFD700;
+            margin-bottom: 4px;
+            display: block;
+            text-align: left;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px 0;
+            border: 1px solid #FFD700;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background: #222;
+            color: #FFD700;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+        select:focus, input[type="number"]:focus {
+            border: 1.5px solid #81c784;
+        }
+        button {
+            padding: 10px 24px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            background-image: url('nameplate.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px #0004;
+            display: inline-block;
+        }
+        button:hover {
+            transform: scale(1.07);
+            box-shadow: 0 4px 16px #0006;
+            background-color: #0056b3;
+        }
+        .result-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .result {
+            flex: 1 1 0;
+            min-width: 120px;
+            text-align: center;
+            color: #FFD700;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #000a;
+        }
+        .input-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+        .input-row label, .input-row input {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+        .input-row label {
+            margin-right: 5px;
+            white-space: nowrap;
+        }
+        #sticklerQuote {
+            color: #FFD700;
+            text-align: center;
+            font-style: italic;
+            margin-top: 18px;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px #000a;
+        }
+        .home-link {
+            display: inline-block;
+            margin: 24px 0 0 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white !important;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background 0.2s;
+        }
+        .home-link:hover {
+            background-color: #0056b3;
+        }
+        .return-home-btn {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            padding: 4px 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 18px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            z-index: 1000;
+            margin: 0;
+            min-width: 36px;
+            min-height: 36px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .return-home-btn:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 900px) {
+            .container-wrapper {
+                flex-direction: column;
+                gap: 24px;
+                align-items: center;
+            }
+            .container {
+                min-width: 90vw;
+                max-width: 98vw;
+                padding: 18px 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="home-page.html" class="home-link">← Back to Home</a>
+    </header>
+    <div class="container-wrapper">
+        <!-- First Converter: Real Money to Fantasy Currency -->
+        <div class="container" id="realToFantasy">
+            <h1>Money Converter</h1>
+            <p>Enter the amount in your currency to convert it into gold, silver, and copper:</p>
+            <label for="currency">Select Currency:</label>
+            <select id="currency">
+                <option value="1">USD</option>
+                <option value="0.85">EUR</option>
+                <option value="0.75">GBP</option>
+                <option value="110">JPY</option>
+                <option value="1.3">AUD</option>
+                <option value="1.25">CAD</option>
+            </select>
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" placeholder="Enter amount">
+            <button onclick="convertMoney()">Convert</button>
+            <div class="result-row">
+                <p class="result">Fi-gon: <span id="figonResult">0</span></p>
+                <p class="result">Kael: <span id="kaelResult">0</span></p>
+                <p class="result">Gold: <span id="goldResult">0</span></p>
+            </div>
+            <div class="result-row">
+                <p class="result">Blong: <span id="blongResult">0</span></p>
+                <p class="result">Silver: <span id="silverResult">0</span></p>
+                <p class="result">Zirn: <span id="zirnResult">0</span></p>
+            </div>
+            <div class="result-row">
+                <p class="result">Talon: <span id="talonResult">0</span></p>
+                <p class="result">Copper: <span id="copperResult">0</span></p>
+            </div>
+            <p id="result"></p>
+            <p id="sticklerQuote"></p>
+        </div>
+
+        <!-- Second Converter: Fantasy Currency to Real Money -->
+        <div class="container" id="fantasyToReal">
+            <h1>Fantasy to Real Money</h1>
+            <p>Enter your fantasy currency to convert it into real money:</p>
+            <div class="input-row">
+                <label for="figon">Fi-gon:</label>
+                <input type="number" id="figon" placeholder="Enter fi-gon">
+                <label for="kael">Kael:</label>
+                <input type="number" id="kael" placeholder="Enter kael">
+                <label for="gold">Gold:</label>
+                <input type="number" id="gold" placeholder="Enter gold">
+            </div>
+            <div class="input-row">
+                <label for="blong">Blong:</label>
+                <input type="number" id="blong" placeholder="Enter blong">
+                <label for="silver">Silver:</label>
+                <input type="number" id="silver" placeholder="Enter silver">
+                <label for="zirn">Zirn:</label>
+                <input type="number" id="zirn" placeholder="Enter zirn">
+            </div>
+            <div class="input-row">
+                <label for="talon">Talon:</label>
+                <input type="number" id="talon" placeholder="Enter talon">
+                <label for="copper">Copper:</label>
+                <input type="number" id="copper" placeholder="Enter copper">
+            </div>
+            <label for="realCurrency">Select Currency:</label>
+            <select id="realCurrency">
+                <option value="1" data-symbol="$">USD</option>
+                <option value="0.85" data-symbol="€">EUR</option>
+                <option value="0.75" data-symbol="£">GBP</option>
+                <option value="110" data-symbol="¥">JPY</option>
+                <option value="1.3" data-symbol="A$">AUD</option>
+                <option value="1.25" data-symbol="C$">CAD</option>
+            </select>
+            <button onclick="convertFantasyToReal()">Convert</button>
+            <p class="result" id="fantasyResult"></p>
+        </div>
+    </div>
+    <button class="return-home-btn" onclick="window.location.href='home-page.html'">🏠</button>
+
+    <script>
+        function animateNumber(element, start, end, duration, callback) {
+            const range = end - start;
+            const increment = range / (duration / 10);
+            let current = start;
+            const interval = setInterval(() => {
+                current += increment;
+                if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+                    current = end;
+                    clearInterval(interval);
+                    if (callback) callback();
+                }
+                element.textContent = Math.floor(current);
+            }, 10);
+        }
+
+        function convertMoney() {
+            const currencyRate = parseFloat(document.getElementById('currency').value);
+            const amount = parseFloat(document.getElementById('amount').value);
+
+            // Output elements
+            const figonResult = document.getElementById('figonResult');
+            const kaelResult = document.getElementById('kaelResult');
+            const goldResult = document.getElementById('goldResult');
+            const blongResult = document.getElementById('blongResult');
+            const silverResult = document.getElementById('silverResult');
+            const zirnResult = document.getElementById('zirnResult');
+            const talonResult = document.getElementById('talonResult');
+            const copperResult = document.getElementById('copperResult');
+            const sticklerQuote = document.getElementById('sticklerQuote');
+
+            // Reset all results to 0
+            figonResult.textContent = '0';
+            kaelResult.textContent = '0';
+            goldResult.textContent = '0';
+            blongResult.textContent = '0';
+            silverResult.textContent = '0';
+            zirnResult.textContent = '0';
+            talonResult.textContent = '0';
+            copperResult.textContent = '0';
+
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById('result').innerHTML = `
+                    <strong>Error #4:</strong> Invalid amount entered.<br>
+                    <em>Reference:</em> See <code>errors</code> file for details.
+                `;
+                sticklerQuote.textContent = '';
+                return;
+            }
+
+            // Convert the entered amount to USD
+            const usd = amount / currencyRate;
+
+            // Conversion to fantasy currency (in copper)
+            let totalCopper = Math.round(usd * 100);
+
+            const figon = Math.floor(totalCopper / 1000000);
+            totalCopper %= 1000000;
+            const kael = Math.floor(totalCopper / 100000);
+            totalCopper %= 100000;
+            const gold = Math.floor(totalCopper / 10000);
+            totalCopper %= 10000;
+            const blong = Math.floor(totalCopper / 4000);
+            totalCopper %= 4000;
+            const silver = Math.floor(totalCopper / 1000);
+            totalCopper %= 1000;
+            const zirn = Math.floor(totalCopper / 100);
+            totalCopper %= 100;
+            const talon = Math.floor(totalCopper / 12);
+            const copper = totalCopper % 12;
+
+            figonResult.textContent = figon;
+            kaelResult.textContent = kael;
+            goldResult.textContent = gold;
+            blongResult.textContent = blong;
+            silverResult.textContent = silver;
+            zirnResult.textContent = zirn;
+            talonResult.textContent = talon;
+            copperResult.textContent = copper;
+
+            // Stickler quote logic
+            if (usd >= 100) {
+                sticklerQuote.textContent = "Careful! That's a hefty sum. Don't go spending it all in one place!";
+            } else if (usd >= 10) {
+                sticklerQuote.textContent = "A tidy amount, but remember: every coin counts!";
+            } else {
+                sticklerQuote.textContent = "That's not much—best save up before you splurge!";
+            }
+        }
+
+        function convertFantasyToReal() {
+            // Get values or 0 if empty
+            const figon = parseInt(document.getElementById('figon').value) || 0;
+            const kael = parseInt(document.getElementById('kael').value) || 0;
+            const gold = parseInt(document.getElementById('gold').value) || 0;
+            const blong = parseInt(document.getElementById('blong').value) || 0;
+            const silver = parseInt(document.getElementById('silver').value) || 0;
+            const zirn = parseInt(document.getElementById('zirn').value) || 0;
+            const talon = parseInt(document.getElementById('talon').value) || 0;
+            const copper = parseInt(document.getElementById('copper').value) || 0;
+
+            const realCurrency = document.getElementById('realCurrency');
+            const realCurrencyRate = parseFloat(realCurrency.value);
+            const currencySymbol = realCurrency.options[realCurrency.selectedIndex].dataset.symbol;
+            const resultElement = document.getElementById('fantasyResult');
+
+            if (isNaN(realCurrencyRate) || realCurrencyRate <= 0) {
+                resultElement.textContent = 'Please select a valid currency.';
+                return;
+            }
+
+            // Convert all denominations to copper
+            const totalCopper =
+                figon * 1000000 +
+                kael * 100000 +
+                gold * 10000 +
+                blong * 4000 +
+                silver * 1000 +
+                zirn * 100 +
+                talon * 12 +
+                copper;
+
+            // Convert copper to USD
+            const usd = totalCopper / 100;
+
+            // Convert USD to selected real-world currency
+            const realMoney = usd * realCurrencyRate;
+
+            // Animate the result with the currency symbol
+            animateNumber(resultElement, 0, realMoney, 2000);
+            setTimeout(() => {
+                resultElement.textContent = `${currencySymbol}${realMoney.toFixed(2)}`;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>

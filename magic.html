@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Magic Types</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            color: #FFD700;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background: rgba(36, 54, 39, 0.97);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px #000a;
+            border: 2.5px solid #FFD700;
+            max-width: 800px;
+            width: 98vw;
+            margin: 40px auto 0 auto;
+            padding: 36px 32px 28px 32px;
+        }
+        h1 {
+            color: #FFD700;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 8px #000a;
+            text-align: center;
+        }
+        details {
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            border: 1.5px solid #FFD700;
+            padding: 18px 18px;
+            color: #FFD700;
+            font-size: 1.08rem;
+            margin: 24px 0;
+            box-shadow: 0 2px 8px #0003;
+        }
+        summary {
+            font-size: 1.15rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #FFD700;
+            outline: none;
+        }
+        .home-link {
+            display: inline-block;
+            margin: 24px 0 0 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white !important;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #0003;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .home-link:hover {
+            background-color: #0056b3;
+        }
+        a.magic-link {
+            color: #FFD700;
+            text-decoration: underline;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="home-page.html" class="home-link">🏠 Home</a>
+    <div class="container">
+        <h1>All Magic Types</h1>
+
+        <details id="ice">
+            <summary>❄️ Ice Magic</summary>
+            <p>
+                <strong>Overview:</strong> Ice Magic harnesses the elemental force of cold, frost, and snow. Masters of this magic can manipulate temperature, create ice structures, and summon blizzards.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Frost Manipulation:</strong> Freeze water instantly, create ice walls, spikes, or weapons.</li>
+                    <li><strong>Blizzard Summoning:</strong> Call forth storms of snow and ice to obscure vision and hinder movement.</li>
+                    <li><strong>Cold Resistance:</strong> Survive and thrive in freezing environments, immune to hypothermia.</li>
+                    <li><strong>Ice Healing:</strong> Use cold to numb pain and slow bleeding, though not true healing.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Glacial Magic:</em> Slow, defensive, focused on fortification and endurance.</li>
+                            <li><em>Frostbite Magic:</em> Offensive, inflicts cold damage and immobilizes foes.</li>
+                            <li><em>Snowcraft:</em> Manipulate snow for camouflage, travel, or concealment.</li>
+                            <li><em>Chill Touch:</em> Only chills objects slightly, barely useful in combat.</li>
+                            <li><em>Winter's Breath:</em> Can fog up glass or cool drinks, but little else.</li>
+                            <li><em>Icicle Flick:</em> Create tiny icicles, more for distraction than damage.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Elemental mages, those who have consumed Frostwolf flesh, or possess ancient relics.<br>
+                <strong>Benefits:</strong> Defensive spells, crowd control, environmental manipulation.<br>
+                <strong>Risks:</strong> Overuse may cause hypothermia, emotional detachment, or physical numbness.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#ice'">View Creatures with Ice Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#ice'">View Artifacts with Ice Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#ice'">View People with Ice Abilities</button>
+            </div>
+        </details>
+
+        <details id="fire">
+            <summary>🔥 Fire Magic</summary>
+            <p>
+                <strong>Overview:</strong> Fire Magic channels heat, flame, and energy. Practitioners wield destructive power, illumination, and purification.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Pyromancy:</strong> Create and control fire, ignite objects, launch fireballs.</li>
+                    <li><strong>Heat Manipulation:</strong> Raise ambient temperature, melt ice, or forge metals.</li>
+                    <li><strong>Explosion Craft:</strong> Cause controlled detonations for offense or mining.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Wildfire Magic:</em> Uncontrolled, spreads rapidly, difficult to contain.</li>
+                            <li><em>Solar Magic:</em> Draws on sunlight, combines fire and light for healing or blinding.</li>
+                            <li><em>Ember Magic:</em> Subtle, used for stealth or sabotage.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Bloodline mages, phoenix eaters, or those who have consumed fire crystals.<br>
+                <strong>Benefits:</strong> Powerful offense, light, and purification.<br>
+                <strong>Risks:</strong> May cause burns, uncontrollable wildfires, or loss of control.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#fire'">View Creatures with Fire Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#fire'">View Artifacts with Fire Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#fire'">View People with Fire Abilities</button>
+            </div>
+        </details>
+
+        <details id="healing">
+            <summary>💚 Healing Magic</summary>
+            <p>
+                <strong>Overview:</strong> Healing Magic restores health, cures ailments, and mends wounds. It is vital for survival and recovery.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Regeneration:</strong> Accelerate natural healing, close wounds, mend bones.</li>
+                    <li><strong>Purification:</strong> Remove toxins, curses, or diseases.</li>
+                    <li><strong>Vitality Transfer:</strong> Transfer life force from one being to another.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Herbal Healing:</em> Uses potions and herbs for magical effects.</li>
+                            <li><em>Divine Healing:</em> Channeling celestial or spiritual energy.</li>
+                            <li><em>Blood Healing:</em> Uses living magic, often risky and exhausting.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Living magic heirs, potion brewers, magical creatures.<br>
+                <strong>Benefits:</strong> Recovery, disease prevention, longevity.<br>
+                <strong>Risks:</strong> Overuse may drain the caster, cause magical exhaustion, or transfer ailments.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#healing'">View Creatures with Healing Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#healing'">View Artifacts with Healing Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#healing'">View People with Healing Abilities</button>
+            </div>
+        </details>
+
+        <details id="illusion">
+            <summary>🌫️ Illusion Magic</summary>
+            <p>
+                <strong>Overview:</strong> Illusion Magic manipulates perception, creating images, sounds, or sensations that deceive the senses.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Visual Illusions:</strong> Create mirages, invisibility, or disguise.</li>
+                    <li><strong>Auditory Illusions:</strong> Mimic voices, create phantom sounds.</li>
+                    <li><strong>Emotional Manipulation:</strong> Influence feelings, cause fear or joy.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Shadowcraft:</em> Blend into darkness, manipulate shadows.</li>
+                            <li><em>Dreamweaving:</em> Enter and control dreams (Dream Serpent ability).</li>
+                            <li><em>Hallucination Magic:</em> Cause confusion or madness.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Illusionists, Shadow Lynx eaters, Dream Serpent eaters, enchanters.<br>
+                <strong>Benefits:</strong> Stealth, confusion, psychological warfare.<br>
+                <strong>Risks:</strong> May cause paranoia, loss of reality, or permanent delusions.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#illusion'">View Creatures with Illusion Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#illusion'">View Artifacts with Illusion Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#illusion'">View People with Illusion Abilities</button>
+            </div>
+        </details>
+
+        <details id="necromancy">
+            <summary>💀 Necromancy</summary>
+            <p>
+                <strong>Overview:</strong> Necromancy deals with the forces of life and death, manipulating souls and corpses.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Raise Dead:</strong> Animate corpses as servants or soldiers.</li>
+                    <li><strong>Life Drain:</strong> Steal vitality from living beings.</li>
+                    <li><strong>Curse Craft:</strong> Inflict magical diseases or bad luck.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Spirit Binding:</em> Trap or communicate with ghosts.</li>
+                            <li><em>Bone Magic:</em> Manipulate bones for defense or attack.</li>
+                            <li><em>Plague Magic:</em> Spread magical illness.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Forbidden bloodlines, ritualists, those who consume certain magical creatures.<br>
+                <strong>Benefits:</strong> Control over death, curses, life force manipulation.<br>
+                <strong>Risks:</strong> Social taboo, risk of corruption, spiritual backlash.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#necromancy'">View Creatures with Necromancy Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#necromancy'">View Artifacts with Necromancy Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#necromancy'">View People with Necromancy Abilities</button>
+            </div>
+        </details>
+
+        <details id="enchantment">
+            <summary>🔮 Enchantment</summary>
+            <p>
+                <strong>Overview:</strong> Enchantment imbues objects or people with magical properties, granting new powers or protections.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Object Enchantment:</strong> Create magic weapons, armor, or tools.</li>
+                    <li><strong>Charm:</strong> Influence minds, emotions, or loyalty.</li>
+                    <li><strong>Ward Craft:</strong> Protect areas or people from harm.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Runecraft:</em> Use symbols to store or trigger magic.</li>
+                            <li><em>Aura Enchantment:</em> Enhance natural abilities.</li>
+                            <li><em>Curse Enchantment:</em> Imbue objects with negative effects.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Enchanters, potion makers, those with living magic.<br>
+                <strong>Benefits:</strong> Enhanced abilities, protection, influence.<br>
+                <strong>Risks:</strong> May backfire, cause unintended consequences, or be dispelled.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#enchantment'">View Creatures with Enchantment Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#enchantment'">View Artifacts with Enchantment Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#enchantment'">View People with Enchantment Abilities</button>
+            </div>
+        </details>
+
+        <details id="transmutation">
+            <summary>⚗️ Transmutation</summary>
+            <p>
+                <strong>Overview:</strong> Transmutation changes the properties of objects or creatures, altering their form or nature.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Material Change:</strong> Turn lead to gold, stone to flesh, or vice versa.</li>
+                    <li><strong>Shape Shifting:</strong> Transform oneself or others into animals or objects.</li>
+                    <li><strong>Elemental Transmutation:</strong> Change one element to another (earth to air, etc.).</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Fleshcraft:</em> Alter living tissue, heal or mutate.</li>
+                            <li><em>Stonecraft:</em> Manipulate minerals and earth (Ironback Troll ability).</li>
+                            <li><em>Alchemy:</em> Mix magical substances for transformation.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Transmuters, potion makers, magical creatures.<br>
+                <strong>Benefits:</strong> Adaptability, resource creation, transformation.<br>
+                <strong>Risks:</strong> May cause instability, permanent changes, or loss of identity.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#transmutation'">View Creatures with Transmutation Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#transmutation'">View Artifacts with Transmutation Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#transmutation'">View People with Transmutation Abilities</button>
+            </div>
+        </details>
+
+        <details id="divination">
+            <summary>🔭 Divination</summary>
+            <p>
+                <strong>Overview:</strong> Divination reveals hidden truths, predicts the future, and locates lost things. Diviners are sought for their wisdom and foresight.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Foresight:</strong> Glimpse possible futures, avoid danger.</li>
+                    <li><strong>Scrying:</strong> Use mirrors, water, or crystals to see distant places or people.</li>
+                    <li><strong>Truthseeing:</strong> Detect lies, illusions, or hidden motives.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Starcraft:</em> Read omens in the stars (Star Elk ability).</li>
+                            <li><em>Dream Divination:</em> Interpret dreams for prophecy.</li>
+                            <li><em>Relic Divination:</em> Use magical objects to guide decisions.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Diviners, living magic heirs, those with special relics or who have consumed Star Elk flesh.<br>
+                <strong>Benefits:</strong> Foresight, guidance, discovery.<br>
+                <strong>Risks:</strong> May attract unwanted attention, cause confusion, or reveal dangerous truths.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#divination'">View Creatures with Divination Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#divination'">View Artifacts with Divination Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#divination'">View People with Divination Abilities</button>
+            </div>
+        </details>
+
+        <details id="nature">
+            <summary>🌿 Nature Magic</summary>
+            <p>
+                <strong>Overview:</strong> Nature Magic draws power from plants, animals, and the earth itself. Practitioners can accelerate growth, communicate with beasts, and manipulate natural environments.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Plant Manipulation:</strong> Control vines, roots, and trees for defense or attack.</li>
+                    <li><strong>Beast Speech:</strong> Communicate with and command animals.</li>
+                    <li><strong>Weather Influence:</strong> Summon rain, fog, or sunshine to aid crops or hinder foes.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Druidic Magic:</em> Focused on healing, protection, and harmony with nature.</li>
+                            <li><em>Feral Magic:</em> Grants animalistic traits such as claws, heightened senses, or speed.</li>
+                            <li><em>Growth Magic:</em> Rapidly grow plants for food, shelter, or entanglement.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Druids, shamans, those who consume magical plants or animals.<br>
+                <strong>Benefits:</strong> Environmental control, healing, and animal companionship.<br>
+                <strong>Risks:</strong> May lose touch with humanity, become wild or uncontrollable.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#nature'">View Creatures with Nature Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#nature'">View Artifacts with Nature Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#nature'">View People with Nature Abilities</button>
+            </div>
+        </details>
+
+        <details id="sound">
+            <summary>🔊 Sound Magic</summary>
+            <p>
+                <strong>Overview:</strong> Sound Magic manipulates vibrations and noise. Users can create sonic blasts, mute areas, or communicate over great distances.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Sonic Blast:</strong> Emit powerful waves of sound to stun or shatter objects.</li>
+                    <li><strong>Echo Location:</strong> Use sound to navigate in darkness or find hidden objects.</li>
+                    <li><strong>Silence Field:</strong> Create zones where no sound can pass.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Bardic Magic:</em> Use music to inspire, heal, or charm.</li>
+                            <li><em>Resonance Magic:</em> Amplify or dampen magical effects using sound.</li>
+                            <li><em>Whisper Magic:</em> Send secret messages on the wind.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Those with Sound magic artifacts, magical birds or insects.<br>
+                <strong>Benefits:</strong> Communication, crowd control, stealth.<br>
+                <strong>Risks:</strong> Hearing loss, attracting unwanted attention, uncontrollable feedback.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#sound'">View Creatures with Sound Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#sound'">View Artifacts with Sound Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#sound'">View People with Sound Abilities</button>
+            </div>
+        </details>
+
+        <details id="light">
+            <summary>🌟 Light Magic</summary>
+            <p>
+                <strong>Overview:</strong> Light Magic harnesses the power of illumination, clarity, and radiance. It can blind foes, reveal secrets, and heal wounds.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Radiance:</strong> Emit blinding light to dazzle or purify.</li>
+                    <li><strong>Invisibility:</strong> Bend light to hide oneself or others.</li>
+                    <li><strong>Revelation:</strong> Expose hidden objects, illusions, or lies.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Solar Magic:</em> Draws on sunlight for healing or offense.</li>
+                            <li><em>Luminescence:</em> Create glowing objects or pathways.</li>
+                            <li><em>Prism Magic:</em> Split light into colors for various effects.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Light mages, solar creatures, artifact holders.<br>
+                <strong>Benefits:</strong> Healing, purification, stealth.<br>
+                <strong>Risks:</strong> May cause blindness, reveal too much, or attract dark forces.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#light'">View Creatures with Light Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#light'">View Artifacts with Light Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#light'">View People with Light Abilities</button>
+            </div>
+        </details>
+
+        <details id="god">
+            <summary>🌌 Divine Magic (Tach'guf)</summary>
+            <p>
+                <strong>Overview:</strong> Divine Magic is the purest and most powerful form of magic, wielded only by the God of the world and those blessed directly by their touch. It can reshape reality, grant miracles, and alter fate itself. This magic is where all magic roots from.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Creation:</strong> Bring forth life, land, or objects from nothing.</li>
+                    <li><strong>Miracle:</strong> Heal any wound, cure any curse, or grant impossible boons.</li>
+                    <li><strong>Judgement:</strong> Smite evil, banish darkness, or purify corrupted souls.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Blessing:</em> Minor divine favor, such as good luck or protection.</li>
+                            <li><em>Prayer Magic:</em> Weak, only works if the God is listening; may result in a gentle breeze or faint glow.</li>
+                            <li><em>Sanctuary:</em> Create safe zones where evil cannot enter.</li>
+                            <li><em>Divine Sight:</em> Glimpse the truth behind illusions and lies.</li>
+                            <li><em>Minor Miracles:</em> Small acts, like purifying water or calming emotions.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> Tach'guf, chosen avatars, rare relics.<br>
+                <strong>Benefits:</strong> Ultimate power, reality shaping, absolute healing.<br>
+                <strong>Risks:</strong> Mortal minds may not withstand divine energy; overuse can draw the Devil's attention.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#god'">View Creatures with Divine Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#god'">View Artifacts with Divine Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#god'">View People with Divine Abilities</button>
+            </div>
+        </details>
+
+        <details id="devil">
+            <summary>🌑 Infernal Magic (The Fallen One)</summary>
+            <p>
+                <strong>Overview:</strong> Infernal Magic is the corrupt, destructive force wielded by the Devil of the world and those who bargain with darkness. It can twist reality, spread chaos, and consume souls.<br><br>
+                <strong>Abilities & Subcategories:</strong>
+                <ul>
+                    <li><strong>Corruption:</strong> Infect land, objects, or people with decay and evil.</li>
+                    <li><strong>Destruction:</strong> Unleash plagues, disasters, and curses.</li>
+                    <li><strong>Possession:</strong> Control or influence the minds of others.</li>
+                    <li><strong>Subcategories:</strong>
+                        <ul>
+                            <li><em>Hex Magic:</em> Minor curses, such as bad luck or nightmares.</li>
+                            <li><em>Whisper Magic:</em> Subtle, only causes doubt or fear in weak minds.</li>
+                            <li><em>Shadow Veil:</em> Hide actions from divine sight.</li>
+                            <li><em>Minor Blight:</em> Wilt plants, sour milk, or spoil food.</li>
+                            <li><em>Temptation:</em> Offer forbidden power at great cost.</li>
+                        </ul>
+                    </li>
+                </ul>
+                <strong>Who can use it?</strong> The Fallen One, corrupted beings, those who make pacts.<br>
+                <strong>Benefits:</strong> Great destructive power, manipulation, forbidden knowledge.<br>
+                <strong>Risks:</strong> Soul corruption, loss of free will, eternal torment.<br>
+            </p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+                <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#devil'">View Creatures with Infernal Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='artifacts.html#devil'">View Artifacts with Infernal Abilities</button>
+                <button class="creature-action-btn" onclick="window.location.href='people.html#devil'">View People with Infernal Abilities</button>
+            </div>
+        </details>
+    </div>
+    <script>
+    // Auto-open details if navigated with hash
+    function openDetailsFromHash() {
+        if (window.location.hash) {
+            const id = window.location.hash.substring(1);
+            const details = document.getElementById(id);
+            if (details && details.tagName.toLowerCase() === 'details') {
+                details.open = true;
+                details.scrollIntoView({behavior: "smooth", block: "start"});
+            }
+        }
+    }
+    window.addEventListener('DOMContentLoaded', openDetailsFromHash);
+    window.addEventListener('hashchange', openDetailsFromHash);
+    </script>
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>

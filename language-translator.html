@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Language Translator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="translator.js" defer></script>
+    <script src="reverse-translator.js" defer></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            background-image: url('tavern-backround.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background: rgba(36, 54, 39, 0.95);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #000a;
+            border: 2px solid #FFD700;
+            max-width: 540px;
+            margin: 60px auto 0 auto;
+            padding: 36px 32px 28px 32px;
+            text-align: center;
+        }
+        h1 {
+            color: #FFD700;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 6px #000a;
+        }
+        label {
+            font-size: 1rem;
+            color: #FFD700;
+            margin-bottom: 4px;
+            display: block;
+            text-align: left;
+        }
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px 0;
+            border: 1px solid #FFD700;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background: #222;
+            color: #FFD700;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+        select:focus, input[type="text"]:focus {
+            border: 1.5px solid #81c784;
+        }
+        button, .swap-button {
+            padding: 10px 24px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            background-image: url('nameplate.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px #0004;
+            display: inline-block;
+        }
+        button:hover, .swap-button:hover {
+            transform: scale(1.07);
+            box-shadow: 0 4px 16px #0006;
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 1.5px solid #FFD700;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: 'Georgia', serif;
+            font-size: 1.08rem;
+            line-height: 1.5;
+            color: #FFD700;
+            text-shadow: 1px 1px 4px #000a;
+            box-shadow: 0 2px 8px #0003;
+        }
+        .home-link {
+            display: inline-block;
+            margin: 24px 0 0 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white !important;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background 0.2s;
+        }
+        .home-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="home-page.html" class="home-link">&larr; Back to Home</a>
+    </header>
+    
+    <div class="container">
+        <h1>Fantasy Language Translator</h1>
+        
+        <label for="fantasy-type">Choose Fantasy Language:</label>
+        <select id="fantasy-type">
+            <option value="randeth">Randeth Language</option>
+            <option value="randeth-writting">Randeth Written (Make sure to copy the speech text)</option>
+            <option value="wander" disabled>Wander's Language (Unavailable)</option>
+            <option value="merspeak" disabled>Merspeak (Unavailable)</option>
+            <option value="entian" disabled>Entian Language (Unavailable)</option>
+            <option value="deepspeech">Deepspeech (Forbidden)</option>
+            <option value="dwarvish">Dwarvish (Forbidden)</option>
+            <option value="Hell chant" disabled>Hell chant (Unavailable)</option>
+        </select>
+        
+        <label for="text">Enter Text:</label>
+        <input type="text" id="text" placeholder="Enter words to translate">
+        
+        <button onclick="translateText()">Translate</button>
+        
+        <div class="result" id="result"></div>
+
+        <!-- Swap Button -->
+        <button class="swap-button" onclick="swapToSecondTranslator()">Swap</button>
+    </div>
+
+    <script>
+        async function translateText() {
+            const textElement = document.getElementById('text');
+            const text = textElement && textElement.value ? textElement.value.trim() : null;
+            const resultElement = document.getElementById('result');
+            const fantasyType = document.getElementById('fantasy-type').value;
+
+            if (!text) {
+                resultElement.innerHTML = `
+                    <strong>Error #1:</strong> No text entered.<br>
+                    <em>Reference:</em> See <code>errors</code> file for details.
+                `;
+                return; // Exit the function if no text is entered
+            }
+
+            try {
+                if (fantasyType.includes("to-english")) {
+                    console.log(`Using reverse-translator.js for ${fantasyType}`);
+                    await reverseTranslateText(fantasyType, text, resultElement);
+                } else {
+                    console.log(`Using translator.js for ${fantasyType}`);
+                    await normalTranslateText(fantasyType, text, resultElement);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                resultElement.innerHTML = `
+                    <strong>Error #2:</strong> ${error.message}<br>
+                    <em>Reference:</em> See <code>errors</code> file for details.
+                `;
+            }
+        }
+
+        async function normalTranslateText(fantasyType, text, resultElement) {
+            const response = await fetch(`translations/${fantasyType}.json`);
+            if (!response.ok) {
+                throw new Error(`Failed to load translation file for ${fantasyType}: ${response.statusText}`);
+            }
+            const translationData = await response.json();
+            const translatedText = translateToCustomLanguage(text, translationData);
+            resultElement.innerHTML = translatedText;
+        }
+
+        async function reverseTranslateText(fantasyType, text, resultElement) {
+            const response = await fetch(`reverse-translations/${fantasyType}.json`);
+            if (!response.ok) {
+                throw new Error(`Failed to load reverse translation file for ${fantasyType}: ${response.statusText}`);
+            }
+            const translationData = await response.json();
+            const translatedText = reverseTranslateToEnglish(text, translationData);
+            resultElement.innerHTML = translatedText;
+        }
+
+        function swapToSecondTranslator() {
+            window.location.href = "language-translator-two.html";
+        }
+    </script>
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Age Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            background-image: url('tavern-backround.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .container {
+            background: rgba(36, 54, 39, 0.95);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #000a;
+            border: 2px solid #FFD700;
+            max-width: 420px;
+            min-width: 320px;
+            margin: 0 auto;
+            padding: 36px 32px 28px 32px;
+            text-align: center;
+        }
+        h2 {
+            color: #FFD700;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 6px #000a;
+        }
+        label {
+            font-size: 1rem;
+            color: #FFD700;
+            margin-bottom: 4px;
+            display: block;
+            text-align: left;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px 0;
+            border: 1px solid #FFD700;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background: #222;
+            color: #FFD700;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+        select:focus, input[type="number"]:focus {
+            border: 1.5px solid #81c784;
+        }
+        button {
+            padding: 10px 24px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            background-image: url('nameplate.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 8px #0004;
+            display: inline-block;
+        }
+        button:hover {
+            transform: scale(1.07);
+            box-shadow: 0 4px 16px #0006;
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border: 1.5px solid #FFD700;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
+            min-height: 32px;
+            font-family: 'Georgia', serif;
+            font-size: 1.08rem;
+            line-height: 1.5;
+            color: #FFD700;
+            text-shadow: 1px 1px 4px #000a;
+            box-shadow: 0 2px 8px #0003;
+        }
+        .swap-line a {
+            display: inline-block;
+            padding: 8px 18px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 0;
+            box-shadow: 0 2px 8px #0003;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .swap-line a:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .home-link {
+            display: inline-block;
+            margin: 24px 0 0 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white !important;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background 0.2s;
+        }
+        .home-link:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 900px) {
+            .container-wrapper {
+                flex-direction: column;
+                gap: 24px;
+                align-items: center;
+            }
+            .container {
+                min-width: 90vw;
+                max-width: 98vw;
+                padding: 18px 4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="home-page.html" class="home-link">&larr; Back to Home</a>
+    </header>
+    <div class="container-wrapper">
+        <!-- Fantasy to Human Age Converter -->
+        <div class="container" id="fantasyToHuman">
+            <h2>Fantasy to Human Age</h2>
+            <label for="species">Choose Species:</label>
+            <select id="species">
+                <option value="human">Human</option>
+                <option value="half-elf">Half-Elf</option>
+                <option value="randine">Randine</option>
+                <option value="entith">Entith</option>
+                <option value="dwarf">Dwarf</option>
+                <option value="fae">Fae</option>
+                <option value="randeth">Randeth</option>
+                <option value="entian">Entian</option>
+                <option value="demon">Demon</option>
+            </select>
+
+            <label for="age">Enter Creature's Age:</label>
+            <input type="number" id="age" placeholder="Enter age in years">
+
+            <button onclick="convertFantasyToHuman()">Convert to Human Equivalent</button>
+
+            <div class="result" id="fantasyToHumanResult"></div>
+        </div>
+
+        <!-- Human to Fantasy Age Converter -->
+        <div class="container" id="humanToFantasy">
+            <h2>Human to Fantasy Age</h2>
+            <label for="fantasySpecies">Choose Fantasy Species:</label>
+            <select id="fantasySpecies">
+                <option value="human">Human</option>
+                <option value="half-elf">Half-Elf</option>
+                <option value="randine">Randine</option>
+                <option value="entith">Entith</option>
+                <option value="dwarf">Dwarf</option>
+                <option value="fae">Fae</option>
+                <option value="randeth">Randeth</option>
+                <option value="entian">Entian</option>
+                <option value="demon">Demon</option>
+            </select>
+
+            <label for="humanAge">Enter Human Age:</label>
+            <input type="number" id="humanAge" placeholder="Enter human age in years">
+
+            <button onclick="convertHumanToFantasy()">Convert to Fantasy Equivalent</button>
+
+            <div class="result" id="humanToFantasyResult"></div>
+        </div>
+    </div>
+
+    <script>
+        function convertFantasyToHuman() {
+            const species = document.getElementById('species').value;
+            const age = parseFloat(document.getElementById('age').value);
+
+            if (isNaN(age) || age <= 0) {
+                document.getElementById('fantasyToHumanResult').innerHTML = `
+                    <strong>Error:</strong> Please enter a valid age.<br>
+                `;
+                return;
+            }
+
+            let Y1, M1, Y2, M2, maxAge;
+            switch (species) {
+                case 'human':
+                    Y1 = 18; M1 = 1; Y2 = 18; M2 = 1; maxAge = 80; break;
+                case 'half-elf':
+                case 'randine':
+                case 'entith':
+                    Y1 = 20; M1 = 1; Y2 = 20; M2 = 0.4; maxAge = 950; break;
+                case 'randeth':
+                    Y1 = 700; M1 = 0.02571; maxAge = 10000.66; break;
+                case 'dwarf':
+                    Y1 = 20; M1 = 1; Y2 = 20; M2 = 0.2; maxAge = 1000; break;
+                case 'fae':
+                    Y1 = 30; M1 = 1; Y2 = 50; M2 = 0.032; maxAge = 2500; break;
+                case 'entian':
+                    Y1 = 10; M1 = 2; Y2 = 10; M2 = 2; maxAge = Infinity; break;
+                case 'demon':
+                    Y1 = 18; M1 = 1; Y2 = 18; M2 = 1; maxAge = Infinity; break;
+                default:
+                    document.getElementById('fantasyToHumanResult').innerHTML = `
+                        <strong>Error:</strong> Unknown species selected.<br>
+                    `;
+                    return;
+            }
+
+            if (age >= maxAge) {
+                document.getElementById('fantasyToHumanResult').innerHTML = "💀 Dead";
+                return;
+            }
+
+            let humanAge;
+            if (species === 'randeth') {
+                // Special case for Randeth
+                humanAge = age * M1;
+            } else {
+                humanAge = age <= Y1 ? age * M1 : (Y1 * M1) + ((age - Y1) * M2);
+            }
+
+            document.getElementById('fantasyToHumanResult').innerHTML = `Human Equivalent Age: ${humanAge.toFixed(2)} years`;
+        }
+
+        function convertHumanToFantasy() {
+            const species = document.getElementById('fantasySpecies').value;
+            const humanAge = parseFloat(document.getElementById('humanAge').value);
+            let fantasyAge;
+
+            if (isNaN(humanAge) || humanAge <= 0) {
+                document.getElementById('humanToFantasyResult').innerHTML = "Please enter a valid human age.";
+                return;
+            }
+
+            if (species === 'randeth') {
+                if (humanAge <= 18) {
+                    fantasyAge = (700 / 18) * humanAge;
+                } else if (humanAge <= 35) {
+                    fantasyAge = (2000 / 35) * humanAge;
+                } else {
+                    fantasyAge = (10000 / 80) * humanAge;
+                }
+
+            } else {
+                let Y1, M1, Y2, M2;
+                switch (species) {
+                    case 'human': Y1 = 18; M1 = 1; Y2 = 18; M2 = 1; break;
+                    case 'half-elf':
+                    case 'randine':
+                    case 'entith': Y1 = 20; M1 = 1; Y2 = 20; M2 = 0.4; break;
+                    case 'dwarf': Y1 = 20; M1 = 1; Y2 = 20; M2 = 0.2; break;
+                    case 'fae': Y1 = 30; M1 = 1; Y2 = 50; M2 = 0.032; break;
+                    case 'entian': Y1 = 10; M1 = 2; Y2 = 10; M2 = 2; break;
+                    case 'demon': Y1 = 18; M1 = 1; Y2 = 18; M2 = 1; break;
+                    default: Y1 = 18; M1 = 1; Y2 = 18; M2 = 1; break;
+                }
+                fantasyAge = humanAge <= Y1 * M1 ? humanAge / M1 : Y1 + ((humanAge - Y1 * M1) / M2);
+            }
+
+            document.getElementById('humanToFantasyResult').innerHTML = `Fantasy Equivalent Age: ${fantasyAge.toFixed(2)} years`;
+        }
+
+        function toggleConverters() {
+            const fantasyToHumanContainer = document.getElementById('fantasyToHuman');
+            const humanToFantasyContainer = document.getElementById('humanToFantasy');
+            fantasyToHumanContainer.classList.toggle('hidden');
+            humanToFantasyContainer.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
+<footer>
+    <a href="references.html">References</a>
+    <span>&copy; 2025 Caleb Jones</span>
+</footer>
