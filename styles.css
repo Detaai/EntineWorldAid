@@ -211,6 +211,66 @@ p {
     }
 }
 
+/* Add this at the end of your styles.css file */
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 500px) {
+    body {
+        padding: 0;
+        font-size: 15px;
+    }
+    .container {
+        width: 98vw;
+        min-width: 0;
+        padding: 10px;
+        border-radius: 24px;
+    }
+    .welcome-message {
+        font-size: 1.2rem;
+        padding: 18px 8px;
+        border-radius: 12px;
+    }
+    .begin-btn {
+        font-size: 1.1rem;
+        padding: 14px 24px;
+        border-radius: 12px;
+        margin-top: 12px;
+    }
+    header, footer {
+        padding: 8px 2vw;
+        font-size: 1rem;
+    }
+    .profile-pic {
+        width: 60px;
+        height: 60px;
+    }
+    .profile-name {
+        font-size: 1rem;
+    }
+    .gallery-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 8px;
+    }
+    .image-card img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    .popup-content {
+        flex-direction: column;
+        width: 96vw;
+        padding: 8px;
+    }
+    .popup-content img {
+        width: 100%;
+        margin: 0 0 12px 0;
+    }
+    .popup-content .description {
+        width: 100%;
+        text-align: left;
+    }
+}
+
 /* Cast Member Button Styles */
 .cast-member button {
     margin-top: 10px;
