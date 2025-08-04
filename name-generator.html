@@ -5,18 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Name Generator</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
         body {
+            min-height: 100vh;
+            margin: 0;
             background: linear-gradient(135deg, #232526 0%, #485563 100%);
             background-image: url('tavern-backround.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            min-height: 100vh;
-            margin: 0;
+            color: #FFD700;
+            font-family: 'Segoe UI', Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+        main {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .container {
             background: rgba(36, 54, 39, 0.92);
@@ -70,23 +85,35 @@
         .home-link:hover {
             background-color: #0056b3;
         }
+        footer {
+            width: 100%;
+            text-align: center;
+            color: #FFD700;
+            font-size: 1rem;
+            text-shadow: 1px 1px 4px #000a;
+            padding: 18px 0 12px 0;
+            background: rgba(0, 0, 0, 0.85);
+            border-top: 2px solid #FFD700;
+            margin-top: auto;
+        }
     </style>
 </head>
 <body>
     <header>
         <a href="home-page.html" class="home-link">← Back to Home</a>
     </header>
-
-    <div class="container">
-        <span class="quill">🪶</span>
-        <h1>Random Name Generator</h1>
-        <div class="result" id="result">
-            This page is unavailable because the scribes went on vacation!
+    <main>
+        <div class="container">
+            <span class="quill">🪶</span>
+            <h1>Random Name Generator</h1>
+            <div class="result" id="result">
+                This page is unavailable because the scribes went on vacation!
+            </div>
         </div>
-    </div>
+    </main>
+    <footer>
+        <a href="references.html">References</a>
+        <span>&copy; 2025 Caleb Jones</span>
+    </footer>
 </body>
 </html>
-<footer>
-    <a href="references.html">References</a>
-    <span>&copy; 2025 Caleb Jones</span>
-</footer>
