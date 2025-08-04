@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Cast</title>
-    <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
     <style>
         /* Enable scrolling for the entire page */
         body {
@@ -154,6 +154,34 @@
         #protectedContent {
             display: none;
         }
+
+        .arrow-nav {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .arrow-btn {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .arrow-btn:hover {
+            background-color: #45a049;
+        }
+
+        #pageIndicator {
+            font-size: 16px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -167,85 +195,73 @@
             <!-- Main Cast Section -->
             <section>
                 <h2>Main Cast</h2>
-                <div class="cast-container">
-                    <div class="cast-member">
-                        <img src="main-cast-1.jpg" alt="Main Cast Member 1" onclick="location.href='cast-member1.html'">
-                        <button onclick="location.href='cast-member1.html'">Deta</button>
-                    </div>
-                    <div class="cast-member">
-                        <img src="main-cast-2.jpg" alt="Main Cast Member 2" onclick="location.href='cast-member2.html'">
-                        <button onclick="location.href='cast-member2.html'">Gwen</button>
-                    </div>
-                    <div class="cast-member">
-                        <img src="main-cast-4.jpg" alt="Main Cast Member 3" onclick="location.href='cast-member4.html'">
-                        <button onclick="location.href='cast-member4.html'">Bluma</button>
-                    </div>
-                    <div class="cast-member">
-                        <img src="main-cast-3.jpg" alt="Main Cast Member 4" onclick="location.href='cast-member3.html'">
-                        <button onclick="location.href='cast-member3.html'">Beans</button>
-                    </div>
-                    <div class="cast-member">
-                        <img src="main-cast-5.jpg" alt="Main Cast Member 5" onclick="location.href='cast-member5.html'">
-                        <button onclick="location.href='cast-member5.html'">Rinn</button>
-                    </div>
-                    <div class="cast-member">
-                        <img src="main-cast-6.jpg" alt="Main Cast Member 6" onclick="location.href='cast-member6.html'">
-                        <button onclick="location.href='cast-member6.html'">Tach'guf</button>
+                <div class="cast-container" id="castContainer"></div>
+                <div class="arrow-nav" style="margin-top:24px; display:flex; justify-content:center; align-items:center; gap:24px;">
+                    <button class="arrow-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
+                    <span id="pageIndicator"></span>
+                    <button class="arrow-btn" id="nextBtn" aria-label="Next">&#8594;</button>
                 </div>
-                    <div class="cast-member">
-                        <img src="main-cast-7.jpg" alt="Main Cast Member 7" onclick="location.href='cast-member7.html'">
-                        <button onclick="location.href='cast-member7.html'">Fallen One</button>
-                    </div>
-                    <div class="cast-member">
-                        <img src="main-cast-8.jpg" alt="Main Cast Member 8" onclick="location.href='cast-member8.html'">
-                        <button onclick="location.href='cast-member8.html'">Godess</button>
             </section>
         </div>
     </main>
     <button class="return-home-btn" onclick="window.location.href='home-page.html'">🏠</button>
     <footer>
-        <p>&copy; 2025 Entine Calculator</p>
+        <a href="references.html">References</a>
+        <span>&copy; 2025 Caleb Jones</span>
     </footer>
-
-    <!-- Password prompt HTML (for each cast member page) -->
-    <div id="passwordPrompt">
-        <form id="passwordBox" onsubmit="return checkPassword();">
-            <h2>Enter Password</h2>
-            <input type="password" id="passwordInput" placeholder="Password" autofocus>
-            <button id="passwordSubmit" type="submit">Enter</button>
-            <div id="passwordError"></div>
-        </form>
-    </div>
-    <div id="protectedContent" style="display:none;">
-        <!-- Your cast member content goes here -->
-        <h1>Cast Member</h1>
-        <!-- ... -->
-    </div>
     <script>
-        function checkPassword() {
-            const correctPassword = "yourpassword"; // Change this to your desired password
-            const input = document.getElementById('passwordInput').value;
-            const error = document.getElementById('passwordError');
-            if (input === correctPassword) {
-                document.getElementById('passwordPrompt').style.display = 'none';
-                document.getElementById('protectedContent').style.display = '';
-                return false;
-            } else {
-                error.textContent = "Incorrect password. Try again.";
-                return false;
+        // List of cast members
+        const castMembers = [
+            { img: "main-cast-1.jpg", name: "Deta", link: "cast-member1.html" },
+            { img: "main-cast-2.jpg", name: "Gwen", link: "cast-member2.html" },
+            { img: "main-cast-4.jpg", name: "Bluma", link: "cast-member4.html" },
+            { img: "main-cast-3.jpg", name: "Beans", link: "cast-member3.html" },
+            { img: "main-cast-5.jpg", name: "Rinn", link: "cast-member5.html" },
+            { img: "main-cast-6.jpg", name: "Tach'guf", link: "cast-member6.html" },
+            { img: "main-cast-7.jpg", name: "Fallen One", link: "cast-member7.html" },
+            { img: "main-cast-8.jpg", name: "Godess", link: "cast-member8.html" }
+        ];
+
+        const perPage = 4;
+        let currentPage = 0;
+
+        function renderCast() {
+            const container = document.getElementById('castContainer');
+            container.innerHTML = '';
+            const start = currentPage * perPage;
+            const end = Math.min(start + perPage, castMembers.length);
+            for (let i = start; i < end; i++) {
+                const member = castMembers[i];
+                const div = document.createElement('div');
+                div.className = 'cast-member';
+                div.innerHTML = `
+                    <img src="${member.img}" alt="${member.name}" onclick="location.href='${member.link}'">
+                    <button onclick="location.href='${member.link}'">${member.name}</button>
+                `;
+                container.appendChild(div);
             }
+            // Update page indicator
+            document.getElementById('pageIndicator').textContent = `Page ${currentPage + 1} of ${Math.ceil(castMembers.length / perPage)}`;
+            // Enable/disable arrows
+            document.getElementById('prevBtn').disabled = currentPage === 0;
+            document.getElementById('nextBtn').disabled = end >= castMembers.length;
         }
-        // Optional: allow Enter key to submit
-        document.getElementById('passwordInput').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-                e.preventDefault();
+
+        document.getElementById('prevBtn').onclick = function() {
+            if (currentPage > 0) {
+                currentPage--;
+                renderCast();
             }
-        });
+        };
+        document.getElementById('nextBtn').onclick = function() {
+            if ((currentPage + 1) * perPage < castMembers.length) {
+                currentPage++;
+                renderCast();
+            }
+        };
+
+        // Initial render
+        renderCast();
     </script>
 </body>
 </html>
-<footer>
-    <a href="references.html">References</a>
-    <span>&copy; 2025 Caleb Jones</span>
-</footer>
