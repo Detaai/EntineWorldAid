@@ -235,7 +235,7 @@
                 const div = document.createElement('div');
                 div.className = 'cast-member';
                 div.innerHTML = `
-                    <img src="${member.img}" alt="${member.name}" onclick="location.href='${member.link}'">
+                    <img src="${member.img}" alt="${member.name}" loading="lazy" onclick="location.href='${member.link}'">
                     <button onclick="location.href='${member.link}'">${member.name}</button>
                 `;
                 container.appendChild(div);
