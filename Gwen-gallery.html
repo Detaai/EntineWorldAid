@@ -111,7 +111,7 @@
 <div class="popup" id="popup">
   <div class="popup-content">
     <span class="close-popup" onclick="closePopup()">&times;</span>
-    <img id="popup-img" src="" alt="Popup Image">
+    <img id="popup-img" src="" alt="Popup Image" loading="lazy">
     <div class="description">
       <p id="popup-desc">Description</p>
     </div>
@@ -144,7 +144,7 @@
     const card = document.createElement("div");
     card.className = "image-card";
     card.innerHTML = `
-      <img src="${img.src}" alt="${img.alt}">
+      <img src="${img.src}" alt="${img.alt}" loading="lazy">
       <button onclick="openPopup('${img.src}', \`${img.desc}\`)">Read about</button>
     `;
     gallery.appendChild(card);
