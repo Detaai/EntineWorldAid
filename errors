@@ -1,159 +1,165 @@
-1. Error: No text entered.
-   - Description: The user clicked "Translate" without entering any text.
-   - How to fix: Ensure the input field is not empty before clicking "Translate."
+# Error Reference Guide
 
-2. Error: Failed to load translation file for <language>. File not found or invalid.
-   - Description: The JSON file for the selected language is missing or cannot be loaded.
-   - How to fix: Ensure the file exists in the `translations` folder and is named correctly (e.g., `randeth.json`).
+Below is a list of possible errors you may encounter in the Entine Calculator project, along with their descriptions and solutions.
 
-3. Error: Failed to load reverse translation file for <language>. File not found or invalid.
-   - Description: The JSON file for the reverse translation is missing or cannot be loaded.
-   - How to fix: Ensure the file exists in the `reverse-translations` folder and is named correctly (e.g., `randeth-to-english.json`).
+---
 
-4. Error: Invalid amount entered.
-   - Description: The user entered an invalid or negative amount in the money converter.
-   - How to fix: Enter a positive number in the input field.
+1. **Error: No text entered.**  
+   - **Description:** The user clicked "Translate" without entering any text.  
+   - **How to fix:** Ensure the input field is not empty before clicking "Translate."
 
-5. Error: Invalid age entered.
-   - Description: The user entered an invalid or negative age in the age converter.
-   - How to fix: Enter a positive number in the input field.
+2. **Error: Failed to load translation file for `<language>`. File not found or invalid.**  
+   - **Description:** The JSON file for the selected language is missing or cannot be loaded.  
+   - **How to fix:** Ensure the file exists in the `translations` folder and is named correctly (e.g., `randeth.json`).
 
-6. Error: Internal conflict generated.
-   - Description: The same faction was selected for both sides in the conflict generator.
-   - How to fix: No action needed. The application now generates an internal conflict instead of requiring different factions.
+3. **Error: Failed to load reverse translation file for `<language>`. File not found or invalid.**  
+   - **Description:** The JSON file for the reverse translation is missing or cannot be loaded.  
+   - **How to fix:** Ensure the file exists in the `reverse-translations` folder and is named correctly (e.g., `randeth-to-english.json`).
 
-7. Error: Unexpected token < in JSON at position 0.
-   - Description: The JSON file is invalid or contains syntax errors.
-   - How to fix: Validate the JSON file using an online JSON validator (e.g., https://jsonlint.com/) and fix any syntax errors.
+4. **Error: Invalid amount entered.**  
+   - **Description:** The user entered an invalid or negative amount in the money converter.  
+   - **How to fix:** Enter a positive number in the input field.
 
-8. Error: HTTP Status 404 Not Found.
-   - Description: The requested JSON file could not be found on the server.
-   - How to fix: Verify the file path and ensure the file exists in the correct folder.
+5. **Error: Invalid age entered.**  
+   - **Description:** The user entered an invalid or negative age in the age converter.  
+   - **How to fix:** Enter a positive number in the input field.
 
-9. Error: HTTP Status 500 Internal Server Error.
-   - Description: The server encountered an error while processing the request.
-   - How to fix: Check the server logs for more details and ensure the server is configured correctly.
+6. **Error: Internal conflict generated.**  
+   - **Description:** The same faction was selected for both sides in the conflict generator.  
+   - **How to fix:** No action needed. The application now generates an internal conflict instead of requiring different factions.
 
-10. Error: Failed to fetch.
-    - Description: The application could not fetch the JSON file due to a network issue.
-    - How to fix: Ensure the server is running and accessible. Check your internet connection if the server is remote.
+7. **Error: Unexpected token `<` in JSON at position 0.**  
+   - **Description:** The JSON file is invalid or contains syntax errors.  
+   - **How to fix:** Validate the JSON file using an online JSON validator (e.g., [jsonlint.com](https://jsonlint.com/)) and fix any syntax errors.
 
-11. Error: Translation data is undefined or null.
-    - Description: The JSON file was loaded, but it does not contain valid translation data.
-    - How to fix: Ensure the JSON file contains valid `combos`, `letters`, and `suffixes` objects.
+8. **Error: HTTP Status 404 Not Found.**  
+   - **Description:** The requested JSON file could not be found on the server.  
+   - **How to fix:** Verify the file path and ensure the file exists in the correct folder.
 
-12. Error: No translation found for character "<character>".
-    - Description: A character in the input text does not have a corresponding translation in the JSON file.
-    - How to fix: Add the missing character to the `letters` object in the JSON file.
+9. **Error: HTTP Status 500 Internal Server Error.**  
+   - **Description:** The server encountered an error while processing the request.  
+   - **How to fix:** Check the server logs for more details and ensure the server is configured correctly.
 
-13. Error: Suffix rule "<suffix>" not applied.
-    - Description: A suffix rule was expected but not applied to the input text.
-    - How to fix: Verify the `suffixes` object in the JSON file and ensure the rule is defined correctly.
+10. **Error: Failed to fetch.**  
+    - **Description:** The application could not fetch the JSON file due to a network issue.  
+    - **How to fix:** Ensure the server is running and accessible. Check your internet connection if the server is remote.
 
-14. Error: Reverse translation logic not triggered.
-    - Description: The application did not switch to `reverse-translator.js` for a "To English" option.
-    - How to fix: Ensure the `translateText` function correctly identifies "To English" options and calls `reverseTranslateText`.
+11. **Error: Translation data is undefined or null.**  
+    - **Description:** The JSON file was loaded, but it does not contain valid translation data.  
+    - **How to fix:** Ensure the JSON file contains valid `combos`, `letters`, and `suffixes` objects.
 
-15. Error: Normal translation logic not triggered.
-    - Description: The application did not switch to `translator.js` for a normal translation option.
-    - How to fix: Ensure the `translateText` function correctly identifies normal translation options and calls `normalTranslateText`.
+12. **Error: No translation found for character `<character>`.**  
+    - **Description:** A character in the input text does not have a corresponding translation in the JSON file.  
+    - **How to fix:** Add the missing character to the `letters` object in the JSON file.
 
-16. Error: Swap button not working.
-    - Description: Clicking the "Swap" button does not redirect to the other translator.
-    - How to fix: Verify the `swapToSecondTranslator` or `swapToFirstTranslator` function and ensure the `window.location.href` is set correctly.
+13. **Error: Suffix rule `<suffix>` not applied.**  
+    - **Description:** A suffix rule was expected but not applied to the input text.  
+    - **How to fix:** Verify the `suffixes` object in the JSON file and ensure the rule is defined correctly.
 
-17. Error: Result box not updating.
-    - Description: The translated text is not displayed in the result box.
-    - How to fix: Ensure the `resultElement.innerHTML` is updated with the translated text.
+14. **Error: Reverse translation logic not triggered.**  
+    - **Description:** The application did not switch to `reverse-translator.js` for a "To English" option.  
+    - **How to fix:** Ensure the `translateText` function correctly identifies "To English" options and calls `reverseTranslateText`.
 
-18. Error: Unsupported language selected.
-    - Description: The user selected a language that is not supported or disabled.
-    - How to fix: Disable unsupported languages in the dropdown menu or provide a proper error message.
+15. **Error: Normal translation logic not triggered.**  
+    - **Description:** The application did not switch to `translator.js` for a normal translation option.  
+    - **How to fix:** Ensure the `translateText` function correctly identifies normal translation options and calls `normalTranslateText`.
 
-19. Error: JSON file contains unexpected keys.
-    - Description: The JSON file contains keys that are not recognized by the application.
-    - How to fix: Ensure the JSON file only contains `combos`, `letters`, and `suffixes` objects.
+16. **Error: Swap button not working.**  
+    - **Description:** Clicking the "Swap" button does not redirect to the other translator.  
+    - **How to fix:** Verify the `swapToSecondTranslator` or `swapToFirstTranslator` function and ensure the `window.location.href` is set correctly.
 
-20. Error: JSON file is empty.
-    - Description: The JSON file exists but does not contain any data.
-    - How to fix: Populate the JSON file with valid translation data.
+17. **Error: Result box not updating.**  
+    - **Description:** The translated text is not displayed in the result box.  
+    - **How to fix:** Ensure the `resultElement.innerHTML` is updated with the translated text.
 
-21. Error: Browser compatibility issue.
-    - Description: The application does not work correctly in certain browsers.
-    - How to fix: Test the application in multiple browsers and ensure compatibility with modern standards.
+18. **Error: Unsupported language selected.**  
+    - **Description:** The user selected a language that is not supported or disabled.  
+    - **How to fix:** Disable unsupported languages in the dropdown menu or provide a proper error message.
 
-22. Error: Network request blocked by CORS policy.
-    - Description: The browser blocked the request due to Cross-Origin Resource Sharing (CORS) restrictions.
-    - How to fix: Configure the server to allow CORS or run the application on the same origin as the server.
+19. **Error: JSON file contains unexpected keys.**  
+    - **Description:** The JSON file contains keys that are not recognized by the application.  
+    - **How to fix:** Ensure the JSON file only contains `combos`, `letters`, and `suffixes` objects.
 
-23. Error: Invalid dropdown selection.
-    - Description: The user selected an invalid or empty option from the dropdown menu.
-    - How to fix: Ensure the dropdown menu has valid options and a default selection.
+20. **Error: JSON file is empty.**  
+    - **Description:** The JSON file exists but does not contain any data.  
+    - **How to fix:** Populate the JSON file with valid translation data.
 
-24. Error: Randeth name generation failed.
-    - Description: The application encountered an error while generating a Randeth name.
-    - How to fix: Ensure the `randeth.json` file exists and contains valid translation data. Check the `generateRandethName` function for errors.
+21. **Error: Browser compatibility issue.**  
+    - **Description:** The application does not work correctly in certain browsers.  
+    - **How to fix:** Test the application in multiple browsers and ensure compatibility with modern standards.
 
-25. Error: Randeth translation logic not applied.
-    - Description: The application failed to apply Randeth translation rules to the input text.
-    - How to fix: Verify the `translateToCustomLanguage` function and ensure it correctly processes the `randeth.json` data.
+22. **Error: Network request blocked by CORS policy.**  
+    - **Description:** The browser blocked the request due to Cross-Origin Resource Sharing (CORS) restrictions.  
+    - **How to fix:** Configure the server to allow CORS or run the application on the same origin as the server.
 
-26. Error: Invalid JSON structure in `randeth.json`.
-    - Description: The `randeth.json` file contains valid JSON syntax but is missing required keys like `combos` or `letters`.
-    - How to fix: Ensure the `randeth.json` file includes all required keys (`combos`, `letters`, etc.) and their corresponding values.
+23. **Error: Invalid dropdown selection.**  
+    - **Description:** The user selected an invalid or empty option from the dropdown menu.  
+    - **How to fix:** Ensure the dropdown menu has valid options and a default selection.
 
-27. Error: Circular reference in translation rules.
-    - Description: A circular reference exists in the translation rules (e.g., `a` translates to `b`, and `b` translates back to `a`).
-    - How to fix: Review the translation rules in the JSON file and ensure there are no circular references.
+24. **Error: Randeth name generation failed.**  
+    - **Description:** The application encountered an error while generating a Randeth name.  
+    - **How to fix:** Ensure the `randeth.json` file exists and contains valid translation data. Check the `generateRandethName` function for errors.
 
-28. Error: Translation output exceeds character limit.
-    - Description: The translated text exceeds the maximum allowed length for the result box.
-    - How to fix: Truncate the output or display it in a scrollable container.
+25. **Error: Randeth translation logic not applied.**  
+    - **Description:** The application failed to apply Randeth translation rules to the input text.  
+    - **How to fix:** Verify the `translateToCustomLanguage` function and ensure it correctly processes the `randeth.json` data.
 
-29. Error: Missing fallback for unsupported characters.
-    - Description: The application encounters a character that is not defined in the `letters` object and does not have a fallback rule.
-    - How to fix: Add a fallback rule in the `translateToCustomLanguage` function to handle unsupported characters (e.g., leave them unchanged).
+26. **Error: Invalid JSON structure in `randeth.json`.**  
+    - **Description:** The `randeth.json` file contains valid JSON syntax but is missing required keys like `combos` or `letters`.  
+    - **How to fix:** Ensure the `randeth.json` file includes all required keys (`combos`, `letters`, etc.) and their corresponding values.
 
-30. Error: Reverse translation file mismatch.
-    - Description: The reverse translation file does not match the structure of the forward translation file, causing incorrect translations.
-    - How to fix: Ensure the reverse translation file mirrors the structure of the forward translation file and includes all necessary mappings.
+27. **Error: Circular reference in translation rules.**  
+    - **Description:** A circular reference exists in the translation rules (e.g., `a` translates to `b`, and `b` translates back to `a`).  
+    - **How to fix:** Review the translation rules in the JSON file and ensure there are no circular references.
 
-31. Error: Duplicate keys in JSON file.
-    - Description: The JSON file contains duplicate keys, which may cause unexpected behavior during parsing.
-    - How to fix: Validate the JSON file and remove any duplicate keys.
+28. **Error: Translation output exceeds character limit.**  
+    - **Description:** The translated text exceeds the maximum allowed length for the result box.  
+    - **How to fix:** Truncate the output or display it in a scrollable container.
 
-32. Error: Infinite loop in translation logic.
-    - Description: The translation logic enters an infinite loop due to improperly defined rules (e.g., recursive replacements).
-    - How to fix: Add a safeguard in the `translateToCustomLanguage` function to limit the number of replacements or iterations.
+29. **Error: Missing fallback for unsupported characters.**  
+    - **Description:** The application encounters a character that is not defined in the `letters` object and does not have a fallback rule.  
+    - **How to fix:** Add a fallback rule in the `translateToCustomLanguage` function to handle unsupported characters (e.g., leave them unchanged).
 
-33. Error: Missing or invalid input field ID.
-    - Description: The application cannot find the input field by its ID, causing the translation process to fail.
-    - How to fix: Ensure the input field has the correct ID and is properly referenced in the JavaScript code.
+30. **Error: Reverse translation file mismatch.**  
+    - **Description:** The reverse translation file does not match the structure of the forward translation file, causing incorrect translations.  
+    - **How to fix:** Ensure the reverse translation file mirrors the structure of the forward translation file and includes all necessary mappings.
 
-34. Error: Invalid dropdown value.
-    - Description: The dropdown menu contains an invalid or unexpected value that is not handled by the application.
-    - How to fix: Validate the dropdown values and ensure all possible options are handled in the code.
+31. **Error: Duplicate keys in JSON file.**  
+    - **Description:** The JSON file contains duplicate keys, which may cause unexpected behavior during parsing.  
+    - **How to fix:** Validate the JSON file and remove any duplicate keys.
 
-35. Error: Translation data not cached.
-    - Description: The application repeatedly fetches the same translation file instead of caching it, causing unnecessary network requests.
-    - How to fix: Implement caching for translation data to reduce redundant network requests.
+32. **Error: Infinite loop in translation logic.**  
+    - **Description:** The translation logic enters an infinite loop due to improperly defined rules (e.g., recursive replacements).  
+    - **How to fix:** Add a safeguard in the `translateToCustomLanguage` function to limit the number of replacements or iterations.
 
-36. Error: User input contains unsupported special characters.
-    - Description: The user input includes special characters (e.g., emojis or symbols) that are not supported by the translation logic.
-    - How to fix: Add logic to handle or strip unsupported special characters from the input.
+33. **Error: Missing or invalid input field ID.**  
+    - **Description:** The application cannot find the input field by its ID, causing the translation process to fail.  
+    - **How to fix:** Ensure the input field has the correct ID and is properly referenced in the JavaScript code.
 
-37. Error: Case sensitivity in translation rules.
-    - Description: The translation rules are case-sensitive, causing mismatches for uppercase or mixed-case input.
-    - How to fix: Normalize the input text to lowercase before applying the translation rules.
+34. **Error: Invalid dropdown value.**  
+    - **Description:** The dropdown menu contains an invalid or unexpected value that is not handled by the application.  
+    - **How to fix:** Validate the dropdown values and ensure all possible options are handled in the code.
 
-38. Error: Missing event listener for button click.
-    - Description: The "Translate" or "Generate Name" button does not trigger the corresponding function due to a missing event listener.
-    - How to fix: Ensure the button has an `onclick` attribute or an event listener is attached in the JavaScript code.
+35. **Error: Translation data not cached.**  
+    - **Description:** The application repeatedly fetches the same translation file instead of caching it, causing unnecessary network requests.  
+    - **How to fix:** Implement caching for translation data to reduce redundant network requests.
 
-39. Error: Output container not found.
-    - Description: The application cannot find the result container by its ID, causing the output to not be displayed.
-    - How to fix: Ensure the result container has the correct ID and is properly referenced in the JavaScript code.
+36. **Error: User input contains unsupported special characters.**  
+    - **Description:** The user input includes special characters (e.g., emojis or symbols) that are not supported by the translation logic.  
+    - **How to fix:** Add logic to handle or strip unsupported special characters from the input.
 
-40. Error: Invalid or missing `translations` folder.
-    - Description: The `translations` folder is missing or incorrectly named, causing all translation file fetches to fail.
-    - How to fix: Ensure the `translations` folder exists and is correctly named in the project directory.
+37. **Error: Case sensitivity in translation rules.**  
+    - **Description:** The translation rules are case-sensitive, causing mismatches for uppercase or mixed-case input.  
+    - **How to fix:** Normalize the input text to lowercase before applying the translation rules.
+
+38. **Error: Missing event listener for button click.**  
+    - **Description:** The "Translate" or "Generate Name" button does not trigger the corresponding function due to a missing event listener.  
+    - **How to fix:** Ensure the button has an `onclick` attribute or an event listener is attached in the JavaScript code.
+
+39. **Error: Output container not found.**  
+    - **Description:** The application cannot find the result container by its ID, causing the output to not be displayed.  
+    - **How to fix:** Ensure the result container has the correct ID and is properly referenced in the JavaScript code.
+
+40. **Error: Invalid or missing `translations` folder.**  
+    - **Description:** The `translations` folder is missing or incorrectly named, causing all translation file fetches to fail.  
+    - **How to fix:** Ensure the `translations` folder exists and is correctly named in the project directory.
