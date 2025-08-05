@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
+    <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
     <style>
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -16,8 +17,34 @@
             background-position: center;
             background-repeat: no-repeat;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 24px 0 0 0;
+            background: rgba(36,54,39,0.92);
+            border-bottom: 2px solid #4CAF50;
+            box-shadow: 0 2px 8px #0004;
+        }
+        .home-link {
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white !important;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #0003;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .home-link:hover {
+            background-color: #388e3c;
         }
         /* Password prompt styles */
         #passwordPrompt {
@@ -110,38 +137,44 @@
         }
         .library-screen {
             text-align: center;
-            background: rgba(36, 54, 39, 0.92);
+            background: rgba(36, 54, 39, 0.97);
             padding: 32px 24px 24px 24px;
             border-radius: 18px;
             box-shadow: 0 8px 32px #000a;
             border: 2px solid #4CAF50;
             max-width: 900px;
-            margin: 0 auto;
+            margin: 40px auto 0 auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .library-screen h1 {
             color: #4CAF50;
             margin-bottom: 24px;
             letter-spacing: 1px;
+            font-size: 2.2rem;
+            text-shadow: 1px 1px 8px #000a;
         }
         .books-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 18px;
+            gap: 22px;
             justify-content: center;
             margin-bottom: 24px;
         }
         .library-screen .book {
             margin: 0;
-            padding: 18px 10px;
-            border: 1.5px solid #4CAF50;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #2e7d32 60%, #388e3c 100%);
+            padding: 22px 14px;
+            border: 2px solid #FFD700;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #2e7d32 60%, #232526 100%);
             display: inline-block;
-            width: 150px;
+            width: 160px;
             text-align: center;
             cursor: pointer;
             text-decoration: none;
-            color: #fff;
+            color: #FFD700;
             font-size: 1.1rem;
             font-weight: bold;
             box-shadow: 0 2px 8px #0004;
@@ -189,7 +222,7 @@
     <!-- Password Prompt -->
     <div id="passwordPrompt">
         <form id="passwordBox" onsubmit="return checkPassword();">
-            <h1>Enter Password</h1>
+            <h1>Admin Only. Enter Password</h1>
             <input type="password" id="passwordInput" placeholder="Enter the password here">
             <br>
             <button id="passwordSubmit" type="submit">Submit</button>
