@@ -178,7 +178,7 @@
     const card = document.createElement("div");
     card.className = "image-card";
     card.innerHTML = `
-      <img src="${img.src}" alt="${img.alt}">
+      <img src="${img.src}" alt="${img.alt}" loading="lazy">
       <button onclick="openPopup('${img.src}', \`${img.desc}\`)">Read about</button>
     `;
     gallery.appendChild(card);
