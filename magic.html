@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>All Magic Types</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
     <style>
         body {
             min-height: 100vh;
@@ -14,6 +15,51 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 24px 0 0 0;
+            background: rgba(36, 54, 39, 0.92);
+            border-bottom: 2px solid #FFD700;
+            box-shadow: 0 2px 8px #0004;
+        }
+        .home-link {
+            display: inline-block;
+            margin: 18px 0 0 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white !important;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #0003;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .home-link:hover {
+            background-color: #0056b3;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 18px 0 0 0;
+            padding: 8px 18px;
+            background-color: #232526;
+            color: #FFD700 !important;
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #0003;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .back-link:hover {
+            background-color: #FFD700;
+            color: #232526 !important;
         }
         .container {
             background: rgba(36, 54, 39, 0.97);
@@ -49,37 +95,65 @@
             color: #FFD700;
             outline: none;
         }
-        .home-link {
-            display: inline-block;
-            margin: 24px 0 0 0;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white !important;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.08rem;
-            font-family: inherit;
-            cursor: pointer;
-            box-shadow: 0 2px 8px #0003;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-        .home-link:hover {
-            background-color: #0056b3;
-        }
         a.magic-link {
             color: #FFD700;
             text-decoration: underline;
             font-weight: bold;
             cursor: pointer;
         }
+        .creature-action-btn {
+            padding: 10px 18px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background-image: url('nameplate.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #FFD700;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px #232526;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #0004;
+            transition: transform 0.2s, background 0.2s;
+            margin-bottom: 6px;
+        }
+        .creature-action-btn:hover {
+            transform: scale(1.07);
+            background-color: #FFD700;
+            color: #232526;
+        }
+        .back-btn-container {
+            margin-top: 12px;
+            text-align: left;
+        }
+        footer {
+            width: 100%;
+            text-align: center;
+            color: #FFD700;
+            font-size: 1rem;
+            text-shadow: 1px 1px 4px #000a;
+            padding: 18px 0 12px 0;
+            background: rgba(36, 54, 39, 0.85);
+            border-top: 2px solid #FFD700;
+            margin-top: auto;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px 4vw 12px 4vw;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <a href="home-page.html" class="home-link">🏠 Home</a>
+    <header style="width:100%;text-align:center;padding:24px 0 0 0;background:rgba(36,54,39,0.92);border-bottom:2px solid #FFD700;box-shadow:0 2px 8px #0004;">
+        <a href="home-page.html" class="home-link" style="margin-bottom:8px;">🏠 Home</a>
+        <h1 style="color:#FFD700;margin-bottom:0;letter-spacing:2px;text-shadow:2px 2px 12px #000a,0 0 8px #FFD70055;">All Magic Types</h1>
+    </header>
     <div class="container">
-        <h1>All Magic Types</h1>
-
         <details id="ice">
             <summary>❄️ Ice Magic</summary>
             <p>
@@ -110,6 +184,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#ice'">View Artifacts with Ice Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#ice'">View People with Ice Abilities</button>
             </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('ice').open = false; location.hash='';">← Back to Magic List</button>
+            </div>
         </details>
 
         <details id="fire">
@@ -137,6 +214,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#fire'">View Creatures with Fire Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#fire'">View Artifacts with Fire Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#fire'">View People with Fire Abilities</button>
+            </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('fire').open = false; location.hash='';">← Back to Magic List</button>
             </div>
         </details>
 
@@ -166,6 +246,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#healing'">View Artifacts with Healing Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#healing'">View People with Healing Abilities</button>
             </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('healing').open = false; location.hash='';">← Back to Magic List</button>
+            </div>
         </details>
 
         <details id="illusion">
@@ -193,6 +276,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#illusion'">View Creatures with Illusion Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#illusion'">View Artifacts with Illusion Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#illusion'">View People with Illusion Abilities</button>
+            </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('illusion').open = false; location.hash='';">← Back to Magic List</button>
             </div>
         </details>
 
@@ -222,6 +308,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#necromancy'">View Artifacts with Necromancy Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#necromancy'">View People with Necromancy Abilities</button>
             </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('necromancy').open = false; location.hash='';">← Back to Magic List</button>
+            </div>
         </details>
 
         <details id="enchantment">
@@ -249,6 +338,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#enchantment'">View Creatures with Enchantment Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#enchantment'">View Artifacts with Enchantment Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#enchantment'">View People with Enchantment Abilities</button>
+            </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('enchantment').open = false; location.hash='';">← Back to Magic List</button>
             </div>
         </details>
 
@@ -278,6 +370,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#transmutation'">View Artifacts with Transmutation Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#transmutation'">View People with Transmutation Abilities</button>
             </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('transmutation').open = false; location.hash='';">← Back to Magic List</button>
+            </div>
         </details>
 
         <details id="divination">
@@ -305,6 +400,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#divination'">View Creatures with Divination Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#divination'">View Artifacts with Divination Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#divination'">View People with Divination Abilities</button>
+            </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('divination').open = false; location.hash='';">← Back to Magic List</button>
             </div>
         </details>
 
@@ -334,6 +432,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#nature'">View Artifacts with Nature Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#nature'">View People with Nature Abilities</button>
             </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('nature').open = false; location.hash='';">← Back to Magic List</button>
+            </div>
         </details>
 
         <details id="sound">
@@ -362,6 +463,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#sound'">View Artifacts with Sound Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#sound'">View People with Sound Abilities</button>
             </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('sound').open = false; location.hash='';">← Back to Magic List</button>
+            </div>
         </details>
 
         <details id="light">
@@ -389,6 +493,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='consuming-magic.html#light'">View Creatures with Light Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#light'">View Artifacts with Light Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#light'">View People with Light Abilities</button>
+            </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('light').open = false; location.hash='';">← Back to Magic List</button>
             </div>
         </details>
 
@@ -420,6 +527,9 @@
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#god'">View Artifacts with Divine Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#god'">View People with Divine Abilities</button>
             </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('god').open = false; location.hash='';">← Back to Magic List</button>
+            </div>
         </details>
 
         <details id="devil">
@@ -450,8 +560,15 @@
                 <button class="creature-action-btn" onclick="window.location.href='artifacts.html#devil'">View Artifacts with Infernal Abilities</button>
                 <button class="creature-action-btn" onclick="window.location.href='people.html#devil'">View People with Infernal Abilities</button>
             </div>
+            <div class="back-btn-container">
+                <button class="back-link" onclick="document.getElementById('devil').open = false; location.hash='';">← Back to Magic List</button>
+            </div>
         </details>
     </div>
+    <footer style="width:100%;text-align:center;color:#FFD700;font-size:1rem;text-shadow:1px 1px 4px #000a;padding:18px 0 12px 0;background:rgba(36,54,39,0.85);border-top:2px solid #FFD700;margin-top:auto;">
+        <a href="references.html" style="color:#FFD700;text-decoration:underline;">References</a>
+        <span>&copy; 2025 Caleb Jones</span>
+    </footer>
     <script>
     // Auto-open details if navigated with hash
     function openDetailsFromHash() {
@@ -469,7 +586,3 @@
     </script>
 </body>
 </html>
-<footer>
-    <a href="references.html">References</a>
-    <span>&copy; 2025 Caleb Jones</span>
-</footer>
