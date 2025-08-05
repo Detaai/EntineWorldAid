@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Magic Codex Main Menu</title>
-    <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
     <style>
         body {
             min-height: 100vh;
@@ -20,18 +20,38 @@
             flex-direction: column;
             align-items: center;
         }
-        .note {
-            background: rgba(255, 215, 0, 0.13);
-            color: #fffbe7;
-            border: 1.5px solid #FFD700;
-            border-radius: 10px;
-            padding: 14px 18px;
-            margin: 18px auto 0 auto;
-            max-width: 700px;
-            font-size: 1.08rem;
+        header {
+            width: 100%;
             text-align: center;
+            padding: 24px 0 0 0;
+            background: rgba(36,54,39,0.92);
+            border-bottom: 2px solid #FFD700;
+            box-shadow: 0 2px 8px #0004;
+        }
+        .home-link, .explore-btn {
+            margin-bottom: 8px;
+            display: inline-block;
+            background: #007bff;
+            color: white !important;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            font-family: inherit;
+            cursor: pointer;
             box-shadow: 0 2px 8px #0003;
-            font-style: italic;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .home-link:hover, .explore-btn:hover {
+            background: #0056b3;
+            color: #FFD700 !important;
+        }
+        h1 {
+            color: #FFD700;
+            margin-bottom: 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 12px #000a, 0 0 8px #FFD70055;
         }
         .codex-container {
             background: rgba(36, 54, 39, 0.97);
@@ -43,12 +63,6 @@
             margin: 40px auto 0 auto;
             padding: 36px 32px 28px 32px;
             text-align: center;
-        }
-        h1 {
-            color: #FFD700;
-            margin-bottom: 18px;
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 8px #000a;
         }
         .main-menu {
             display: flex;
@@ -142,25 +156,8 @@
             font-size: 1.5em;
             vertical-align: middle;
         }
-        .explore-btn {
-            margin-top: 10px;
-            padding: 10px 18px;
-            background: #FFD700;
-            color: #232526;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.05rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 2px 8px #0003;
-            transition: background 0.18s, color 0.18s;
-        }
-        .explore-btn:hover {
-            background: #fffbe7;
-            color: #232526;
-        }
         @media (max-width: 700px) {
-            .codex-container, .note {
+            .codex-container {
                 padding: 12px 2vw 12px 2vw;
             }
             .magic-btn {
@@ -172,18 +169,25 @@
     </style>
 </head>
 <body>
-    <div class="codex-container">
+    <header>
+        <a href="home-page.html" class="home-link">🏠 Home</a>
         <h1>Magic Codex</h1>
-        <button class="explore-btn" style="margin-bottom:18px;display:inline-block;" onclick="window.location.href='magic.html'">
+    </header>
+    <div class="codex-container">
+        <button class="explore-btn" onclick="window.location.href='magic.html'">
             View All Magic Types
         </button>
-        <button class="explore-btn" style="margin-bottom:18px;display:inline-block;" onclick="window.location.href='home-page.html'">
+        <button class="explore-btn" onclick="window.location.href='home-page.html'">
             🏠 Home
         </button>
         <div id="mainMenu" class="main-menu"></div>
         <div id="detailsPanel" class="details-panel" style="display:none;"></div>
         <button id="backBtn" class="back-btn" style="display:none;" onclick="showMainMenu()">← Back to Magic Types</button>
     </div>
+    <footer style="width:100%;text-align:center;color:#FFD700;font-size:1rem;text-shadow:1px 1px 4px #000a;padding:18px 0 12px 0;background:rgba(36,54,39,0.85);border-top:2px solid #FFD700;margin-top:auto;">
+        <a href="references.html" style="color:#FFD700;text-decoration:underline;">References</a>
+        <span>&copy; 2025 Caleb Jones</span>
+    </footer>
     <script>
         const MAGIC_TYPES = [
     {
@@ -402,7 +406,3 @@
     </script>
 </body>
 </html>
-<footer>
-    <a href="references.html">References</a>
-    <span>&copy; 2025 Caleb Jones</span>
-</footer>
