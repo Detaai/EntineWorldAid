@@ -155,6 +155,44 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            
+            <ul class="nav-menu">
+                <li><a href="home-page.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Tools ▼</a>
+                    <div class="dropdown-content">
+                        <a href="age-calculator.html">Age Calculator</a>
+                        <a href="language-translator.html">Language Translator</a>
+                        <a href="money-converter.html">Money Converter</a>
+                        <a href="name-generator.html">Name Generator</a>
+                        <a href="fight.html">Conflict Generator</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">World ▼</a>
+                    <div class="dropdown-content">
+                        <a href="cast.html">The Cast</a>
+                        <a href="library.html">The Library</a>
+                        <a href="home-maker.html">Magic Codex</a>
+                        <a href="otherworld.html">Other Worlds</a>
+                    </div>
+                </li>
+                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="references.html">References</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
     <header>
         <div class="home-badge">🏰 Home Page</div>
         <h1>Entine Calculator</h1>
@@ -168,18 +206,37 @@
             </p>
             <div class="button-grid">
                 <div class="button-row">
-                    <button onclick="location.href='age-calculator.html'">Age Calculator</button>
-                    <button onclick="location.href='language-translator.html'">Language Translator</button>
-                    <button onclick="location.href='money-converter.html'">Money Converter</button>
+                    <button onclick="location.href='age-calculator.html'">
+                        Age Calculator
+                    </button>
+                    <button onclick="location.href='language-translator.html'">
+                        Language Translator
+                    </button>
+                    <button onclick="location.href='money-converter.html'">
+                        Money Converter
+                    </button>
                 </div>
                 <div class="button-row">
-                    <button onclick="location.href='name-generator.html'">Name Generator</button>
-                    <button onclick="location.href='fight.html'">Conflict Generator</button>
-                    <button onclick="location.href='cast.html'">The Cast</button>
+                    <button onclick="location.href='name-generator.html'">
+                        Name Generator
+                    </button>
+                    <button onclick="location.href='fight.html'">
+                        Conflict Generator
+                    </button>
+                    <button onclick="location.href='cast.html'">
+                        The Cast
+                    </button>
                 </div>
                 <div class="button-row">
-                    <button onclick="location.href='library.html'">The Library</button>
-                    <button onclick="location.href='home-maker.html'">Magic Codex</button>
+                    <button onclick="location.href='library.html'">
+                        The Library
+                    </button>
+                    <button onclick="location.href='home-maker.html'">
+                        Magic Codex
+                    </button>
+                    <button onclick="location.href='online-store-amazon/src/index.html'">
+                        🛒 Entine Store
+                    </button>
                 </div>
             </div>
         </div>
@@ -188,6 +245,7 @@
         <a href="references.html">References</a>
         <span>&copy; 2025 Caleb Jones</span>
     </footer>
+
+    <script type="module" src="navigation.js"></script>
 </body>
 </html>
-

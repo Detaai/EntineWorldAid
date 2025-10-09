@@ -184,225 +184,230 @@
         <div id="detailsPanel" class="details-panel" style="display:none;"></div>
         <button id="backBtn" class="back-btn" style="display:none;" onclick="showMainMenu()">← Back to Magic Types</button>
     </div>
-    <footer style="width:100%;text-align:center;color:#FFD700;font-size:1rem;text-shadow:1px 1px 4px #000a;padding:18px 0 12px 0;background:rgba(36,54,39,0.85);border-top:2px solid #FFD700;margin-top:auto;">
-        <a href="references.html" style="color:#FFD700;text-decoration:underline;">References</a>
+    <footer style="width:100%;text-align:center;color:#FFD700;font-size:1rem;text-shadow:1px 1px 4px #000a;padding:18px 0 12px 0;background:rgba(0,0,0,0.85);border-top:2px solid #FFD700;margin-top:auto;">
+        <a href="references.html">References</a>
         <span>&copy; 2025 Caleb Jones</span>
     </footer>
     <script>
-        const MAGIC_TYPES = [
-    {
-        key: "objects",
-        name: "Magic Objects",
-        icon: "✨",
-        summary: "Before the Frost Era, artisans forged wondrous magic objects—vessels of ancient power infused with shards of shimmering crystal. These objects, from lanterns to amulets, were crafted with care and knowledge now lost to time. Today, only relics remain, humming with forgotten magic, their true potential often misunderstood or feared.",
-        submenu: [
-            {
-                label: "Who Can Use Magic Objects?",
-                content: "Magic objects are unique in that anyone can wield their power, regardless of magical heritage. A farmer may use a lantern of endless night, while a scholar might consult the Mirror of Truth. However, those with living magic may find their own power clashes with the object's, causing unpredictable and sometimes dangerous effects. The objects themselves often choose their user, responding to intent and need."
-            },
-            {
-                label: "Example: The Lost Staff",
-                content: "A merchant once found a staff embedded with a crystal shard. Though he had no magic, he could light lanterns with a touch, bringing prosperity to his town. When a hero with living magic tried to use the staff, it shattered, releasing a burst of wild energy that changed the course of a battle. The staff's remains are now a cautionary tale about the risks of mixing magic sources."
-            },
-            {
-                label: "Famous Relics",
-                content: "The Mirror of Truth reveals hidden secrets but only to those who seek with pure intent. The Lantern of Endless Night can illuminate the darkest places, but its light sometimes attracts spirits. The Amulet of Echoes allows the wearer to hear voices from the past, though some say it can drive a person mad with memories not their own."
-            },
-            {
-                label: "Benefits",
-                content: "Magic objects democratize magic, granting abilities to ordinary people. They can heal, protect, empower, or reveal. Some relics are used in daily life, while others are reserved for rituals or emergencies. Their magic is often stable and reliable, provided the user respects the object's history and limitations."
-            },
-            {
-                label: "Risks / Warnings",
-                content: "Relics are rare and sometimes unstable. If used by someone with living magic, objects may malfunction or cause magical backlash. Some objects are cursed or have hidden requirements, and misuse can lead to loss of control, physical harm, or spiritual consequences."
-            },
-            {
-                label: "Explore Magic Objects",
-                content: `<button class="explore-btn" onclick="window.location.href='magic-objects.html'">Explore Magic Objects & Relics</button>`
-            }
-        ]
-    },
-    {
-        key: "living",
-        name: "Living Magic",
-        icon: "🩸",
-        summary: "Living magic is the rare, inherited gift of legendary heroes, flowing in the veins of a select few. Passed down through bloodlines, it chooses only one or two heirs per generation, as if the magic itself wills its successor. Those blessed with living magic may manipulate the elements, heal wounds, or even glimpse the future—but the power demands great responsibility and can be as unpredictable as it is strong.",
-        submenu: [
-            {
-                label: "Who Can Use Living Magic?",
-                content: "Only those born into a magical bloodline may inherit living magic. The magic itself chooses its heir, often one or two children per generation. The chosen may not always be the eldest or the most talented; sometimes, the magic seeks out the one most in need or most capable of bearing its burden."
-            },
-            {
-                label: "Example: Lady Myra",
-                content: "Lady Myra, born of one of the great hero’s bloodline, wielded living magic to protect her village from marauders. Her power was unpredictable—sometimes blessing her with incredible strength, and other times draining her until she was but a shadow of herself. Her story is told as a lesson in humility and caution for all who inherit living magic."
-            },
-            {
-                label: "Bloodline Lore",
-                content: "The House of Dawn and the Frostborn are two ancient families known for their living magic. The House of Dawn is famed for healers and seers, while the Frostborn command elemental ice and wind. Both families have histories filled with triumphs, betrayals, and tragedies, as the magic sometimes skips generations or manifests in unexpected ways."
-            },
-            {
-                label: "Benefits",
-                content: "Living magic allows manipulation of elements, healing, and glimpses of the future. It is powerful and versatile, often growing stronger with age and experience. Those who master it can perform feats impossible for ordinary mages, but mastery requires discipline and sacrifice."
-            },
-            {
-                label: "Risks / Warnings",
-                content: "Living magic is unpredictable and demanding. It can exhaust its wielder, act against their will, or even disappear for years. Some heirs are driven mad by the voices of past wielders, while others lose their magic after a traumatic event. The power is both a gift and a test."
-            },
-            {
-                label: "Explore Living Magic",
-                content: `<button class="explore-btn" onclick="window.location.href='living-magic.html'">Explore Bloodlines & Heirs</button>`
-            }
-        ]
-    },
-    {
-        key: "potions",
-        name: "Potions",
-        icon: "🧪",
-        summary: "Potions are the democratized magic of the modern age. Brewed from rare herbs, crystal dust, and bits of magical creatures, they heal, enhance, or protect. Unlike living or object magic, potions affect anyone who drinks them, regardless of bloodline or inherent power. Potion-making is both an art and a science, with recipes passed down through generations.",
-        submenu: [
-            {
-                label: "Who Can Use Potions?",
-                content: "Anyone can use potions, regardless of bloodline or inherent power. Their effects are universal, though some potions work better for certain individuals. Potion-makers are respected members of society, often consulted in times of crisis or celebration."
-            },
-            {
-                label: "Famous Use: Tavin of Echinsire",
-                content: "The healer Tavin of Echinsire crafted a potion of swift healing, saving many lives after the Battle of Gray Ridge. Even those without magic felt its effect—bones knit faster, wounds closed, and pain dulled. Tavin's potions are still sought after, though his exact recipes remain a closely guarded secret."
-            },
-            {
-                label: "Potion Recipes",
-                content: "Swift Healing: Moonwort, crystal dust, Frostwolf hair. Elixir of Clarity: Starflower, dew from the Silver Lake, a pinch of dream sand. Each recipe requires precise measurements and careful brewing, as a single mistake can turn a healing potion into a poison."
-            },
-            {
-                label: "Benefits",
-                content: "Potions can heal, enhance abilities, or protect. They are accessible and practical, used by soldiers, travelers, and scholars alike. Some potions grant temporary magical abilities, while others provide long-term protection or recovery."
-            },
-            {
-                label: "Risks of Overuse",
-                content: "Too many potions or the wrong mix can cause dizziness, madness, or worse. Some ingredients are dangerous, and improper brewing can lead to explosions or toxic fumes. Overuse may dull the senses or create dependency, and some potions have unpredictable side effects."
-            },
-            {
-                label: "Explore Potions",
-                content: `<button class="explore-btn" onclick="window.location.href='potions.html'">Explore Potion Recipes & Effects</button>`
-            }
-        ]
-    },
-    {
-        key: "consuming",
-        name: "Consuming Magic",
-        icon: "⚠️",
-        summary: "Consuming magic—by swallowing shards of crystal or eating parts of magical creatures—is considered taboo, even desperate or sacrilegious. Magic is rare, and most people live ordinary lives untouched by it. Those who consume magic seek power quickly, but the risks are immense and the consequences often tragic.",
-        submenu: [
-            {
-                label: "Who Can Consume Magic?",
-                content: "Anyone desperate enough may attempt to consume magic, but it is considered sacrilegious and risky. Some cultures forbid the practice entirely, while others tolerate it in times of war or famine. The act is often performed in secret, with rituals designed to minimize harm."
-            },
-            {
-                label: "Example: The Fire Spirit",
-                content: "Some years ago, a man desperate for power swallowed a fire crystal once embedded in an ancient staff. For weeks, he wielded terrifying fire magic with ease, but the magic soon overwhelmed him. He transformed into a raging fire spirit, destroying an entire town before vanishing into the wilds. His story is a warning to all who seek shortcuts to power."
-            },
-            {
-                label: "Taboo Lore",
-                content: "The Ritual of Devouring is forbidden in most lands. Legends tell of the Shadow Eater, who consumed the essence of a hundred magical beings and was eventually hunted by the combined forces of every magical house. The ritual is said to warp the soul, leaving the practitioner forever changed."
-            },
-            {
-                label: "Benefits",
-                content: "Consuming magic can grant immense power quickly, sometimes unlocking abilities that would take years to master. In desperate times, some have used the practice to save lives or turn the tide of battle."
-            },
-            {
-                label: "Risks / Warnings",
-                content: "Magic may poison, warp, or destroy the consumer. Most stories end in tragedy, with the practitioner losing their humanity, sanity, or life. The magic often fights back, and few survive more than a handful of attempts."
-            },
-            {
-                label: "Explore Consuming Magic",
-                content: `<button class="explore-btn" onclick="window.location.href='consuming-magic.html'">Explore Rituals & Taboos</button>`
-            }
-        ]
-    },
-    {
-        key: "creatures",
-        name: "Magical Creatures",
-        icon: "🐺",
-        summary: "Magical creatures flow naturally through all forms of magic—living, object, and potion alike. Their rare gifts inspire awe and fear. To meet one is to glimpse magic’s full spectrum—and the thin line between wonder and terror. Some brave or desperate souls consume parts of magical creatures to gain their magic, but preparation is key: if not done properly, the magic may poison or warp the eater.",
-        submenu: [
-            {
-                label: "Who Can Use Creature Magic?",
-                content: "Anyone may attempt to gain magic from creatures, but preparation is key. Rituals and recipes must be followed precisely, and the risks are high. Some cultures revere magical creatures and forbid their harm, while others hunt them for their power."
-            },
-            {
-                label: "Example: The Frostwolf",
-                content: "In the northern wilds, hunters who consume the flesh of the Frostwolf gain cold magic—frost forming on their skin and the ability to chill the air around them. But many suffer painful side effects: their body temperature drops dangerously low, limbs stiffen, and some lose their sense of warmth altogether, becoming distant and withdrawn."
-            },
-            {
-                label: "Creature Lore",
-                content: "The Phoenix is said to grant immortality to those who taste its flame, but none have survived the attempt. The Shadow Lynx can slip between worlds, and its whiskers are prized by illusionists. The Frostwolf is both feared and respected, its pack roaming the frozen wastes and guarding ancient secrets."
-            },
-            {
-                label: "Benefits",
-                content: "Creature magic is potent and diverse, sometimes granting rare abilities such as flight, invisibility, or elemental control. Those who succeed are often changed forever, gaining new strengths and weaknesses."
-            },
-            {
-                label: "Risks / Warnings",
-                content: "Side effects are common and often severe. Magic may poison or warp the user, leading to physical mutations, loss of memory, or uncontrollable urges. Some become more beast than human, and legends abound of those who vanished into the wilds, never to return."
-            },
-            {
-                label: "Explore Magical Creatures",
-                content: `<button class="explore-btn" onclick="window.location.href='creatures.html'">Explore What Creatures Give What Magic</button>`
-            }
-        ]
+    const MAGIC_TYPES = [
+        {
+            key: "objects",
+            name: "Magic Objects",
+            icon: "✨",
+            summary: "Before the Frost Era, artisans forged wondrous magic objects—vessels of ancient power infused with shards of shimmering crystal. These objects, from lanterns to amulets, were crafted with care and knowledge now lost to time. Today, only relics remain, humming with forgotten magic, their true potential often misunderstood or feared.",
+            submenu: [
+                {
+                    label: "Who Can Use Magic Objects?",
+                    content: "Magic objects are unique in that anyone can wield their power, regardless of magical heritage. A farmer may use a lantern of endless night, while a scholar might consult the Mirror of Truth. However, those with living magic may find their own power clashes with the object's, causing unpredictable and sometimes dangerous effects. The objects themselves often choose their user, responding to intent and need."
+                },
+                {
+                    label: "Example: The Lost Staff",
+                    content: "A merchant once found a staff embedded with a crystal shard. Though he had no magic, he could light lanterns with a touch, bringing prosperity to his town. When a hero with living magic tried to use the staff, it shattered, releasing a burst of wild energy that changed the course of a battle. The staff's remains are now a cautionary tale about the risks of mixing magic sources."
+                },
+                {
+                    label: "Famous Relics",
+                    content: "The Mirror of Truth reveals hidden secrets but only to those who seek with pure intent. The Lantern of Endless Night can illuminate the darkest places, but its light sometimes attracts spirits. The Amulet of Echoes allows the wearer to hear voices from the past, though some say it can drive a person mad with memories not their own."
+                },
+                {
+                    label: "Benefits",
+                    content: "Magic objects democratize magic, granting abilities to ordinary people. They can heal, protect, empower, or reveal. Some relics are used in daily life, while others are reserved for rituals or emergencies. Their magic is often stable and reliable, provided the user respects the object's history and limitations."
+                },
+                {
+                    label: "Risks / Warnings",
+                    content: "Relics are rare and sometimes unstable. If used by someone with living magic, objects may malfunction or cause magical backlash. Some objects are cursed or have hidden requirements, and misuse can lead to loss of control, physical harm, or spiritual consequences."
+                },
+                {
+                    label: "Explore Magic Objects",
+                    content: `<button class="explore-btn" onclick="window.location.href='magic-objects.html'">
+                        <img src="magic-objects-icon.png" alt="Magic Objects" loading="lazy" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;">
+                        Explore Magic Objects & Relics
+                    </button>`
+                }
+            ]
+        },
+        {
+            key: "living",
+            name: "Living Magic",
+            icon: "🩸",
+            summary: "Living magic is the rare, inherited gift of legendary heroes, flowing in the veins of a select few. Passed down through bloodlines, it chooses only one or two heirs per generation, as if the magic itself wills its successor. Those blessed with living magic may manipulate the elements, heal wounds, or even glimpse the future—but the power demands great responsibility and can be as unpredictable as it is strong.",
+            submenu: [
+                {
+                    label: "Who Can Use Living Magic?",
+                    content: "Only those born into a magical bloodline may inherit living magic. The magic itself chooses its heir, often one or two children per generation. The chosen may not always be the eldest or the most talented; sometimes, the magic seeks out the one most in need or most capable of bearing its burden."
+                },
+                {
+                    label: "Example: Lady Myra",
+                    content: "Lady Myra, born of one of the great hero’s bloodline, wielded living magic to protect her village from marauders. Her power was unpredictable—sometimes blessing her with incredible strength, and other times draining her until she was but a shadow of herself. Her story is told as a lesson in humility and caution for all who inherit living magic."
+                },
+                {
+                    label: "Bloodline Lore",
+                    content: "The House of Dawn and the Frostborn are two ancient families known for their living magic. The House of Dawn is famed for healers and seers, while the Frostborn command elemental ice and wind. Both families have histories filled with triumphs, betrayals, and tragedies, as the magic sometimes skips generations or manifests in unexpected ways."
+                },
+                {
+                    label: "Benefits",
+                    content: "Living magic allows manipulation of elements, healing, and glimpses of the future. It is powerful and versatile, often growing stronger with age and experience. Those who master it can perform feats impossible for ordinary mages, but mastery requires discipline and sacrifice."
+                },
+                {
+                    label: "Risks / Warnings",
+                    content: "Living magic is unpredictable and demanding. It can exhaust its wielder, act against their will, or even disappear for years. Some heirs are driven mad by the voices of past wielders, while others lose their magic after a traumatic event. The power is both a gift and a test."
+                },
+                {
+                    label: "Explore Living Magic",
+                    content: `<button class="explore-btn" onclick="window.location.href='living-magic.html'">Explore Bloodlines & Heirs</button>`
+                }
+            ]
+        },
+        {
+            key: "potions",
+            name: "Potions",
+            icon: "🧪",
+            summary: "Potions are the democratized magic of the modern age. Brewed from rare herbs, crystal dust, and bits of magical creatures, they heal, enhance, or protect. Unlike living or object magic, potions affect anyone who drinks them, regardless of bloodline or inherent power. Potion-making is both an art and a science, with recipes passed down through generations.",
+            submenu: [
+                {
+                    label: "Who Can Use Potions?",
+                    content: "Anyone can use potions, regardless of bloodline or inherent power. Their effects are universal, though some potions work better for certain individuals. Potion-makers are respected members of society, often consulted in times of crisis or celebration."
+                },
+                {
+                    label: "Famous Use: Tavin of Echinsire",
+                    content: "The healer Tavin of Echinsire crafted a potion of swift healing, saving many lives after the Battle of Gray Ridge. Even those without magic felt its effect—bones knit faster, wounds closed, and pain dulled. Tavin's potions are still sought after, though his exact recipes remain a closely guarded secret."
+                },
+                {
+                    label: "Potion Recipes",
+                    content: "Swift Healing: Moonwort, crystal dust, Frostwolf hair. Elixir of Clarity: Starflower, dew from the Silver Lake, a pinch of dream sand. Each recipe requires precise measurements and careful brewing, as a single mistake can turn a healing potion into a poison."
+                },
+                {
+                    label: "Benefits",
+                    content: "Potions can heal, enhance abilities, or protect. They are accessible and practical, used by soldiers, travelers, and scholars alike. Some potions grant temporary magical abilities, while others provide long-term protection or recovery."
+                },
+                {
+                    label: "Risks of Overuse",
+                    content: "Too many potions or the wrong mix can cause dizziness, madness, or worse. Some ingredients are dangerous, and improper brewing can lead to explosions or toxic fumes. Overuse may dull the senses or create dependency, and some potions have unpredictable side effects."
+                },
+                {
+                    label: "Explore Potions",
+                    content: `<button class="explore-btn" onclick="window.location.href='potions.html'">Explore Potion Recipes & Effects</button>`
+                }
+            ]
+        },
+        {
+            key: "consuming",
+            name: "Consuming Magic",
+            icon: "⚠️",
+            summary: "Consuming magic—by swallowing shards of crystal or eating parts of magical creatures—is considered taboo, even desperate or sacrilegious. Magic is rare, and most people live ordinary lives untouched by it. Those who consume magic seek power quickly, but the risks are immense and the consequences often tragic.",
+            submenu: [
+                {
+                    label: "Who Can Consume Magic?",
+                    content: "Anyone desperate enough may attempt to consume magic, but it is considered sacrilegious and risky. Some cultures forbid the practice entirely, while others tolerate it in times of war or famine. The act is often performed in secret, with rituals designed to minimize harm."
+                },
+                {
+                    label: "Example: The Fire Spirit",
+                    content: "Some years ago, a man desperate for power swallowed a fire crystal once embedded in an ancient staff. For weeks, he wielded terrifying fire magic with ease, but the magic soon overwhelmed him. He transformed into a raging fire spirit, destroying an entire town before vanishing into the wilds. His story is a warning to all who seek shortcuts to power."
+                },
+                {
+                    label: "Taboo Lore",
+                    content: "The Ritual of Devouring is forbidden in most lands. Legends tell of the Shadow Eater, who consumed the essence of a hundred magical beings and was eventually hunted by the combined forces of every magical house. The ritual is said to warp the soul, leaving the practitioner forever changed."
+                },
+                {
+                    label: "Benefits",
+                    content: "Consuming magic can grant immense power quickly, sometimes unlocking abilities that would take years to master. In desperate times, some have used the practice to save lives or turn the tide of battle."
+                },
+                {
+                    label: "Risks / Warnings",
+                    content: "Magic may poison, warp, or destroy the consumer. Most stories end in tragedy, with the practitioner losing their humanity, sanity, or life. The magic often fights back, and few survive more than a handful of attempts."
+                },
+                {
+                    label: "Explore Consuming Magic",
+                    content: `<button class="explore-btn" onclick="window.location.href='consuming-magic.html'">Explore Rituals & Taboos</button>`
+                }
+            ]
+        },
+        {
+            key: "creatures",
+            name: "Magical Creatures",
+            icon: "🐺",
+            summary: "Magical creatures flow naturally through all forms of magic—living, object, and potion alike. Their rare gifts inspire awe and fear. To meet one is to glimpse magic’s full spectrum—and the thin line between wonder and terror. Some brave or desperate souls consume parts of magical creatures to gain their magic, but preparation is key: if not done properly, the magic may poison or warp the eater.",
+            submenu: [
+                {
+                    label: "Who Can Use Creature Magic?",
+                    content: "Anyone may attempt to gain magic from creatures, but preparation is key. Rituals and recipes must be followed precisely, and the risks are high. Some cultures revere magical creatures and forbid their harm, while others hunt them for their power."
+                },
+                {
+                    label: "Example: The Frostwolf",
+                    content: "In the northern wilds, hunters who consume the flesh of the Frostwolf gain cold magic—frost forming on their skin and the ability to chill the air around them. But many suffer painful side effects: their body temperature drops dangerously low, limbs stiffen, and some lose their sense of warmth altogether, becoming distant and withdrawn."
+                },
+                {
+                    label: "Creature Lore",
+                    content: "The Phoenix is said to grant immortality to those who taste its flame, but none have survived the attempt. The Shadow Lynx can slip between worlds, and its whiskers are prized by illusionists. The Frostwolf is both feared and respected, its pack roaming the frozen wastes and guarding ancient secrets."
+                },
+                {
+                    label: "Benefits",
+                    content: "Creature magic is potent and diverse, sometimes granting rare abilities such as flight, invisibility, or elemental control. Those who succeed are often changed forever, gaining new strengths and weaknesses."
+                },
+                {
+                    label: "Risks / Warnings",
+                    content: "Side effects are common and often severe. Magic may poison or warp the user, leading to physical mutations, loss of memory, or uncontrollable urges. Some become more beast than human, and legends abound of those who vanished into the wilds, never to return."
+                },
+                {
+                    label: "Explore Magical Creatures",
+                    content: `<button class="explore-btn" onclick="window.location.href='creatures.html'">Explore What Creatures Give What Magic</button>`
+                }
+            ]
+        }
+    ];
+
+    // Render main menu
+    function showMainMenu() {
+        document.getElementById('mainMenu').style.display = 'flex';
+        document.getElementById('detailsPanel').style.display = 'none';
+        document.getElementById('backBtn').style.display = 'none';
     }
-];
 
-        // Render main menu
-        function showMainMenu() {
-            document.getElementById('mainMenu').style.display = 'flex';
-            document.getElementById('detailsPanel').style.display = 'none';
-            document.getElementById('backBtn').style.display = 'none';
-        }
+    function renderMainMenu() {
+        const menuDiv = document.getElementById('mainMenu');
+        menuDiv.innerHTML = '';
+        MAGIC_TYPES.forEach((type, idx) => {
+            const btn = document.createElement('button');
+            btn.className = 'magic-btn';
+            // If you want to use an icon image instead of emoji, add loading="lazy" here:
+            // btn.innerHTML = `<img src="icon-for-${type.key}.png" alt="${type.name}" loading="lazy" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;"> ${type.name}`;
+            btn.innerHTML = `<span class="icon">${type.icon}</span> ${type.name}`;
+            btn.onclick = () => showDetails(idx);
+            menuDiv.appendChild(btn);
+        });
+    }
 
-        function renderMainMenu() {
-            const menuDiv = document.getElementById('mainMenu');
-            menuDiv.innerHTML = '';
-            MAGIC_TYPES.forEach((type, idx) => {
-                const btn = document.createElement('button');
-                btn.className = 'magic-btn';
-                btn.innerHTML = `<span class="icon">${type.icon}</span> ${type.name}`;
-                btn.onclick = () => showDetails(idx);
-                menuDiv.appendChild(btn);
-            });
-        }
+    // Show details for a magic type
+    function showDetails(idx) {
+        const type = MAGIC_TYPES[idx];
+        document.getElementById('mainMenu').style.display = 'none';
+        document.getElementById('detailsPanel').style.display = 'block';
+        document.getElementById('backBtn').style.display = 'inline-block';
 
-        // Show details for a magic type
-        function showDetails(idx) {
-            const type = MAGIC_TYPES[idx];
-            document.getElementById('mainMenu').style.display = 'none';
-            document.getElementById('detailsPanel').style.display = 'block';
-            document.getElementById('backBtn').style.display = 'inline-block';
+        let html = `<h2 style="margin:0 0 10px 0; color:#FFD700;">${type.icon} ${type.name}</h2>`;
+        html += `<p style="margin:0 0 18px 0;">${type.summary}</p>`;
+        type.submenu.forEach((item, i) => {
+            html += `
+                <button class="submenu-btn" onclick="toggleSubmenu('${type.key}-${i}')">${item.label}</button>
+                <div id="${type.key}-${i}" class="submenu-content" style="display:none;">${item.content}</div>
+            `;
+        });
+        document.getElementById('detailsPanel').innerHTML = html;
+    }
 
-            let html = `<h2 style="margin:0 0 10px 0; color:#FFD700;">${type.icon} ${type.name}</h2>`;
-            html += `<p style="margin:0 0 18px 0;">${type.summary}</p>`;
-            type.submenu.forEach((item, i) => {
-                html += `
-                    <button class="submenu-btn" onclick="toggleSubmenu('${type.key}-${i}')">${item.label}</button>
-                    <div id="${type.key}-${i}" class="submenu-content" style="display:none;">${item.content}</div>
-                `;
-            });
-            document.getElementById('detailsPanel').innerHTML = html;
-        }
+    // Toggle submenu content
+    function toggleSubmenu(id) {
+        const el = document.getElementById(id);
+        el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
+    }
 
-        // Toggle submenu content
-        function toggleSubmenu(id) {
-            const el = document.getElementById(id);
-            el.style.display = (el.style.display === 'none' || el.style.display === '') ? 'block' : 'none';
-        }
+    // Initial render
+    renderMainMenu();
+    showMainMenu();
 
-        // Initial render
-        renderMainMenu();
-        showMainMenu();
-
-        // Allow submenu toggle to work on first render
-        setTimeout(() => {
-            document.querySelectorAll('.submenu-content').forEach(el => el.style.display = 'none');
-        }, 50);
+    // Allow submenu toggle to work on first render
+    setTimeout(() => {
+        document.querySelectorAll('.submenu-content').forEach(el => el.style.display = 'none');
+    }, 50);
     </script>
 </body>
 </html>

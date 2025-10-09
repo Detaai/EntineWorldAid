@@ -36,12 +36,12 @@ const CREATURES = [
     },
     {
         name: "Underworld Echo Bug",
-        effect: "The Underworld Echo Bug is a minuscule insect that dwells deep withen towering shrooms, thriving in total darkness and feeding on minerals. Its wings produce faint, haunting vibrations that can be felt but rarely heard. If a person consumes only these bugs—and nothing else—for three years, they gradually attune to the resonance of the underworld and gain the ability to wield Sound Magic. This arduous process grants powers like sonic blasts and echo location, but the eater may lose their taste for all other food and develop an aversion to sunlight.",
+        effect: "The Underworld Echo Bug is a minuscule insect that dwells deep within towering shrooms, thriving in total darkness and feeding on minerals. Its wings produce faint, haunting vibrations that can be felt but rarely heard. If a person consumes only these bugs—and nothing else—for three years, they gradually attune to the resonance of the underworld and gain the ability to wield Sound Magic. This arduous process grants powers like sonic blasts and echo location, but the eater may lose their taste for all other food and develop an aversion to sunlight.",
         image: "images/underworld-echo-bug.jpg"
     },
     {
         name: "Moon Moth",
-        effect: "The giant Moon Moth flutters silently through ancient mountian forests at night, its wings glowing with pale, ethereal light often being mistaken for a second moon. Only by drinking its blood can a person gain the ability to manipulate moonlight and cast gentle illusions. Eating the moth's flesh has no magical effect. Side effects include sensitivity to sunlight and a tendency to sleepwalk under the full moon.",
+        effect: "The giant Moon Moth flutters silently through ancient mountain forests at night, its wings glowing with pale, ethereal light often being mistaken for a second moon. Only by drinking its blood can a person gain the ability to manipulate moonlight and cast gentle illusions. Eating the moth's flesh has no magical effect. Side effects include sensitivity to sunlight and a tendency to sleepwalk under the full moon.",
         image: "images/moon-moth.jpg"
     }
 ];

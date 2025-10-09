@@ -4,51 +4,391 @@
     <meta charset="UTF-8">
     <title>Magical Creatures Encyclopedia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
     <style>
         body {
             min-height: 100vh;
             margin: 0;
             background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            background-image: url('tavern-backround.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: #FFD700;
             font-family: 'Segoe UI', Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas: 
+                "nav"
+                "main"
+                "footer";
         }
+
+        .main-nav {
+            grid-area: nav;
+        }
+
+        main {
+            grid-area: main;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
         .container {
             background: rgba(36, 54, 39, 0.97);
             border-radius: 22px;
-            box-shadow: 0 8px 32px #000a;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             border: 2.5px solid #FFD700;
-            max-width: 700px;
-            width: 98vw;
-            margin: 40px auto 0 auto;
             padding: 36px 32px 28px 32px;
             text-align: center;
+            margin-bottom: 30px;
         }
+
         h1 {
             color: #FFD700;
             margin-bottom: 18px;
             letter-spacing: 2px;
-            text-shadow: 1px 1px 8px #000a;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            font-size: 2.5em;
         }
-        .creature-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .creature-item {
-            margin: 12px 0;
-            padding: 12px 18px;
-            background: rgba(255, 215, 0, 0.09);
-            border-radius: 10px;
+
+        /* Search and Filter Controls */
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(46, 64, 49, 0.8);
+            border-radius: 15px;
             border: 1px solid #FFD700;
-            cursor: pointer;
-            font-size: 1.08rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .control-group label {
+            color: #FFA500;
             font-weight: bold;
-            transition: background 0.18s;
+            font-size: 0.9em;
+        }
+
+        input, select {
+            padding: 10px;
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            background: rgba(36, 54, 39, 0.9);
+            color: #FFFFFF;
+            font-size: 1em;
+        }
+
+        input::placeholder {
+            color: #CCCCCC;
+        }
+
+        /* Dynamic Creatures Grid */
+        .creatures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .creature-card {
+            background: linear-gradient(135deg, rgba(36, 54, 39, 0.95), rgba(46, 64, 49, 0.95));
+            border: 2px solid #FFD700;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .creature-card:hover {
+            transform: translateY(-5px);
+            border-color: #FFA500;
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        .creature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+        }
+
+        .creature-name {
             color: #FFD700;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .creature-properties {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .property {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 6px;
+            padding: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .property-label {
+            color: #FFA500;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .property-value {
+            color: #FFFFFF;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .danger-level {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .danger-harmless { background: #28a745; color: white; }
+        .danger-low { background: #17a2b8; color: white; }
+        .danger-medium { background: #ffc107; color: black; }
+        .danger-high { background: #fd7e14; color: white; }
+        .danger-very-high { background: #dc3545; color: white; }
+        .danger-extreme { background: #6f42c1; color: white; }
+
+        .rarity {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rarity-common { background: #6c757d; color: white; }
+        .rarity-uncommon { background: #28a745; color: white; }
+        .rarity-rare { background: #007bff; color: white; }
+        .rarity-legendary { background: #fd7e14; color: white; }
+        .rarity-mythical { background: #e83e8c; color: white; }
+
+        /* Loading and Error States */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #FFA500;
+            font-size: 1.2em;
+        }
+
+        .error {
+            background: rgba(220, 53, 69, 0.2);
+            border: 2px solid #dc3545;
+            border-radius: 10px;
+            padding: 20px;
+            color: #ff6b6b;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #FFA500;
+            font-size: 1.1em;
+        }
+
+        /* Stats Section */
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(46, 64, 49, 0.8);
+            border-radius: 15px;
+            border: 1px solid #FFD700;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .stat-number {
+            color: #FFD700;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .stat-label {
+            color: #FFA500;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        footer {
+            grid-area: footer;
+            background: rgba(36, 54, 39, 0.95);
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #FFD700;
+            color: #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            .creatures-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .creature-properties {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            
+            <ul class="nav-menu">
+                <li><a href="home-page.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Tools ▼</a>
+                    <div class="dropdown-content">
+                        <a href="age-calculator.html">Age Calculator</a>
+                        <a href="language-translator.html">Language Translator</a>
+                        <a href="money-converter.html">Money Converter</a>
+                        <a href="name-generator.html">Name Generator</a>
+                        <a href="fight.html">Conflict Generator</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">World ▼</a>
+                    <div class="dropdown-content">
+                        <a href="cast.html">The Cast</a>
+                        <a href="library.html">The Library</a>
+                        <a href="home-maker.html">Magic Codex</a>
+                        <a href="consuming-magic.html" class="active">Creatures</a>
+                        <a href="otherworld.html">Other Worlds</a>
+                    </div>
+                </li>
+                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="references.html">References</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <h1>🐉 Magical Creatures Encyclopedia</h1>
+            <p style="color: #FFFFFF; font-size: 1.1em; margin-bottom: 0;">
+                Discover the magical creatures of Entine and the powers they grant when consumed.
+            </p>
+        </div>
+
+        <!-- Statistics Summary -->
+        <div class="stats-summary" id="statsDisplay">
+            <!-- Stats will be populated dynamically -->
+        </div>
+
+        <!-- Search and Filter Controls -->
+        <div class="controls">
+            <div class="control-group">
+                <label for="searchInput">🔍 Search Creatures</label>
+                <input type="text" id="searchInput" placeholder="Enter creature name...">
+            </div>
+            <div class="control-group">
+                <label for="speciesFilter">🏷️ Filter by Species</label>
+                <select id="speciesFilter">
+                    <option value="">All Species</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="dangerFilter">⚠️ Filter by Danger Level</label>
+                <select id="dangerFilter">
+                    <option value="">All Danger Levels</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="rarityFilter">✨ Filter by Rarity</label>
+                <select id="rarityFilter">
+                    <option value="">All Rarities</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="magicFilter">🔮 Filter by Magic Type</label>
+                <select id="magicFilter">
+                    <option value="">All Magic Types</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="sortSelect">📊 Sort By</label>
+                <select id="sortSelect">
+                    <option value="name">Name (A-Z)</option>
+                    <option value="dangerLevel">Danger Level</option>
+                    <option value="healthPoints">Health Points</option>
+                    <option value="rarity">Rarity</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Creatures Grid -->
+        <div id="creaturesContainer">
+            <div class="loading">Loading creatures... 🔄</div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="references.html">References</a>
+        <span>&copy; 2025 Caleb Jones</span>
+    </footer>
             box-shadow: 0 2px 8px #0003;
             text-align: left;
         }
@@ -177,12 +517,323 @@
 
             html += `<div class="creature-btns">${magicBtn}</div>`;
             creatureDetails.innerHTML = html;
-            creatureDetails.style.display = 'block';
+    <script type="module">
+        // Import utilities from navigation.js
+        import { DOMUtils, ArrayUtils, TemplateUtils } from './navigation.js';
+
+        // Global creatures data
+        let allCreatures = [];
+        let filteredCreatures = [];
+
+        // Async function to load creatures data with try-catch
+        async function loadCreaturesData() {
+            try {
+                const response = await fetch('./creatures-database.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                allCreatures = data.creatures;
+                filteredCreatures = [...allCreatures];
+                
+                // Initialize page
+                setupFilters();
+                displayStats();
+                displayCreatures();
+                setupEventListeners();
+                
+            } catch (error) {
+                console.error('Error loading creatures data:', error);
+                displayError('Failed to load creatures data. Please try again later.');
+            }
         }
+
+        // Display error message
+        function displayError(message) {
+            const container = document.getElementById('creaturesContainer');
+            container.innerHTML = `
+                <div class="error">
+                    <h3>⚠️ Error</h3>
+                    <p>${message}</p>
+                    <button onclick="location.reload()" class="action-btn">Retry</button>
+                </div>
+            `;
+        }
+
+        // Setup filter dropdowns using array methods
+        function setupFilters() {
+            const speciesFilter = document.getElementById('speciesFilter');
+            const dangerFilter = document.getElementById('dangerFilter');
+            const rarityFilter = document.getElementById('rarityFilter');
+            const magicFilter = document.getElementById('magicFilter');
+
+            // Get unique values using ArrayUtils
+            const uniqueSpecies = ArrayUtils.uniqueByProperty(allCreatures, 'species')
+                .map(creature => creature.species).sort();
+            const uniqueDangers = ArrayUtils.uniqueByProperty(allCreatures, 'dangerLevel')
+                .map(creature => creature.dangerLevel).sort();
+            const uniqueRarities = ArrayUtils.uniqueByProperty(allCreatures, 'rarity')
+                .map(creature => creature.rarity).sort();
+            const uniqueMagicTypes = ArrayUtils.uniqueByProperty(allCreatures, 'magicalType')
+                .map(creature => creature.magicalType).sort();
+
+            // Populate dropdowns using DOM manipulation
+            populateDropdown(speciesFilter, uniqueSpecies);
+            populateDropdown(dangerFilter, uniqueDangers);
+            populateDropdown(rarityFilter, uniqueRarities);
+            populateDropdown(magicFilter, uniqueMagicTypes);
+        }
+
+        // Populate dropdown helper function
+        function populateDropdown(selectElement, options) {
+            options.forEach(option => {
+                const optionElement = DOMUtils.createElement('option', '', option);
+                optionElement.value = option;
+                selectElement.appendChild(optionElement);
+            });
+        }
+
+        // Display statistics
+        function displayStats() {
+            const statsDisplay = document.getElementById('statsDisplay');
+            const totalCreatures = allCreatures.length;
+            const speciesCount = ArrayUtils.uniqueByProperty(allCreatures, 'species').length;
+            const averageHealth = Math.round(
+                allCreatures.reduce((sum, creature) => sum + creature.healthPoints, 0) / totalCreatures
+            );
+            const legendaryCount = ArrayUtils.filterByProperty(allCreatures, 'rarity', 'Legendary').length;
+
+            statsDisplay.innerHTML = `
+                <div class="stat-box">
+                    <div class="stat-number">${totalCreatures}</div>
+                    <div class="stat-label">Total Creatures</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">${speciesCount}</div>
+                    <div class="stat-label">Species Types</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">${averageHealth}</div>
+                    <div class="stat-label">Avg Health</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">${legendaryCount}</div>
+                    <div class="stat-label">Legendary</div>
+                </div>
+            `;
+        }
+
+        // Display creatures using template literals
+        function displayCreatures() {
+            const container = document.getElementById('creaturesContainer');
+            
+            if (filteredCreatures.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <h3>🔍 No creatures found</h3>
+                        <p>Try adjusting your search or filter criteria.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const creaturesHTML = `
+                <div class="creatures-grid">
+                    ${filteredCreatures.map(creature => createCreatureCard(creature)).join('')}
+                </div>
+            `;
+            
+            container.innerHTML = creaturesHTML;
+            
+            // Add click event listeners for modal dialogs
+            filteredCreatures.forEach(creature => {
+                const card = document.getElementById(`creature-${creature.id}`);
+                if (card) {
+                    card.addEventListener('click', () => showCreatureModal(creature));
+                }
+            });
+        }
+
+        // Create creature card using template literals
+        function createCreatureCard(creature) {
+            const dangerClass = `danger-${creature.dangerLevel.toLowerCase().replace(/\s+/g, '-')}`;
+            const rarityClass = `rarity-${creature.rarity.toLowerCase()}`;
+            
+            return `
+                <div class="creature-card" id="creature-${creature.id}">
+                    <div class="creature-name">${creature.name}</div>
+                    <div class="creature-properties">
+                        <div class="property">
+                            <div class="property-label">Species</div>
+                            <div class="property-value">${creature.species}</div>
+                        </div>
+                        <div class="property">
+                            <div class="property-label">Habitat</div>
+                            <div class="property-value">${creature.habitat}</div>
+                        </div>
+                        <div class="property">
+                            <div class="property-label">Health</div>
+                            <div class="property-value">${creature.healthPoints} HP</div>
+                        </div>
+                        <div class="property">
+                            <div class="property-label">Magic Type</div>
+                            <div class="property-value">${creature.magicalType}</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                        <span class="danger-level ${dangerClass}">${creature.dangerLevel}</span>
+                        <span class="rarity ${rarityClass}">${creature.rarity}</span>
+                    </div>
+                    <div class="property" style="margin-top: 10px;">
+                        <div class="property-label">Ability Gained</div>
+                        <div class="property-value">${creature.abilityGained}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Show creature modal dialog
+        function showCreatureModal(creature) {
+            const modalHTML = TemplateUtils.createModal(
+                `creature-modal-${creature.id}`,
+                `🐉 ${creature.name}`,
+                `
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+                        <div><strong>Species:</strong> ${creature.species}</div>
+                        <div><strong>Habitat:</strong> ${creature.habitat}</div>
+                        <div><strong>Danger Level:</strong> ${creature.dangerLevel}</div>
+                        <div><strong>Rarity:</strong> ${creature.rarity}</div>
+                        <div><strong>Health Points:</strong> ${creature.healthPoints} HP</div>
+                        <div><strong>Magic Type:</strong> ${creature.magicalType}</div>
+                    </div>
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(255, 215, 0, 0.1); border-radius: 8px;">
+                        <strong style="color: #FFD700;">Ability Gained When Consumed:</strong>
+                        <p style="margin: 10px 0; color: #FFFFFF;">${creature.abilityGained}</p>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button onclick="addToFavorites(${creature.id})" style="padding: 10px 20px; background: #FFD700; color: #000; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin: 0 10px;">⭐ Add to Favorites</button>
+                        <button onclick="shareCreature(${creature.id})" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin: 0 10px;">📤 Share</button>
+                    </div>
+                `
+            );
+            
+            // Add modal to page
+            const existingModal = document.getElementById(`creature-modal-${creature.id}`);
+            if (existingModal) {
+                existingModal.remove();
+            }
+            
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            
+            // Show modal
+            const modal = document.getElementById(`creature-modal-${creature.id}`);
+            modal.style.display = 'block';
+            
+            // Close modal functionality
+            const closeBtn = modal.querySelector('.modal-close');
+            closeBtn.onclick = () => modal.remove();
+            
+            window.onclick = (event) => {
+                if (event.target === modal) {
+                    modal.remove();
+                }
+            };
+        }
+
+        // Filter and search functions
+        function filterCreatures() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const speciesFilter = document.getElementById('speciesFilter').value;
+            const dangerFilter = document.getElementById('dangerFilter').value;
+            const rarityFilter = document.getElementById('rarityFilter').value;
+            const magicFilter = document.getElementById('magicFilter').value;
+            const sortBy = document.getElementById('sortSelect').value;
+
+            // Apply filters using array methods
+            filteredCreatures = allCreatures.filter(creature => {
+                return (
+                    creature.name.toLowerCase().includes(searchTerm) &&
+                    (speciesFilter === '' || creature.species === speciesFilter) &&
+                    (dangerFilter === '' || creature.dangerLevel === dangerFilter) &&
+                    (rarityFilter === '' || creature.rarity === rarityFilter) &&
+                    (magicFilter === '' || creature.magicalType === magicFilter)
+                );
+            });
+
+            // Sort creatures
+            if (sortBy === 'name') {
+                filteredCreatures = ArrayUtils.sortByProperty(filteredCreatures, 'name');
+            } else if (sortBy === 'healthPoints') {
+                filteredCreatures = ArrayUtils.sortByProperty(filteredCreatures, 'healthPoints', false);
+            } else if (sortBy === 'dangerLevel') {
+                const dangerOrder = ['Harmless', 'Low', 'Medium', 'High', 'Very High', 'Extreme'];
+                filteredCreatures.sort((a, b) => {
+                    return dangerOrder.indexOf(a.dangerLevel) - dangerOrder.indexOf(b.dangerLevel);
+                });
+            } else if (sortBy === 'rarity') {
+                const rarityOrder = ['Common', 'Uncommon', 'Rare', 'Legendary', 'Mythical'];
+                filteredCreatures.sort((a, b) => {
+                    return rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity);
+                });
+            }
+
+            displayCreatures();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            const searchInput = document.getElementById('searchInput');
+            const filters = ['speciesFilter', 'dangerFilter', 'rarityFilter', 'magicFilter', 'sortSelect'];
+            
+            searchInput.addEventListener('input', filterCreatures);
+            
+            filters.forEach(filterId => {
+                document.getElementById(filterId).addEventListener('change', filterCreatures);
+            });
+        }
+
+        // Local storage functions
+        function addToFavorites(creatureId) {
+            const creature = allCreatures.find(c => c.id === creatureId);
+            if (!creature) return;
+            
+            const favorites = JSON.parse(localStorage.getItem('entine-creature-favorites') || '[]');
+            
+            if (!favorites.find(f => f.id === creatureId)) {
+                favorites.push(creature);
+                localStorage.setItem('entine-creature-favorites', JSON.stringify(favorites));
+                alert(`${creature.name} added to favorites! ⭐`);
+            } else {
+                alert(`${creature.name} is already in your favorites.`);
+            }
+        }
+
+        function shareCreature(creatureId) {
+            const creature = allCreatures.find(c => c.id === creatureId);
+            if (!creature) return;
+            
+            const shareText = `Check out this amazing creature from Entine: ${creature.name} - a ${creature.rarity} ${creature.species} with ${creature.abilityGained}!`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: `${creature.name} - Entine Creature`,
+                    text: shareText,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(shareText + ' ' + window.location.href)
+                    .then(() => alert('Creature info copied to clipboard! 📋'))
+                    .catch(() => prompt('Copy this text to share:', shareText + ' ' + window.location.href));
+            }
+        }
+
+        // Make functions globally available
+        window.addToFavorites = addToFavorites;
+        window.shareCreature = shareCreature;
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', loadCreaturesData);
     </script>
+    <script type="module" src="navigation.js"></script>
 </body>
 </html>
-<footer>
-    <a href="references.html">References</a>
-    <span>&copy; 2025 Caleb Jones</span>
-</footer>

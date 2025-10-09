@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otherworld Authors</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
     <style>
         body {
             min-height: 100vh;
@@ -189,6 +190,9 @@
     </style>
 </head>
 <body>
+    <header style="width:100%;text-align:center;padding:12px 0;background:rgba(36,54,39,0.92);border-bottom:2px solid #FFD700;">
+        <a href="home-page.html" style="display:inline-block;margin:0 0 8px 0;padding:8px 16px;background-color:#007bff;color:white!important;border:none;border-radius:5px;font-size:16px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='#007bff'">← Back to Home</a>
+    </header>
     <div class="page-title">🌟 Otherworld Authors & Friends 🌟</div>
     <div class="subtitle">
         Meet the amazing authors and creators who help bring the Otherworld to life.<br>
@@ -196,7 +200,7 @@
     </div>
     <div class="profile-container">
         <div class="profile">
-            <img src="stormspng.png" alt="Miranda Talley" class="profile-pic">
+            <img src="stormspng.png" alt="Miranda Talley" class="profile-pic" loading="lazy">
             <a href="https://authormirandatalley.com/" class="profile-name" target="_blank">Miranda Talley books</a>
             <div class="dropdown">
                 <button class="dropdown-btn" onclick="toggleDropdown(this)">Contact</button>
@@ -209,7 +213,7 @@
             </div>
         </div>
         <div class="profile">
-            <img src="profile2.jpg" alt="Profile 2" class="profile-pic">
+            <img src="profile2.jpg" alt="Profile 2" class="profile-pic" loading="lazy">
             <a href="https://example.com/profile2" class="profile-name" target="_blank">Schyler Hess</a>
             <div class="dropdown">
                 <button class="dropdown-btn" onclick="toggleDropdown(this)">Contact</button>
@@ -221,7 +225,7 @@
             </div>
         </div>
         <div class="profile">
-            <img src="profile3.jpg" alt="Profile 3" class="profile-pic">
+            <img src="profile3.jpg" alt="Profile 3" class="profile-pic" loading="lazy">
             <a href="https://example.com/profile3" class="profile-name" target="_blank">Stell</a>
             <div class="dropdown">
                 <button class="dropdown-btn" onclick="toggleDropdown(this)">Contact</button>
@@ -233,24 +237,6 @@
             </div>
         </div>
     </div>
-    <a href="home-page.html" class="home-link" style="
-        display: inline-block;
-        margin: 32px 0 24px 0;
-        padding: 12px 28px;
-        background-color: #007bff;
-        color: white !important;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.15rem;
-        text-decoration: none;
-        font-family: inherit;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.18);
-        font-weight: bold;
-        letter-spacing: 1px;
-        transition: background 0.2s;
-        text-align: center;
-    ">🏠 Home</a>
     <script>
         function toggleDropdown(btn) {
             // Close any other open dropdowns
@@ -268,9 +254,9 @@
             }
         });
     </script>
+    <footer style="width:100%;text-align:center;color:#FFD700;font-size:1rem;text-shadow:1px 1px 4px #000a;padding:18px 0 12px 0;background:rgba(0,0,0,0.85);border-top:2px solid #FFD700;margin-top:32px;">
+        <a href="references.html">References</a>
+        <span>&copy; 2025 Caleb Jones</span>
+    </footer>
 </body>
 </html>
-<footer>
-    <a href="references.html">References</a>
-    <span>&copy; 2025 Caleb Jones</span>
-</footer>
