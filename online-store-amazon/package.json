@@ -1,7 +1,7 @@
 {
   "name": "entine-store-donation-system",
   "version": "1.0.0",
-  "description": "Entine Store with integrated donation system that sends money to CashApp and messages to phone",
+  "description": "Entine Store with integrated donation system that sends money directly to bank account via Stripe",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -13,7 +13,7 @@
     "express": "^4.18.2",
     "cors": "^2.8.5",
     "twilio": "^4.19.0",
-    "@paypal/checkout-server-sdk": "^1.0.3",
+    "stripe": "^14.9.0",
     "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -30,8 +30,8 @@
   "keywords": [
     "online store",
     "donation system",
-    "paypal",
-    "cashapp",
+    "stripe",
+    "bank transfer",
     "sms notifications",
     "entine",
     "fantasy books"

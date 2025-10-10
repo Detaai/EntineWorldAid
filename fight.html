@@ -97,32 +97,6 @@
         .home-link:hover {
             background-color: #0056b3;
         }
-        .return-home-btn {
-            position: fixed;
-            top: 16px;
-            right: 16px;
-            padding: 4px 8px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 18px;
-            text-decoration: none;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-            z-index: 1000;
-            margin: 0;
-            min-width: 36px;
-            min-height: 36px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .return-home-btn:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
@@ -135,7 +109,6 @@
         <button id="generateBtn" onclick="generateConflict()">Generate Conflict</button>
         <div class="result" id="conflictResult"></div>
     </div>
-    <button class="return-home-btn" onclick="window.location.href='home-page.html'">🏠</button>
 
     <script>
         function generateConflict() {

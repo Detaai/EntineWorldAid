@@ -7,21 +7,22 @@ I've added a complete working donation system to your Entine Store! Here's what'
 ### ✨ **Frontend Features:**
 - **💰 Support the Quest Button** - New filter tab for donations
 - **Beautiful Donation Form** - Amount selection, custom amounts, message field
-- **Payment Options** - PayPal and Credit Card support
+- **Payment Options** - Stripe and Credit Card support
 - **Magical UI** - Matches your fantasy theme perfectly
 
 ### 🔧 **Backend System:**
 - **Express.js Server** - Handles payments and notifications
-- **PayPal Integration** - Secure payment processing
+- **Stripe Integration** - Secure payment processing with direct bank deposits
 - **Twilio SMS** - Sends notifications to your phone
-- **CashApp Transfer** - Automatic fund transfers
+- **Direct Bank Transfer** - Money goes straight to your bank account
 
 ## 🚀 How to Set It Up
 
 ### Step 1: Install Dependencies
 ```bash
-cd "c:\Users\caveg\OneDrive\Desktop\Entine Calculator\online-store-amazon"
-npm install
+cd "c:\Users\caveg\OneDrive\Desktop\Youtube\online-store-amazon"
+npm install stripe express cors twilio
+npm start
 ```
 
 ### Step 2: Configure Your Accounts
@@ -34,23 +35,25 @@ npm install
 const TWILIO_ACCOUNT_SID = 'ACxxxxxxxxxxxxx'; // Your Account SID
 const TWILIO_AUTH_TOKEN = 'your_auth_token';   // Your Auth Token  
 const TWILIO_PHONE_NUMBER = '+1234567890';     // Your Twilio number
-const YOUR_PHONE_NUMBER = '+19287161710';      // ✅ Already set to your number!
+const YOUR_PHONE_NUMBER = '+1234567890';       // Replace with your phone number
 ```
 
-#### B) PayPal Setup (for receiving payments)
-1. Go to https://developer.paypal.com/ and create a developer account
-2. Create a new app to get your credentials
-3. Edit `server.js` lines 21-22:
+#### B) Stripe Setup (for receiving payments)
+1. Go to https://stripe.com/ and create an account
+2. Complete your account verification (bank account, business info)
+3. Get your API keys from the Stripe Dashboard
+4. Edit `server.js` lines 21-22:
 ```javascript
-const PAYPAL_CLIENT_ID = 'your_paypal_client_id';
-const PAYPAL_CLIENT_SECRET = 'your_paypal_client_secret';
+const STRIPE_SECRET_KEY = 'sk_test_...'; // Your Stripe Secret Key
+const STRIPE_PUBLISHABLE_KEY = 'pk_test_...'; // Your Stripe Publishable Key
 ```
 
-#### C) Link PayPal to CashApp @detachedguf
-1. In your PayPal account, go to "Transfer money"
-2. Add your bank account that's linked to CashApp @detachedguf
-3. Set up automatic transfers (optional)
-4. Verify your CashApp is ready to receive funds
+#### C) Bank Account Setup for Direct Deposits
+1. In your Stripe account, go to "Settings" → "Payouts"
+2. Add your bank account details for direct deposits
+3. Verify your bank account (Stripe will make small test deposits)
+4. Set up automatic daily payouts (recommended)
+5. Money will be deposited directly to your bank account within 2 business days
 
 ### Step 3: Run Your Server
 ```bash
@@ -63,10 +66,10 @@ Your store will be available at: http://localhost:3000
 
 1. **Someone visits your store** → Clicks "💰 Support the Quest"
 2. **Donation form appears** → They fill out amount, message, email
-3. **They choose payment** → PayPal or Credit Card
-4. **Payment processes** → Secure through PayPal
+3. **They choose payment** → Credit Card via Stripe
+4. **Payment processes** → Secure through Stripe
 5. **You get SMS notification** → Instantly on your phone!
-6. **Money goes to CashApp** → Via your linked PayPal account
+6. **Money goes to your bank** → Direct deposit within 2 business days
 
 ## 📱 Example SMS You'll Receive
 
@@ -78,8 +81,8 @@ Amount: $15
 Message: "Absolutely love the Entine series! 
 When is book 2 coming out? Can't wait!"
 
-💰 Funds will be transferred to your CashApp @detachedguf
-within 1-2 business days.
+💰 Funds will be deposited directly to your bank account
+within 2 business days.
 
 ✨ Another supporter joins the quest! ⚔️
 ```
@@ -89,9 +92,9 @@ within 1-2 business days.
 ✅ **Magical donation tab** added to your store
 ✅ **Beautiful form** with amount buttons and custom input
 ✅ **Message system** for personal notes from donors
-✅ **PayPal integration** for secure payments
+✅ **Stripe integration** for secure payments
 ✅ **SMS notifications** to your phone
-✅ **CashApp transfer** system
+✅ **Direct bank deposits** via Stripe
 ✅ **Fantasy styling** that matches your store theme
 ✅ **Success animations** and magical feedback
 ✅ **Error handling** and validation
@@ -106,17 +109,26 @@ within 1-2 business days.
 
 ## 🎯 Next Steps
 
-1. **Test with sandbox** - Use PayPal's test environment first
-2. **Configure your accounts** - Set up Twilio and PayPal
+1. **Test with Stripe test mode** - Use test API keys first
+2. **Configure your accounts** - Set up Twilio and Stripe
 3. **Test SMS notifications** - Make sure you receive texts
-4. **Link CashApp** - Connect your bank account to PayPal
-5. **Go live!** - Start receiving real donations
+4. **Add your bank account** - Link your bank account to Stripe
+5. **Go live!** - Switch to live API keys and start receiving real donations
+
+## 🧪 Testing
+
+**Use these test card numbers with Stripe:**
+- **Success**: 4242 4242 4242 4242
+- **Decline**: 4000 0000 0000 0002  
+- **Require authentication**: 4000 0025 0000 3155
+
+Use any future expiry date, any 3-digit CVC, and any 5-digit postal code.
 
 ## 💡 Pro Tips
 
 - **Start with small test amounts** to make sure everything works
 - **Check your spam folder** for PayPal notification emails
-- **Enable PayPal instant transfers** for faster CashApp deposits
+- **Enable PayPal instant transfers** for faster deposits to your accounts
 - **Customize the donation amounts** to match your preferences
 - **Update the success messages** with your personal touch
 

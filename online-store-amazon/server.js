@@ -2,7 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const twilio = require('twilio');
-const paypal = require('@paypal/checkout-server-sdk');
+const stripe = require('stripe');
 const path = require('path');
 
 const app = express();
@@ -21,21 +21,20 @@ app.use(express.static('src'));
 const TWILIO_ACCOUNT_SID = 'your_twilio_account_sid'; // Replace with your Twilio Account SID
 const TWILIO_AUTH_TOKEN = 'your_twilio_auth_token';   // Replace with your Twilio Auth Token
 const TWILIO_PHONE_NUMBER = 'your_twilio_phone';      // Replace with your Twilio phone number
-const YOUR_PHONE_NUMBER = '+19287161710';             // Your personal phone number
+const YOUR_PHONE_NUMBER = '+1234567890';             // Replace with your personal phone number
 
-// PayPal Configuration
-const PAYPAL_CLIENT_ID = 'your_paypal_client_id';     // Replace with your PayPal Client ID
-const PAYPAL_CLIENT_SECRET = 'your_paypal_secret';    // Replace with your PayPal Client Secret
+// Stripe Configuration
+const STRIPE_SECRET_KEY = 'sk_test_your_stripe_secret_key';     // Replace with your Stripe Secret Key
+const STRIPE_PUBLISHABLE_KEY = 'pk_test_your_stripe_publishable_key'; // Replace with your Stripe Publishable Key
 
-// CashApp Information
-const CASHAPP_TAG = '@detachedguf';                   // Your CashApp tag
+// Bank Account Information
+const BANK_ACCOUNT_INFO = 'Direct deposit to your linked bank account';           // Your bank account info
 
 // Initialize Twilio
 const twilioClient = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
-// Initialize PayPal
-const environment = new paypal.core.SandboxEnvironment(PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET);
-const client = new paypal.core.PayPalHttpClient(environment);
+// Initialize Stripe
+const stripeInstance = stripe(STRIPE_SECRET_KEY);
 
 // ===============================
 // ROUTES
@@ -46,36 +45,25 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'src', 'index.html'));
 });
 
-// Create PayPal payment
+// Create Stripe payment intent
 app.post('/api/create-payment', async (req, res) => {
     try {
         const { amount, donorName, donorEmail, message } = req.body;
         
-        const request = new paypal.orders.OrdersCreateRequest();
-        request.prefer("return=representation");
-        request.requestBody({
-            intent: 'CAPTURE',
-            purchase_units: [{
-                amount: {
-                    currency_code: 'USD',
-                    value: amount.toString()
-                },
-                description: `Entine Quest Donation from ${donorName}`
-            }],
-            application_context: {
-                brand_name: 'Entine Store',
-                landing_page: 'BILLING',
-                user_action: 'PAY_NOW',
-                return_url: `${req.protocol}://${req.get('host')}/api/payment-success`,
-                cancel_url: `${req.protocol}://${req.get('host')}/api/payment-cancel`
-            }
+        const paymentIntent = await stripeInstance.paymentIntents.create({
+            amount: Math.round(amount * 100), // Convert to cents
+            currency: 'usd',
+            metadata: {
+                donorName: donorName,
+                donorEmail: donorEmail,
+                message: message || 'No message provided'
+            },
+            description: `Entine Quest Donation from ${donorName}`
         });
-
-        const order = await client.execute(request);
         
         // Store donation info temporarily (in production, use a database)
         global.pendingDonations = global.pendingDonations || {};
-        global.pendingDonations[order.result.id] = {
+        global.pendingDonations[paymentIntent.id] = {
             donorName,
             donorEmail,
             message,
@@ -83,46 +71,42 @@ app.post('/api/create-payment', async (req, res) => {
         };
         
         res.json({
-            id: order.result.id,
-            status: order.result.status,
-            links: order.result.links
+            client_secret: paymentIntent.client_secret,
+            publishable_key: STRIPE_PUBLISHABLE_KEY
         });
         
     } catch (error) {
-        console.error('PayPal payment creation error:', error);
+        console.error('Stripe payment creation error:', error);
         res.status(500).json({ error: 'Failed to create payment' });
     }
 });
 
-// Capture PayPal payment
-app.post('/api/capture-payment/:orderID', async (req, res) => {
+// Confirm Stripe payment
+app.post('/api/confirm-payment/:paymentIntentId', async (req, res) => {
     try {
-        const orderID = req.params.orderID;
-        const request = new paypal.orders.OrdersCaptureRequest(orderID);
-        request.requestBody({});
+        const paymentIntentId = req.params.paymentIntentId;
+        const paymentIntent = await stripeInstance.paymentIntents.retrieve(paymentIntentId);
+        const donationInfo = global.pendingDonations[paymentIntentId];
         
-        const capture = await client.execute(request);
-        const donationInfo = global.pendingDonations[orderID];
-        
-        if (capture.result.status === 'COMPLETED' && donationInfo) {
+        if (paymentIntent.status === 'succeeded' && donationInfo) {
             // Send SMS notification
             await sendSMSNotification(donationInfo);
             
             // Clean up pending donation
-            delete global.pendingDonations[orderID];
+            delete global.pendingDonations[paymentIntentId];
             
             res.json({
                 success: true,
-                captureID: capture.result.id,
-                status: capture.result.status
+                paymentIntentId: paymentIntent.id,
+                status: paymentIntent.status
             });
         } else {
-            res.status(400).json({ error: 'Payment capture failed' });
+            res.status(400).json({ error: 'Payment confirmation failed' });
         }
         
     } catch (error) {
-        console.error('PayPal payment capture error:', error);
-        res.status(500).json({ error: 'Failed to capture payment' });
+        console.error('Stripe payment confirmation error:', error);
+        res.status(500).json({ error: 'Failed to confirm payment' });
     }
 });
 
@@ -137,7 +121,7 @@ Donor: ${donorName}
 Amount: $${amount}
 Message: "${message || 'No message provided'}"
 
-💰 Funds will be transferred to your CashApp @detachedguf within 1-2 business days.
+💰 Funds will be deposited directly to your bank account within 2 business days.
 
 ✨ Another supporter joins the quest! ⚔️`;
 
@@ -173,7 +157,7 @@ app.post('/api/donate', async (req, res) => {
         
         // In a real implementation, you would:
         // 1. Process the payment through your payment processor
-        // 2. Transfer funds to your CashApp account
+        // 2. Transfer funds to your private account
         // 3. Store donation records in a database
         // 4. Send confirmation email to donor
         
@@ -240,7 +224,7 @@ console.log(`
    - Use a real database instead of global variables
    - Set up proper error handling and logging
    - Configure HTTPS
-   - Set up automatic transfer from PayPal to CashApp
+   - Set up automatic transfer from PayPal to your private account
 
 💡 For now, the system will simulate payments and send SMS notifications
    when properly configured!

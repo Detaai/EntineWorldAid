@@ -70,23 +70,6 @@
             text-align: center;
         }
 
-        .home-link {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            background-color: #007bff;
-            border: none;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .home-link:hover {
-            background-color: #0056b3;
-        }
-
         /* Section titles */
         h2 {
             text-align: center;
@@ -198,35 +181,6 @@
 
         .cast-member button:hover {
             transform: translateY(-2px);
-            background: linear-gradient(135deg, #FFA500, #FF8C00);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-        }
-
-        /* Home button style */
-        .return-home-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            font-size: 18px;
-            border: 2px solid #FFD700;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #000;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            z-index: 1000;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .return-home-btn:hover {
-            transform: scale(1.1);
             background: linear-gradient(135deg, #FFA500, #FF8C00);
             box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
         }
@@ -595,10 +549,6 @@
         </div>
     </nav>
 
-    <header>
-        <a href="home-page.html" class="home-link">← Back to Home</a>
-        <h1>The Cast</h1>
-    </header>
     <main>
         <!-- Parent container for Main Cast section -->
         <div class="cast-sections">
@@ -636,7 +586,6 @@
             </section>
         </div>
     </main>
-    <button class="return-home-btn" onclick="window.location.href='home-page.html'">🏠</button>
     <footer>
         <a href="references.html">References</a>
         <span>&copy; 2025 Caleb Jones</span>
@@ -648,13 +597,13 @@
             { img: "main-cast-2.jpg", name: "Gwen", link: "cast-member2.html", books: [1] },
             { img: "main-cast-4.jpg", name: "Bluma", link: "cast-member4.html", books: [1] },
             { img: "main-cast-3.jpg", name: "Beans", link: "cast-member3.html", books: [1] },
+            { img: "main-cast-7.jpg", name: "Fallen One", link: "cast-member7.html", books: [1] },
             { img: "main-cast-5.jpg", name: "Rinn", link: "cast-member5.html", books: [1] },
             { img: "main-cast-6.jpg", name: "Tach'guf", link: "cast-member6.html", books: [1] },
-            { img: "main-cast-7.jpg", name: "Fallen One", link: "cast-member7.html", books: [1] },
             { img: "main-cast-8.jpg", name: "Godess", link: "cast-member8.html", books: [1] }
         ];
 
-        const perPage = 4;
+        const perPage = 5;
         let currentPage = 0;
         let currentFilter = 'all';
         let filteredMembers = [...castMembers];
