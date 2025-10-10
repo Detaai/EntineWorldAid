@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏰 Entine Store - Magical Books & Treasures ✨</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD&disable-funding=credit"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="magical-stars"></div>
+    <header class="enchanted-header">
+        <div class="header-content">
+            <a href="../../home-page.html" class="home-link">Back to Home</a>
+            <h1 class="store-title magical-title">🏰 Entine Store ✨</h1>
+            <p class="store-tagline">Discover the magical world of Entine</p>
+            <div class="filter-section">
+                <h3>🏆 Choose Your Adventure</h3>
+                <button class="filter-btn active" data-category="all">✨ All Treasures</button>
+                <button class="filter-btn" data-category="books">📚 Epic Chronicles</button>
+                <button class="filter-btn" data-category="pictures">🖼️ Mystical Art</button>
+                <button class="filter-btn" data-category="bookmarks">🔖 Ancient Marks</button>
+                <button class="filter-btn donation-btn" data-category="donation">💰 Support the Quest</button>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="hero-section">
+            <div class="quest-counter">
+                <h3>🗡️ Current Quest Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p>1 of 9 Entine Chronicles Available</p>
+            </div>
+        </div>
+        
+        <div id="product-container" class="treasure-grid">
+            <!-- Product cards will be rendered here -->
+        </div>
+        
+        <div class="newsletter-section">
+            <div class="scroll-container">
+                <h3>📜 Join the Quest Newsletter</h3>
+                <p>Be the first to know when new Entine adventures are released!</p>
+                <div class="input-group">
+                    <input type="email" placeholder="Enter your email to join the quest..." class="magic-input">
+                    <button class="subscribe-btn">⚔️ Join Quest</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation Section -->
+        <div id="donation-section" class="donation-section" style="display: none;">
+            <div class="donation-container">
+                <h2>💰 Support the Entine Quest</h2>
+                <p class="donation-subtitle">Help bring more magical adventures to life!</p>
+                
+                <div class="donation-form">
+                    <div class="amount-selection">
+                        <h4>Choose Your Contribution:</h4>
+                        <div class="amount-buttons">
+                            <button class="amount-btn" data-amount="5">🪙 $5</button>
+                            <button class="amount-btn" data-amount="10">💰 $10</button>
+                            <button class="amount-btn" data-amount="25">💎 $25</button>
+                            <button class="amount-btn" data-amount="50">👑 $50</button>
+                            <input type="number" class="custom-amount" placeholder="Custom amount" min="1" max="1000">
+                        </div>
+                    </div>
+                    
+                    <div class="message-section">
+                        <h4>✉️ Leave a Message for the Author:</h4>
+                        <textarea class="donation-message" placeholder="Share your thoughts about the Entine series or just say hello! This message will be sent directly to the author's phone." maxlength="500"></textarea>
+                        <div class="char-count">0/500 characters</div>
+                    </div>
+                    
+                    <div class="donor-info">
+                        <h4>📱 Your Information:</h4>
+                        <input type="text" class="donor-name" placeholder="Your name (optional)" maxlength="50">
+                        <input type="email" class="donor-email" placeholder="Your email (for receipt)" required>
+                    </div>
+                    
+                    <div class="payment-section">
+                        <h4>💳 Payment Method:</h4>
+                        <div class="payment-options">
+                            <button class="payment-btn" data-method="paypal">
+                                <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" alt="PayPal" style="height: 20px;">
+                                PayPal
+                            </button>
+                            <button class="payment-btn" data-method="card">💳 Credit/Debit Card</button>
+                        </div>
+                        
+                        <!-- PayPal Button Container -->
+                        <div id="paypal-button-container" style="display: none; margin-top: 20px;"></div>
+                        
+                        <!-- Card Payment Form -->
+                        <div id="card-form" style="display: none; margin-top: 20px;">
+                            <p class="payment-note">🔒 Secure payment processing through PayPal</p>
+                            <button class="donate-btn">🚀 Complete Donation</button>
+                        </div>
+                    </div>
+                    
+                    <div class="donation-info">
+                        <p>💫 Your donation helps support the creation of new Entine books and magical content!</p>
+                        <p>📱 Your message will be sent directly to the author via SMS</p>
+                        <p>🔒 All payments are securely processed and will be transferred to CashApp @detachedguf</p>
+                        <p>📞 Questions? The author will receive your message at (928) 716-1710</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="mystical-footer">
+        <p>© 2025 Entine Store - Where Adventures Begin ⚡</p>
+        <div class="social-links">
+            <span>Follow the Quest: </span>
+            <a href="#" class="social-link">📱 Social</a>
+            <a href="#" class="social-link">📧 Updates</a>
+            <a href="#" class="social-link">🌟 Reviews</a>
+        </div>
+    </footer>
+    
+    <script src="app.js"></script>
+</body>
+</html>

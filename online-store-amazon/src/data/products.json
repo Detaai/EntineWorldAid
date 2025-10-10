@@ -1,0 +1,161 @@
+[
+    {
+        "id": 1,
+        "title": "Entine: Quest for the Soul Stone",
+        "category": "books",
+        "formats": [
+            {
+                "type": "hardcover",
+                "price": 25.00,
+                "amazonLink": "https://www.amazon.com/Entine-Quest-Stone-Caleb-Jones/dp/B0F8VB6K6Z/ref=sr_1_1?sr=8-1"
+            },
+            {
+                "type": "paperback", 
+                "price": 20.00,
+                "amazonLink": "https://www.amazon.com/Entine-Quest-Stone-Caleb-Jones/dp/B0F8VB6K6Z/ref=sr_1_1?sr=8-1"
+            },
+            {
+                "type": "kindle",
+                "price": 9.99,
+                "amazonLink": "https://www.amazon.com/Entine-Quest-Stone-Caleb-Jones/dp/B0F8VB6K6Z/ref=sr_1_1?sr=8-1"
+            }
+        ],
+        "imageUrl": "https://m.media-amazon.com/images/I/61QknGCPtBL._SY466_.jpg",
+        "status": "available"
+    },
+    {
+        "id": 4,
+        "title": "Entine Book 2",
+        "category": "books",
+        "price": 24.99,
+        "imageUrl": "https://example.com/entine-book2.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 5,
+        "title": "Entine Book 3",
+        "category": "books",
+        "price": 24.99,
+        "imageUrl": "https://example.com/entine-book3.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 6,
+        "title": "Entine Book 4",
+        "category": "books",
+        "price": 24.99,
+        "imageUrl": "https://example.com/entine-book4.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 7,
+        "title": "Entine Book 5",
+        "category": "books",
+        "price": 24.99,
+        "imageUrl": "https://example.com/entine-book5.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 8,
+        "title": "Entine Book 6",
+        "category": "books",
+        "price": 24.99,
+        "imageUrl": "https://example.com/entine-book6.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 9,
+        "title": "Entine Book 7",
+        "category": "books",
+        "price": 24.99,
+        "imageUrl": "https://example.com/entine-book7.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 10,
+        "title": "Entine Book 8",
+        "category": "books",
+        "price": 24.99,
+        "imageUrl": "https://example.com/entine-book8.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 11,
+        "title": "Entine Book 9",
+        "category": "books",
+        "price": 24.99,
+        "imageUrl": "https://example.com/entine-book9.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 12,
+        "title": "Mountain Landscape Print",
+        "category": "pictures",
+        "price": 49.99,
+        "imageUrl": "https://example.com/picture1.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 13,
+        "title": "Leather Adventure Bookmark",
+        "category": "bookmarks",
+        "price": 19.99,
+        "imageUrl": "https://example.com/bookmark1.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 14,
+        "title": "Ocean Sunset Photo",
+        "category": "pictures",
+        "price": 39.99,
+        "imageUrl": "https://example.com/picture2.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 15,
+        "title": "Wooden Nature Bookmark",
+        "category": "bookmarks",
+        "price": 15.99,
+        "imageUrl": "https://example.com/bookmark2.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 16,
+        "title": "Abstract Art Print",
+        "category": "pictures",
+        "price": 65.99,
+        "imageUrl": "https://example.com/picture3.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 17,
+        "title": "Classic Literature Bookmark",
+        "category": "bookmarks",
+        "price": 12.99,
+        "imageUrl": "https://example.com/bookmark3.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    },
+    {
+        "id": 18,
+        "title": "Vintage Travel Poster",
+        "category": "pictures",
+        "price": 55.99,
+        "imageUrl": "https://example.com/picture4.jpg",
+        "amazonLink": "#",
+        "status": "coming-soon"
+    }
+]
