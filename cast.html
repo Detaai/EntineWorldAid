@@ -11,77 +11,195 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            overflow-y: auto; /* Enable vertical scrolling */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #232526 0%, #485563 100%);
+            background-image: url('tavern-backround.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #FFD700;
+            min-height: 100vh;
+            overflow-y: auto;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas: 
+                "nav"
+                "main"
+                "footer";
+        }
+
+        /* Navigation Grid Area */
+        .main-nav {
+            grid-area: nav;
+        }
+
+        /* Main Content Grid */
+        main {
+            grid-area: main;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Enhanced Header */
+        header {
+            background: rgba(36, 54, 39, 0.95);
+            padding: 20px 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border-bottom: 2px solid #FFD700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        header h1 {
+            color: #FFD700;
+            font-size: 2.5rem;
+            margin: 10px 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            font-weight: bold;
+            letter-spacing: 2px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .home-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-color: #007bff;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-link:hover {
+            background-color: #0056b3;
         }
 
         /* Section titles */
         h2 {
             text-align: center;
-            margin-top: 20px;
-            font-size: 1.8rem;
-            color: #333;
+            margin: 40px 0 30px 0;
+            font-size: 2.2rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: relative;
         }
 
-        /* Parent container for Main Cast section */
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* Advanced CSS Grid for Cast Sections */
         .cast-sections {
-            display: flex;
-            flex-direction: column; /* Stack sections vertically */
-            align-items: center; /* Center sections horizontally */
-            gap: 50px; /* Add spacing between sections */
-            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            padding: 40px 20px;
         }
 
-        /* Cast container styles */
-        .cast-container {
+        /* Book Filter Section with Flexbox */
+        .book-filter-section {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             gap: 20px;
-            padding: 20px;
+            background: rgba(36, 54, 39, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #FFD700;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        /* CSS Grid for Character Cards */
+        .cast-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 30px;
+            background: rgba(36, 54, 39, 0.95);
+            border-radius: 20px;
+            border: 3px solid #FFD700;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
         }
 
         /* Individual cast member card */
         .cast-member {
             text-align: center;
-            width: 150px;
+            width: 180px;
+            background: rgba(36, 54, 39, 0.98);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #FFD700;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .cast-member:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: #FFA500;
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
+            background: rgba(40, 60, 43, 0.98);
         }
 
         .cast-member img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%; /* Circular profile picture */
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #4CAF50; /* Optional border */
-            cursor: pointer; /* Make the image look clickable */
-            transition: transform 0.3s; /* Add a hover effect */
+            border: 4px solid #FFD700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
         .cast-member img:hover {
-            transform: scale(1.1); /* Slight zoom effect on hover */
+            transform: scale(1.1);
+            border-color: #FFA500;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
         }
 
         /* Button styles for Main Cast */
         .cast-member button {
-            margin-top: 10px;
-            padding: 10px 20px;
+            margin-top: 15px;
+            padding: 12px 24px;
             font-size: 14px;
-            border: none;
-            border-radius: 5px;
-            background-image: url('nameplate.jpg'); /* Background image for nameplate */
-            background-size: cover; /* Ensure the image covers the button */
-            background-repeat: no-repeat;
-            background-position: center;
-            color: rgba(255, 255, 255, 0.635);
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
             font-weight: bold;
-            text-shadow: 1px 1px 2px black; /* Add a shadow for better readability */
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            transition: transform 0.3s; /* Add hover effect */
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .cast-member button:hover {
-            transform: scale(1.05); /* Slight zoom effect on hover */
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
         }
 
         /* Home button style */
@@ -89,18 +207,28 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            padding: 10px 15px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            border: 2px solid #FFD700;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
         }
 
         .return-home-btn:hover {
-            background-color: #45a049;
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
         }
 
         /* Password prompt styles */
@@ -156,35 +284,317 @@
         }
 
         .arrow-nav {
-            margin-top: 24px;
+            margin-top: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 24px;
+            gap: 30px;
+            padding: 20px;
+            background: rgba(36, 54, 39, 0.95);
+            border-radius: 15px;
+            border: 2px solid #FFD700;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
         .arrow-btn {
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
+            padding: 12px 16px;
+            font-size: 18px;
+            border: 2px solid #FFD700;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #FFD700;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            min-width: 50px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
         }
 
-        .arrow-btn:hover {
-            background-color: #45a049;
+        .arrow-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+        }
+
+        .arrow-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
         }
 
         #pageIndicator {
             font-size: 16px;
-            color: #333;
+            color: #FFD700;
+            font-weight: bold;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            padding: 8px 16px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            min-width: 120px;
+            text-align: center;
+        }
+
+        /* Book Filter Buttons */
+        .book-filter-container {
+            margin: 30px 0;
+            text-align: center;
+            padding: 20px;
+            background: rgba(36, 54, 39, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 3px solid #FFD700;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .book-filter-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .book-filter-header:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .book-filter-title {
+            font-size: 1.3rem;
+            color: #FFD700;
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            letter-spacing: 1px;
+        }
+
+        .collapse-icon {
+            font-size: 1.5rem;
+            color: #FFD700;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .collapse-icon.collapsed {
+            transform: rotate(-90deg);
+            color: #FFA500;
+        }
+
+        .book-filter-content {
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+            max-height: 350px;
+            opacity: 1;
+        }
+
+        .book-filter-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            margin: 0;
+        }
+
+        .book-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding: 5px;
+        }
+
+        .book-btn {
+            padding: 10px 18px;
+            font-size: 14px;
+            border: 2px solid #FFD700;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #FFD700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            min-width: 70px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-btn:hover {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+        }
+
+        .book-btn.active {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+            transform: translateY(-2px);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+        }
+
+        .all-books-btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: 2px solid #ff6b35;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ff6b35, #ff8f65);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .all-books-btn:hover {
+            background: linear-gradient(135deg, #ff8f65, #ffab91);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .all-books-btn.active {
+            background: linear-gradient(135deg, #e64a19, #ff6b35);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile responsiveness for book buttons */
+        @media (max-width: 768px) {
+            .book-buttons {
+                gap: 8px;
+            }
+            
+            .book-btn {
+                padding: 8px 14px;
+                font-size: 12px;
+                min-width: 55px;
+            }
+            
+            .all-books-btn {
+                padding: 10px 18px;
+                font-size: 14px;
+            }
+
+            .book-filter-title {
+                font-size: 1.1rem;
+            }
+
+            .cast-member {
+                width: 160px;
+                padding: 15px;
+            }
+
+            .cast-member img {
+                width: 100px;
+                height: 100px;
+            }
+
+            h1 {
+                font-size: 2rem !important;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .cast-sections {
+                padding: 20px 10px;
+            }
+        }
+
+        /* Enhanced Footer */
+        footer {
+            grid-area: footer;
+            background: rgba(36, 54, 39, 0.95);
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #FFD700;
+            margin-top: 60px;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        footer a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 20px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        footer a:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #FFD700;
+        }
+
+        footer span {
+            color: #FFD700;
+            font-weight: bold;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            
+            <ul class="nav-menu">
+                <li><a href="home-page.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Tools ▼</a>
+                    <div class="dropdown-content">
+                        <a href="age-calculator.html">Age Calculator</a>
+                        <a href="language-translator.html">Language Translator</a>
+                        <a href="money-converter.html">Money Converter</a>
+                        <a href="name-generator.html">Name Generator</a>
+                        <a href="fight.html">Conflict Generator</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">World ▼</a>
+                    <div class="dropdown-content">
+                        <a href="cast.html" class="active">The Cast</a>
+                        <a href="library.html">The Library</a>
+                        <a href="home-maker.html">Magic Codex</a>
+                        <a href="otherworld.html">Other Worlds</a>
+                    </div>
+                </li>
+                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="references.html">References</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
     <header>
         <a href="home-page.html" class="home-link">← Back to Home</a>
         <h1>The Cast</h1>
@@ -195,6 +605,28 @@
             <!-- Main Cast Section -->
             <section>
                 <h2>Main Cast</h2>
+                
+                <!-- Book Filter Section -->
+                <div class="book-filter-container">
+                    <div class="book-filter-header" onclick="toggleBookFilter()">
+                        <div class="book-filter-title">Filter Characters by Book</div>
+                        <span class="collapse-icon" id="collapseIcon">▼</span>
+                    </div>
+                    <div class="book-filter-content" id="bookFilterContent">
+                        <div class="book-buttons">
+                            <button class="book-btn" data-book="1">Book 1</button>
+                            <button class="book-btn" data-book="2">Book 2</button>
+                            <button class="book-btn" data-book="3">Book 3</button>
+                            <button class="book-btn" data-book="4">Book 4</button>
+                            <button class="book-btn" data-book="5">Book 5</button>
+                            <button class="book-btn" data-book="6">Book 6</button>
+                            <button class="book-btn" data-book="7">Book 7</button>
+                            <button class="book-btn" data-book="8">Book 8</button>
+                            <button class="book-btn" data-book="9">Book 9</button>
+                        </div>
+                        <button class="all-books-btn active" data-book="all">Show All Characters</button>
+                    </div>
+                </div>
                 <div class="cast-container" id="castContainer"></div>
                 <div class="arrow-nav" style="margin-top:24px; display:flex; justify-content:center; align-items:center; gap:24px;">
                     <button class="arrow-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
@@ -210,28 +642,83 @@
         <span>&copy; 2025 Caleb Jones</span>
     </footer>
     <script>
-        // List of cast members
+        // List of cast members with book information
         const castMembers = [
-            { img: "main-cast-1.jpg", name: "Deta", link: "cast-member1.html" },
-            { img: "main-cast-2.jpg", name: "Gwen", link: "cast-member2.html" },
-            { img: "main-cast-4.jpg", name: "Bluma", link: "cast-member4.html" },
-            { img: "main-cast-3.jpg", name: "Beans", link: "cast-member3.html" },
-            { img: "main-cast-5.jpg", name: "Rinn", link: "cast-member5.html" },
-            { img: "main-cast-6.jpg", name: "Tach'guf", link: "cast-member6.html" },
-            { img: "main-cast-7.jpg", name: "Fallen One", link: "cast-member7.html" },
-            { img: "main-cast-8.jpg", name: "Godess", link: "cast-member8.html" }
+            { img: "main-cast-1.jpg", name: "Deta", link: "cast-member1.html", books: [1] },
+            { img: "main-cast-2.jpg", name: "Gwen", link: "cast-member2.html", books: [1] },
+            { img: "main-cast-4.jpg", name: "Bluma", link: "cast-member4.html", books: [1] },
+            { img: "main-cast-3.jpg", name: "Beans", link: "cast-member3.html", books: [1] },
+            { img: "main-cast-5.jpg", name: "Rinn", link: "cast-member5.html", books: [1] },
+            { img: "main-cast-6.jpg", name: "Tach'guf", link: "cast-member6.html", books: [1] },
+            { img: "main-cast-7.jpg", name: "Fallen One", link: "cast-member7.html", books: [1] },
+            { img: "main-cast-8.jpg", name: "Godess", link: "cast-member8.html", books: [1] }
         ];
 
         const perPage = 4;
         let currentPage = 0;
+        let currentFilter = 'all';
+        let filteredMembers = [...castMembers];
+
+        function toggleBookFilter() {
+            const content = document.getElementById('bookFilterContent');
+            const icon = document.getElementById('collapseIcon');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                icon.classList.remove('collapsed');
+                icon.textContent = '▼';
+            } else {
+                content.classList.add('collapsed');
+                icon.classList.add('collapsed');
+                icon.textContent = '▶';
+            }
+        }
+
+        function filterCastByBook(bookNumber) {
+            if (bookNumber === 'all') {
+                filteredMembers = [...castMembers];
+            } else {
+                filteredMembers = castMembers.filter(member => 
+                    member.books.includes(parseInt(bookNumber))
+                );
+            }
+            currentPage = 0; // Reset to first page when filtering
+            currentFilter = bookNumber;
+            renderCast();
+            updateActiveButton();
+        }
+
+        function updateActiveButton() {
+            // Remove active class from all buttons
+            document.querySelectorAll('.book-btn, .all-books-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to current filter button
+            if (currentFilter === 'all') {
+                document.querySelector('.all-books-btn').classList.add('active');
+            } else {
+                document.querySelector(`[data-book="${currentFilter}"]`).classList.add('active');
+            }
+        }
 
         function renderCast() {
             const container = document.getElementById('castContainer');
             container.innerHTML = '';
+            
+            if (filteredMembers.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">No characters found for this book.</p>';
+                document.getElementById('pageIndicator').textContent = 'No results';
+                document.getElementById('prevBtn').disabled = true;
+                document.getElementById('nextBtn').disabled = true;
+                return;
+            }
+            
             const start = currentPage * perPage;
-            const end = Math.min(start + perPage, castMembers.length);
+            const end = Math.min(start + perPage, filteredMembers.length);
+            
             for (let i = start; i < end; i++) {
-                const member = castMembers[i];
+                const member = filteredMembers[i];
                 const div = document.createElement('div');
                 div.className = 'cast-member';
                 div.innerHTML = `
@@ -240,11 +727,14 @@
                 `;
                 container.appendChild(div);
             }
+            
             // Update page indicator
-            document.getElementById('pageIndicator').textContent = `Page ${currentPage + 1} of ${Math.ceil(castMembers.length / perPage)}`;
+            const totalPages = Math.ceil(filteredMembers.length / perPage);
+            document.getElementById('pageIndicator').textContent = `Page ${currentPage + 1} of ${totalPages}`;
+            
             // Enable/disable arrows
             document.getElementById('prevBtn').disabled = currentPage === 0;
-            document.getElementById('nextBtn').disabled = end >= castMembers.length;
+            document.getElementById('nextBtn').disabled = end >= filteredMembers.length;
         }
 
         document.getElementById('prevBtn').onclick = function() {
@@ -253,15 +743,34 @@
                 renderCast();
             }
         };
+        
         document.getElementById('nextBtn').onclick = function() {
-            if ((currentPage + 1) * perPage < castMembers.length) {
+            if ((currentPage + 1) * perPage < filteredMembers.length) {
                 currentPage++;
                 renderCast();
             }
         };
 
-        // Initial render
-        renderCast();
+        // Add event listeners for book filter buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Book filter buttons
+            document.querySelectorAll('.book-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const bookNumber = this.getAttribute('data-book');
+                    filterCastByBook(bookNumber);
+                });
+            });
+
+            // All books button
+            document.querySelector('.all-books-btn').addEventListener('click', function() {
+                filterCastByBook('all');
+            });
+
+            // Initial render
+            renderCast();
+            updateActiveButton();
+        });
     </script>
+    <script type="module" src="navigation.js"></script>
 </body>
 </html>

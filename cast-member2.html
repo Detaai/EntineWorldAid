@@ -2,134 +2,580 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Character Info</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gwen - Half-Elf | Entine Cast</title>
+  <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
     }
-
-    .container {
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #2a4d3a 0%, #1e3a2e 100%);
+      background-image: url('tavern-backround.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: #87CEEB;
+      min-height: 100vh;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
+      flex-direction: column;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      background: rgba(30, 58, 46, 0.95);
+      border-bottom: 2px solid #87CEEB;
+      box-shadow: 0 2px 8px #0004;
+    }
+    
+    .home-link {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 10px 20px;
+      background-color: #4682B4;
+      color: white !important;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.08rem;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #0003;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    
+    .home-link:hover {
+      background-color: #2F4F4F;
+    }
+    
+    .character-title {
+      font-size: 2.5rem;
+      color: #87CEEB;
+      margin: 8px 0;
+      text-shadow: 2px 2px 8px #000a;
+      letter-spacing: 1px;
+    }
+    
+    .character-subtitle {
+      font-size: 1.2rem;
+      color: #B0E0E6;
+      margin-bottom: 0;
+      text-shadow: 1px 1px 4px #000a;
+      font-style: italic;
+    }
+
+    /* Quick Reference Bar Enhanced */
+    .quick-ref {
+      background: rgba(30, 58, 46, 0.98);
+      border: 3px solid #87CEEB;
+      border-radius: 16px;
+      padding: 24px 32px;
+      margin: 24px auto;
+      max-width: 950px;
+      box-shadow: 0 6px 20px #0008;
+    }
+    
+    .quick-ref-title {
+      text-align: center;
+      color: #87CEEB;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-shadow: 2px 2px 6px #000a;
+      letter-spacing: 1px;
+    }
+    
+    .quick-ref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
+      text-align: center;
+    }
+    
+    .quick-stat {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      padding: 16px;
+      border: 2px solid #87CEEB;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .quick-stat:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+    }
+    
+    .quick-stat-label {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+    
+    .quick-stat-value {
+      font-size: 1.2rem;
+      color: #87CEEB;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px #000a;
+    }
+
+    /* Main Content Container */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      width: 95%;
+    }
+
+    /* Character Sections Grid */
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 24px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .section {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 300px;
-      max-height: 400px;
-      overflow-y: auto;
-      padding: 15px;
+      background: rgba(30, 58, 46, 0.96);
+      border-radius: 18px;
+      box-shadow: 0 8px 28px #000b;
+      border: 2px solid #87CEEB;
+      padding: 28px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
     }
-
-    .section img {
-      width: 100%;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      margin-top: 0;
-    }
-
-    .gallery-btn {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .gallery {
-      display: none;
-      position: fixed;
+    
+    .section::before {
+      content: '';
+      position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 20px;
-      overflow-y: auto;
-      z-index: 10;
+      height: 4px;
+      background: linear-gradient(90deg, #87CEEB, #4682B4, #87CEEB);
+    }
+    
+    .section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px #000d;
     }
 
-    .gallery img {
-      width: 200px;
-      border: 3px solid white;
+    .section h2 {
+      color: #87CEEB;
+      font-size: 1.5rem;
+      margin: 0 0 20px 0;
+      text-shadow: 2px 2px 6px #000a;
+      border-bottom: 2px solid #87CEEB;
+      padding-bottom: 12px;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .section p {
+      color: #B0E0E6;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      text-shadow: 1px 1px 3px #000a;
+      margin-bottom: 14px;
+    }
+    
+    .section ul {
+      padding-left: 22px;
+      color: #B0E0E6;
+    }
+    
+    .section li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+      text-shadow: 1px 1px 2px #000a;
+    }
+
+    /* Enhanced styling for different section types */
+    .info-item {
+      background: rgba(135, 206, 235, 0.12);
+      border-left: 4px solid #87CEEB;
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .info-item strong {
+      color: #87CEEB;
+      font-weight: 600;
+    }
+    
+    .personality-trait {
+      background: rgba(135, 206, 235, 0.12);
+      border-left: 4px solid #87CEEB;
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .personality-trait strong {
+      color: #87CEEB;
+      font-weight: 600;
+    }
+    
+    .relationship-item {
+      background: rgba(70, 130, 180, 0.15);
+      border-left: 4px solid #4682B4;
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .relationship-item strong {
+      color: #ADD8E6;
+      font-weight: 600;
+    }
+    
+    .goal-item {
+      background: rgba(95, 158, 160, 0.15);
+      border-left: 4px solid #5F9EA0;
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .goal-item strong {
+      color: #AFEEEE;
+      font-weight: 600;
+    }
+
+    .timeline-item {
+      background: rgba(72, 61, 139, 0.15);
+      border-left: 4px solid #483D8B;
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .timeline-item strong {
+      color: #DDA0DD;
+      font-weight: 600;
+    }
+
+    /* Gallery Button */
+    .gallery-btn {
+      display: block;
+      margin: 32px auto;
+      padding: 16px 32px;
+      font-size: 1.1rem;
+      background-image: url('nameplate.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: bold;
+      text-shadow: 1px 1px 2px black;
+      border: none;
       border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px #0004;
+      text-decoration: none;
+      text-align: center;
+      max-width: 250px;
+    }
+    
+    .gallery-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px #0006;
     }
 
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 30px;
-      color: white;
-      cursor: pointer;
+    /* Footer */
+    footer {
+      width: 100%;
+      text-align: center;
+      color: #87CEEB;
+      font-size: 1rem;
+      text-shadow: 1px 1px 4px #000a;
+      padding: 18px 0 12px 0;
+      background: rgba(0, 0, 0, 0.85);
+      border-top: 2px solid #87CEEB;
+      margin-top: auto;
+    }
+    
+    footer a {
+      color: #87CEEB;
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .character-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        max-width: 100%;
+      }
+      
+      .quick-ref-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      
+      .character-title {
+        font-size: 2rem;
+      }
+      
+      .section {
+        padding: 16px;
+      }
+      
+      main {
+        padding: 12px;
+      }
     }
   </style>
 </head>
 <body>
-    <header>
-        <a href="cast.html" class="home-link">← Back to cast</a>
-    </header>
+  <header>
+    <a href="cast.html" class="home-link">← Back to Cast</a>
+    <h1 class="character-title">Gwen</h1>
+    <p class="character-subtitle">Half-Elf Companion</p>
+  </header>
 
-<div class="container">
-  <div class="section">
-    <img src="Gwen-description.jpg" alt="Description Image" loading="lazy">
-    <h2>Description</h2>
-    <p>Write the character's appearance, demeanor, etc here...</p>
+  <!-- Quick Reference Section -->
+  <div class="quick-ref">
+    <h3 class="quick-ref-title">⚡ Character Overview</h3>
+    <div class="quick-ref-grid">
+      <div class="quick-stat">
+        <div class="quick-stat-label">Species</div>
+        <div class="quick-stat-value">Half-Elf</div>
+      </div>
+      <div class="quick-stat">
+        <div class="quick-stat-label">Age</div>
+        <div class="quick-stat-value">24 Years</div>
+      </div>
+      <div class="quick-stat">
+        <div class="quick-stat-label">Role</div>
+        <div class="quick-stat-value">Companion</div>
+      </div>
+      <div class="quick-stat">
+        <div class="quick-stat-label">Status</div>
+        <div class="quick-stat-value">Active Character</div>
+      </div>
+    </div>
   </div>
-  <div class="section">
-    <img src="Gwen-personal.jpg" alt="Personal Info Image" loading="lazy">
-    <h2>Personal Info</h2>
-    <p>Details like age, gender, species, etc go here...</p>
+
+  <main>
+    <div class="character-grid">
+
+      <!-- Physical Description -->
+      <div class="section">
+        <h2>🧝‍♀️ Physical Description</h2>
+        <div class="info-item">
+          <strong>Height:</strong> [Your details here]
+        </div>
+        <div class="info-item">
+          <strong>Weight:</strong> [Half-elf typical weight]
+        </div>
+        <div class="info-item">
+          <strong>Build:</strong> [Your description here]
+        </div>
+        <div class="info-item">
+          <strong>Hair:</strong> [Your details here]
+        </div>
+        <div class="info-item">
+          <strong>Eyes:</strong> [Your details here]
+        </div>
+        <div class="info-item">
+          <strong>Elven Features:</strong> [Half-elf characteristics from your story]
+        </div>
+        <div class="personality-trait">
+          <strong>Mannerisms:</strong> [Gwen's specific behaviors]
+        </div>
+        <div class="personality-trait">
+          <strong>Clothing Style:</strong> [How Gwen dresses in your world]
+        </div>
+      </div>
+
+      <!-- Personality & Psychology -->
+      <div class="section">
+        <h2>🧠 Personality & Psychology</h2>
+        <div class="personality-trait">
+          <strong>Core Traits:</strong> [Gwen's main personality traits]
+        </div>
+        <div class="personality-trait">
+          <strong>Strengths:</strong> [Character strengths from your story]
+        </div>
+        <div class="personality-trait">
+          <strong>Weaknesses:</strong> [Character flaws and limitations]
+        </div>
+        <div class="personality-trait">
+          <strong>Fears:</strong> [What frightens or concerns Gwen]
+        </div>
+        <div class="personality-trait">
+          <strong>Speech Pattern:</strong> [How Gwen speaks and communicates]
+        </div>
+      </div>
+
+      <!-- Background & History -->
+      <div class="section">
+        <h2>📜 Background & History</h2>
+        <div class="info-item">
+          <strong>Origin:</strong> [Where Gwen comes from]
+        </div>
+        <div class="info-item">
+          <strong>Family:</strong> [Half-elf heritage and family background]
+        </div>
+        <div class="info-item">
+          <strong>Education:</strong> [Gwen's learning and skills]
+        </div>
+        <div class="timeline-item">
+          <strong>Early Life:</strong> [Childhood as a half-elf]
+        </div>
+        <div class="timeline-item">
+          <strong>Adolescence:</strong> [Teen years and development]
+        </div>
+        <div class="timeline-item">
+          <strong>Recent Events:</strong> [Events leading to your story]
+        </div>
+        <div class="timeline-item">
+          <strong>Current Story:</strong> [Gwen's role in main narrative]
+        </div>
+      </div>
+
+      <!-- Relationships -->
+      <div class="section">
+        <h2>👥 Key Relationships</h2>
+        <div class="relationship-item">
+          <strong>Deta:</strong> [Relationship with main character]
+        </div>
+        <div class="relationship-item">
+          <strong>Bluma:</strong> [Relationship details from your story]
+        </div>
+        <div class="relationship-item">
+          <strong>Beans:</strong> [Relationship details from your story]
+        </div>
+        <div class="relationship-item">
+          <strong>Other Characters:</strong> [Additional relationships]
+        </div>
+      </div>
+
+      <!-- Goals & Motivations -->
+      <div class="section">
+        <h2>🎯 Goals & Motivations</h2>
+        <div class="goal-item">
+          <strong>Primary Goal:</strong> [Gwen's main objective from your story]
+        </div>
+        <div class="goal-item">
+          <strong>Personal Goal:</strong> [Internal character desires]
+        </div>
+        <div class="goal-item">
+          <strong>Hidden Desire:</strong> [Deeper motivations]
+        </div>
+        <div class="goal-item">
+          <strong>Internal Conflict:</strong> [Half-elf identity struggles, etc.]
+        </div>
+      </div>
+
+      <!-- Character Arc -->
+      <div class="section">
+        <h2>📈 Character Arc & Development</h2>
+        <div class="timeline-item">
+          <strong>Starting Point:</strong> [How Gwen begins your story]
+        </div>
+        <div class="timeline-item">
+          <strong>Early Development:</strong> [First major changes]
+        </div>
+        <div class="timeline-item">
+          <strong>Mid-Story Growth:</strong> [Character evolution]
+        </div>
+        <div class="timeline-item">
+          <strong>Final Transformation:</strong> [How Gwen ends the story]
+        </div>
+        <div class="goal-item">
+          <strong>Character Growth:</strong> [Overall development theme]
+        </div>
+      </div>
+
+      <!-- Writer's Notes -->
+      <div class="section">
+        <h2>✍️ Writer's Notes</h2>
+        <div class="info-item">
+          <strong>Narrative Function:</strong> [Gwen's role in your story structure]
+        </div>
+        <div class="info-item">
+          <strong>Symbolic Role:</strong> [What this character represents thematically]
+        </div>
+        <div class="personality-trait">
+          <strong>Voice Notes:</strong> [How Gwen speaks, favorite phrases]
+        </div>
+        <div class="goal-item">
+          <strong>Key Scenes:</strong> [Important moments featuring Gwen]
+        </div>
+        <div class="goal-item">
+          <strong>Plot Connections:</strong> [How Gwen drives story forward]
+        </div>
+        <div class="goal-item">
+          <strong>Writing Reminders:</strong> [Notes to keep character consistent]
+        </div>
+      </div>
+
+      <!-- Species & World Details -->
+      <div class="section">
+        <h2>🌍 Species & World Details</h2>
+        <div class="info-item">
+          <strong>Species:</strong> Half-Elf (Human/Elf hybrid)
+        </div>
+        <div class="info-item">
+          <strong>Lifespan:</strong> [Half-elf lifespan from your world]
+        </div>
+        <div class="info-item">
+          <strong>Heritage:</strong> [Human and elven ancestry details]
+        </div>
+        <div class="info-item">
+          <strong>Cultural Background:</strong> [Half-elf culture from your story]
+        </div>
+        <div class="info-item">
+          <strong>Magic Affinity:</strong> [Half-elf magical abilities]
+        </div>
+        <div class="info-item">
+          <strong>Languages:</strong> [Languages Gwen speaks]
+        </div>
+        <div class="personality-trait">
+          <strong>Dual Nature:</strong> [How being half-elf affects her character]
+        </div>
+        <div class="personality-trait">
+          <strong>Cultural Values:</strong> [Values from both human and elf sides]
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div style="text-align: center; margin: 32px auto;">
+    <a href="Gwen-gallery.html" class="gallery-btn">📸 View Character Gallery</a>
   </div>
-  <div class="section">
-    <img src="Gwen-background.jpg" alt="Background Image" loading="lazy">
-    <h2>Background</h2>
-    <p>Backstory and important life events here...</p>
-  </div>
-  <div class="section">
-    <img src="Gwen-goals.jpg" alt="Goals and Dreams Image" loading="lazy">
-    <h2>Goals and Dreams</h2>
-    <p>Motivations, hopes, and dreams go here...</p>
-  </div>
-</div>
 
-<a href="Gwen-gallery.html" class="gallery-btn">See Gallery</a>
-
-<div class="gallery" id="gallery">
-  <span class="close-btn" onclick="toggleGallery()">&times;</span>
-  
-</div>
-
-<script>
-  function toggleGallery() {
-    const gallery = document.getElementById('gallery');
-    gallery.style.display = gallery.style.display === 'flex' ? 'none' : 'flex';
-  }
-</script>
-
-</body>
-</html>
-<footer>
+  <footer>
     <a href="references.html">References</a>
     <span>&copy; 2025 Caleb Jones</span>
-</footer>
+  </footer>
+</body>
+</html>
