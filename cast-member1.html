@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -249,8 +249,8 @@
     }
     
     .goal-item {
-      background: rgba(76, 175, 80, 0.15);
-      border-left: 4px solid #4CAF50;
+      background: rgba(255, 215, 0, 0.12);
+      border-left: 4px solid #FFD700;
       padding: 12px 16px;
       margin: 12px 0;
       border-radius: 6px;
@@ -354,15 +354,50 @@
   </style>
 </head>
 <body>
+  <!-- Shared navigation injected -->
+  <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            <ul class="nav-menu">
+                <li><a href="home-page.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Tools ▼</a>
+                    <div class="dropdown-content">
+                        <a href="age-calculator.html">Age Calculator</a>
+                        <a href="language-translator.html">Language Translator</a>
+                        <a href="money-converter.html">Money Converter</a>
+                        <a href="name-generator.html">Name Generator</a>
+                        <a href="fight.html">Conflict Generator</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">World ▼</a>
+                    <div class="dropdown-content">
+                        <a href="cast.html">The Cast</a>
+                        <a href="library.html">The Library</a>
+                        <a href="home-maker.html">Magic Codex</a>
+                        <a href="otherworld.html">Other Worlds</a>
+                    </div>
+                </li>
+                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="references.html">References</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
   <header>
-    <a href="cast.html" class="home-link">← Back to Cast</a>
+    <a href="cast.html" class="home-link">â† Back to Cast</a>
     <h1 class="character-title">Deta</h1>
     <p class="character-subtitle">Protagonist of the Entine Chronicles</p>
   </header>
 
   <!-- Quick Reference Section -->
   <div class="quick-ref">
-    <h3 class="quick-ref-title">⚡ Character Overview</h3>
+    <h3 class="quick-ref-title">âš¡ Character Overview</h3>
     <div class="quick-ref-grid">
       <div class="quick-stat">
         <div class="quick-stat-label">Species</div>
@@ -387,7 +422,7 @@
     <div class="character-grid">
       <!-- Physical Description -->
       <div class="section">
-        <h2>🏛️ Physical Description</h2>
+        <h2>ðŸ›ï¸ Physical Description</h2>
         <div class="info-item">
           <strong>Height:</strong> [Your details here]
         </div>
@@ -416,7 +451,7 @@
 
       <!-- Personality & Psychology -->
       <div class="section">
-        <h2>🧠 Personality & Psychology</h2>
+        <h2>ðŸ§  Personality & Psychology</h2>
         <div class="personality-trait">
           <strong>Core Traits:</strong> [Your character's main personality traits]
         </div>
@@ -436,7 +471,7 @@
 
       <!-- Background & History -->
       <div class="section">
-        <h2>📜 Background & History</h2>
+        <h2>ðŸ“œ Background & History</h2>
         <div class="info-item">
           <strong>Origin:</strong> [Where your character comes from]
         </div>
@@ -462,7 +497,7 @@
 
       <!-- Relationships -->
       <div class="section">
-        <h2>👥 Key Relationships</h2>
+        <h2>ðŸ‘¥ Key Relationships</h2>
         <div class="relationship-item">
           <strong>Gwen:</strong> [Relationship details from your story]
         </div>
@@ -479,7 +514,7 @@
 
       <!-- Goals & Motivations -->
       <div class="section">
-        <h2>🎯 Goals & Motivations</h2>
+        <h2>ðŸŽ¯ Goals & Motivations</h2>
         <div class="goal-item">
           <strong>Primary Goal:</strong> [Main objective from your story]
         </div>
@@ -496,7 +531,7 @@
 
       <!-- Character Arc -->
       <div class="section">
-        <h2>📈 Character Arc & Development</h2>
+        <h2>ðŸ“ˆ Character Arc & Development</h2>
         <div class="timeline-item">
           <strong>Starting Point:</strong> [How character begins your story]
         </div>
@@ -516,7 +551,7 @@
 
       <!-- Writer's Notes -->
       <div class="section">
-        <h2>✍️ Writer's Notes</h2>
+        <h2>âœï¸ Writer's Notes</h2>
         <div class="info-item">
           <strong>Narrative Function:</strong> [Character's role in your story structure]
         </div>
@@ -539,7 +574,7 @@
 
       <!-- Species & World Details -->
       <div class="section">
-        <h2>🌍 Species & World Details</h2>
+        <h2>ðŸŒ Species & World Details</h2>
         <div class="info-item">
           <strong>Species:</strong> Randeth (Stone/Wood being)
         </div>
@@ -569,12 +604,14 @@
   </main>
 
   <div style="text-align: center; margin: 32px auto;">
-    <a href="Deta-gallery.html" class="gallery-btn">📸 View Character Gallery</a>
+    <a href="Deta-gallery.html" class="gallery-btn">ðŸ“¸ View Character Gallery</a>
   </div>
 
   <footer>
     <a href="references.html">References</a>
     <span>&copy; 2025 Caleb Jones</span>
   </footer>
+    <script type="module" src="navigation.js"></script>
 </body>
 </html>
+

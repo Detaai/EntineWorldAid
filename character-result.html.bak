@@ -222,21 +222,22 @@
     <!-- Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            <a href="index.html" class="nav-logo">ðŸ° Entine Calculator</a>
+            
             <ul class="nav-menu">
                 <li><a href="home-page.html">Home</a></li>
                 <li class="dropdown">
-                    <a href="#">Tools ▼</a>
+                    <a href="#">Tools â–¼</a>
                     <div class="dropdown-content">
                         <a href="age-calculator.html">Age Calculator</a>
                         <a href="language-translator.html">Language Translator</a>
                         <a href="money-converter.html">Money Converter</a>
-                        <a href="name-generator.html">Name Generator</a>
+                        <a href="name-generator.html" class="active">Name Generator</a>
                         <a href="fight.html">Conflict Generator</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#">World ▼</a>
+                    <a href="#">World â–¼</a>
                     <div class="dropdown-content">
                         <a href="cast.html">The Cast</a>
                         <a href="library.html">The Library</a>
@@ -244,9 +245,10 @@
                         <a href="otherworld.html">Other Worlds</a>
                     </div>
                 </li>
-                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="online-store-amazon/src/index.html">ðŸ›’ Store</a></li>
                 <li><a href="references.html">References</a></li>
             </ul>
+            
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -257,15 +259,15 @@
 
     <main>
         <div class="result-container">
-            <h1>🎲 Your Generated Character</h1>
+            <h1>ðŸŽ² Your Generated Character</h1>
             <div id="characterDisplay">
                 <!-- Character data will be populated here -->
             </div>
             
             <div class="actions">
-                <a href="name-generator.html" class="action-btn">🔄 Generate Another</a>
-                <button class="action-btn save-btn" onclick="saveToFavorites()">💾 Save to Favorites</button>
-                <button class="action-btn" onclick="shareCharacter()">📤 Share Character</button>
+                <a href="name-generator.html" class="action-btn">ðŸ”„ Generate Another</a>
+                <button class="action-btn save-btn" onclick="saveToFavorites()">ðŸ’¾ Save to Favorites</button>
+                <button class="action-btn" onclick="shareCharacter()">ðŸ“¤ Share Character</button>
             </div>
         </div>
     </main>
@@ -368,7 +370,7 @@
             if (!params.gender || !params.species || !params.characterClass) {
                 characterDisplay.innerHTML = `
                     <div class="error-message">
-                        <h2>⚠️ Missing Information</h2>
+                        <h2>âš ï¸ Missing Information</h2>
                         <p>Please fill out all required fields in the character generator.</p>
                         <a href="name-generator.html" class="action-btn">Return to Generator</a>
                     </div>
@@ -462,7 +464,7 @@
             // Save back to localStorage
             localStorage.setItem('entine-favorites', JSON.stringify(favorites));
             
-            alert('Character saved to favorites! ⭐');
+            alert('Character saved to favorites! â­');
         }
 
         function shareCharacter() {
@@ -479,7 +481,7 @@
             } else {
                 // Fallback: copy to clipboard
                 navigator.clipboard.writeText(shareText + ' ' + window.location.href)
-                    .then(() => alert('Character info copied to clipboard! 📋'))
+                    .then(() => alert('Character info copied to clipboard! ðŸ“‹'))
                     .catch(() => prompt('Copy this text to share:', shareText + ' ' + window.location.href));
             }
         }
@@ -494,5 +496,3 @@
     <script type="module" src="navigation.js"></script>
 </body>
 </html>
-
-

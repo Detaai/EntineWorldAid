@@ -4,9 +4,30 @@ html, body {
     margin: 0;
     padding: 0;
 }
+:root {
+    /* Color palette */
+    --bg-gradient-start: #232526;
+    --bg-gradient-end: #485563;
+    --panel-bg: rgba(36,54,39,0.96);
+    --accent-gold: #FFD700;
+    --accent-gold-2: #FFA500;
+    --muted: #9aa3a0;
+    --text-on-dark: #ffffff;
+    --max-width: 1200px;
+    --container-width: 650px;
+    --radius-lg: 22px;
+    --radius-md: 8px;
+    --sp-xx: 6px;
+    --sp-xs: 8px;
+    --sp-sm: 12px;
+    --sp-md: 20px;
+    --sp-lg: 36px;
+}
 
 body {
-    font-family: Arial, sans-serif;
+    /* Adopt home page look globally */
+    font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     background-image: url('tavern-backround.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -15,11 +36,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: rgb(255, 255, 255);
-    cursor: url('mouse.jpg'), auto;
+    color: var(--accent-gold); /* gold primary accent */
+    /* avoid custom cursors by default for portability */
+    cursor: auto;
     padding: 0;
-    background-color: #f4f4f4;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
 }
 
 main {
@@ -48,7 +72,7 @@ main {
 }
 
 .nav-logo {
-    color: #FFD700;
+    color: var(--accent-gold);
     font-size: 1.5em;
     font-weight: bold;
     text-decoration: none;
@@ -127,7 +151,7 @@ main {
 
 /* Mobile Navigation */
 .hamburger {
-    display: none;
+    display: flex; /* always show hamburger for consistent UI */
     flex-direction: column;
     cursor: pointer;
     padding: 5px;
@@ -154,30 +178,63 @@ main {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
+/* Off-canvas nav menu for desktop and mobile; revealed when .active */
+.nav-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.28s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    background: rgba(36, 54, 39, 0.98);
+    width: 260px; /* desktop panel width */
+    height: calc(100vh - 60px);
+    text-align: left;
+    gap: 0;
+    border-top: 1px solid #FFD700;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1500; /* sit above header */
+    pointer-events: none; /* disabled while hidden */
+}
+
+.nav-menu.active {
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
     .hamburger {
         display: flex;
     }
     
+    /* Use transform-based off-canvas menu to avoid layout/scrollbar overflow */
     .nav-menu {
         position: fixed;
-        left: -100%;
         top: 60px;
+        left: 0;
+        transform: translateX(-100%);
+        transition: transform 0.28s ease-in-out;
         flex-direction: column;
         background: rgba(36, 54, 39, 0.98);
         width: 100%;
         text-align: center;
-        transition: 0.3s;
         gap: 0;
         border-top: 1px solid #FFD700;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
         max-height: calc(100vh - 60px);
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 1500; /* sit above header */
+        pointer-events: none; /* disabled while hidden */
     }
     
     .nav-menu.active {
-        left: 0;
+        transform: translateX(0);
+        pointer-events: auto;
     }
     
     .nav-menu li {
@@ -217,20 +274,38 @@ main {
 /* Header Styles */
 header {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 10px 0;
     text-align: center;
-    border-bottom: 5px solid #4CAF50; /* Add a hard border at the bottom of the header */
+    border-bottom: 2.5px solid #FFD700; /* gold accent like home page */
+}
+
+/* Typography refinements */
+h1, h2, h3, h4, h5 {
+    color: var(--text-on-dark);
+    margin: 0 0 var(--sp-sm) 0;
+    line-height: 1.15;
+    font-weight: 600;
+}
+
+h1 { font-size: clamp(1.4rem, 2.2vw, 2.2rem); }
+h2 { font-size: clamp(1.2rem, 1.8vw, 1.6rem); }
+
+/* Make images responsive by default */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 header h1 {
-    color: rgb(255, 255, 255);
+    color: #FFD700;
     margin: 0;
-    font-size: 1.8rem; /* Adjust font size for smaller screens */
+    font-size: 1.8rem;
 }
 
 header .home-link {
-    color: rgb(255, 255, 255);
+    color: #FFD700;
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
@@ -252,11 +327,11 @@ header .home-link:hover {
 /* Footer Styles */
 footer {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* Stronger semi-transparent black */
-    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #FFD700;
     text-align: center;
     padding: 16px 0;
-    border-top: 5px solid #4CAF50;
+    border-top: 2.5px solid #FFD700;
     position: relative;
 }
 
@@ -274,13 +349,52 @@ main {
 
 /* Container Styles */
 .container {
-    background-color: rgb(36, 54, 39);
-    padding: 20px;
-    border-radius: 100px;
-    box-shadow: none;
-    width: 500px;
+    /* Use the same container look as home page */
+    background: rgba(36, 54, 39, 0.96);
+    border-radius: 22px;
+    box-shadow: 0 8px 32px #000a;
+    border: 2.5px solid #FFD700;
+    max-width: 650px;
+    width: 95vw;
+    margin: 40px auto 0 auto;
+    padding: 48px 36px 36px 36px;
     text-align: center;
     box-sizing: border-box;
+}
+
+/* Center cast container on desktop so the page appears centered */
+.cast-container {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cast-member {
+    margin: 0 auto;
+    width: auto; /* allow grid to size cards naturally on desktop */
+}
+
+/* Global centering for main page content to ensure consistent layout */
+main,
+.container,
+.container-wrapper,
+.gallery-container,
+.cast-container,
+.book-filter-container,
+.cast-sections,
+footer {
+    max-width: 1200px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Ensure headers align with content */
+header, .main-nav {
+    width: 100%;
 }
 
 .container h1 {
@@ -324,15 +438,17 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    border-radius: 4px;
-    background-color: #4CAF50;
-    color: white;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.2s, transform 0.12s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 button:hover {
-    background-color: #45a049;
+    transform: translateY(-2px);
+    filter: brightness(0.96);
 }
 
 /* Result Text Style */
@@ -606,4 +722,104 @@ p {
 /* Make currency names and prices white */
 .result, .result span {
     color: #fff;
+}
+
+/* Theme enforcement: ensure pages using inline green/blue styles match the home-page gold theme
+   These use !important to override per-page inline rules when necessary. */
+body {
+    background: linear-gradient(135deg, #232526 0%, #485563 100%) !important;
+    background-image: url('tavern-backround.jpg') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    /* background-attachment: fixed causes problems on many mobile browsers. We'll keep scroll by default
+       and enable fixed on larger viewports with a media query below. */
+    background-attachment: scroll !important;
+    color: #FFD700 !important;
+    font-family: 'Segoe UI', Arial, sans-serif !important;
+}
+
+/* Use fixed background on larger screens for the parallax/static effect */
+@media (min-width: 700px) {
+    body {
+        background-attachment: fixed !important;
+        background-position: center center !important;
+    }
+}
+
+header {
+    background: rgba(0,0,0,0.7) !important;
+    border-bottom: 2.5px solid #FFD700 !important;
+    color: #FFD700 !important;
+}
+
+.container,
+.library-screen,
+.result-container,
+.cast-container,
+.cast-sections,
+.popup-content,
+.book-filter-container {
+    background: rgba(36, 54, 39, 0.96) !important;
+    border: 2.5px solid #FFD700 !important;
+    color: #fff !important;
+}
+
+.container p,
+.library-screen p,
+.result-container p {
+    color: #ffffff !important;
+}
+
+/* Buttons across pages: prefer gold nameplate / gradient when possible */
+button,
+.action-btn,
+.book-btn,
+.all-books-btn,
+.cast-member button,
+.library-screen button {
+    background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+    color: #000 !important;
+    border-color: #FFD700 !important;
+}
+
+/* Save any green 'save' buttons */
+.save-btn {
+    background: linear-gradient(135deg, #FFD700, #FFA500) !important;
+    border-color: #FFD700 !important;
+}
+
+/* Ensure footer uses gold border */
+footer {
+    border-top: 2.5px solid #FFD700 !important;
+    color: #FFD700 !important;
+}
+
+/* Replace per-page home/return buttons with the site-wide hamburger nav
+   Hide per-page elements that duplicate navigation and ensure the hamburger
+   remains visible on all viewports. This is non-destructive (CSS only).
+*/
+.home-link,
+.home-badge,
+.return-home-btn,
+.return-to-library,
+.back-to-home,
+.back-link {
+    display: none !important;
+}
+
+/* Ensure the hamburger is visible everywhere and usable */
+.hamburger {
+    display: flex !important;
+}
+
+/* In case some pages show a wide top nav by default, keep the nav-menu off-canvas
+   and controlled by the hamburger to provide a single consistent experience. */
+.nav-menu {
+    transform: translateX(-100%) !important;
+    pointer-events: none !important;
+}
+.nav-menu.active {
+    transform: translateX(0) !important;
+    pointer-events: auto !important;
 }

@@ -289,11 +289,12 @@
     <!-- Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            <a href="index.html" class="nav-logo">ðŸ° Entine Calculator</a>
+            
             <ul class="nav-menu">
                 <li><a href="home-page.html">Home</a></li>
                 <li class="dropdown">
-                    <a href="#">Tools ▼</a>
+                    <a href="#">Tools â–¼</a>
                     <div class="dropdown-content">
                         <a href="age-calculator.html">Age Calculator</a>
                         <a href="language-translator.html">Language Translator</a>
@@ -303,17 +304,19 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#">World ▼</a>
+                    <a href="#">World â–¼</a>
                     <div class="dropdown-content">
                         <a href="cast.html">The Cast</a>
                         <a href="library.html">The Library</a>
                         <a href="home-maker.html">Magic Codex</a>
+                        <a href="consuming-magic.html" class="active">Creatures</a>
                         <a href="otherworld.html">Other Worlds</a>
                     </div>
                 </li>
-                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="online-store-amazon/src/index.html">ðŸ›’ Store</a></li>
                 <li><a href="references.html">References</a></li>
             </ul>
+            
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -834,4 +837,3 @@
     <script type="module" src="navigation.js"></script>
 </body>
 </html>
-

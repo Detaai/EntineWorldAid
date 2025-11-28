@@ -91,11 +91,11 @@
     <!-- Shared navigation injected to ensure hamburger nav is present on every page -->
     <nav class="main-nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            <a href="index.html" class="nav-logo">ðŸ° Entine Calculator</a>
             <ul class="nav-menu">
                 <li><a href="home-page.html">Home</a></li>
                 <li class="dropdown">
-                    <a href="#">Tools ▼</a>
+                    <a href="#">Tools â–¼</a>
                     <div class="dropdown-content">
                         <a href="age-calculator.html">Age Calculator</a>
                         <a href="language-translator.html">Language Translator</a>
@@ -105,7 +105,7 @@
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a href="#">World ▼</a>
+                    <a href="#">World â–¼</a>
                     <div class="dropdown-content">
                         <a href="cast.html">The Cast</a>
                         <a href="library.html">The Library</a>
@@ -113,7 +113,7 @@
                         <a href="otherworld.html">Other Worlds</a>
                     </div>
                 </li>
-                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="online-store-amazon/src/index.html">ðŸ›’ Store</a></li>
                 <li><a href="references.html">References</a></li>
             </ul>
             <div class="hamburger">
@@ -130,7 +130,7 @@
             Click below to explore!
         </span>
         <br>
-        <button class="explore-btn" onclick="window.location.href='home-page.html'">🏰 Enter the Tavern</button>
+        <button class="explore-btn" onclick="window.location.href='home-page.html'">ðŸ° Enter the Tavern</button>
     </div>
     <footer>
         <a href="references.html">References</a>
@@ -139,4 +139,3 @@
     <script type="module" src="navigation.js"></script>
 </body>
 </html>
-

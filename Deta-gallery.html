@@ -1,7 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='styles.css'>
+    
+    
   <title>Deta Gallery</title>
   <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
   <style>
@@ -220,14 +224,48 @@
   </style>
 </head>
 <body>
+<nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            <ul class="nav-menu">
+                <li><a href="home-page.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Tools ▼</a>
+                    <div class="dropdown-content">
+                        <a href="age-calculator.html">Age Calculator</a>
+                        <a href="language-translator.html">Language Translator</a>
+                        <a href="money-converter.html">Money Converter</a>
+                        <a href="name-generator.html">Name Generator</a>
+                        <a href="fight.html">Conflict Generator</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">World ▼</a>
+                    <div class="dropdown-content">
+                        <a href="cast.html">The Cast</a>
+                        <a href="library.html">The Library</a>
+                        <a href="home-maker.html">Magic Codex</a>
+                        <a href="otherworld.html">Other Worlds</a>
+                    </div>
+                </li>
+                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="references.html">References</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
 <header>
-  <a href="cast-member1.html" class="home-link">← Back to Deta</a>
+  <a href="cast-member1.html" class="home-link">â† Back to Deta</a>
 </header>
 
 <div class="character-header">
   <h1 class="character-title">Deta Gallery</h1>
-  <p class="character-subtitle">The Randeth Hero • Stone and Wood Guardian</p>
+  <p class="character-subtitle">The Randeth Hero â€¢ Stone and Wood Guardian</p>
 </div>
 
 <div class="gallery-container" id="gallery"></div>
@@ -286,9 +324,14 @@
   }
 </script>
 
-</body>
+    <script type="module" src="navigation.js"></script>
+
 </html>
 <footer style="background: linear-gradient(135deg, #DAA520, #B8860B); padding: 20px; text-align: center; border-top: 3px solid #8B4513; margin-top: 40px;">
     <a href="references.html" style="color: #2c1810; text-decoration: none; font-weight: bold; margin-right: 20px;">References</a>
     <span style="color: #2c1810;">&copy; 2025 Caleb - Entine Calculator</span>
 </footer>
+
+
+
+

@@ -1,10 +1,16 @@
-<!--   this is still inprogress 
+﻿<!--   this is still inprogress 
 <!-- ... -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='styles.css'>
+
+    <!-- Tailwind CDN for quick styling in static demo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <title>Family Tree (Protected)</title>
     <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
     <style>
@@ -56,6 +62,40 @@
     </style>
 </head>
 <body>
+<nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            <ul class="nav-menu">
+                <li><a href="home-page.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Tools ▼</a>
+                    <div class="dropdown-content">
+                        <a href="age-calculator.html">Age Calculator</a>
+                        <a href="language-translator.html">Language Translator</a>
+                        <a href="money-converter.html">Money Converter</a>
+                        <a href="name-generator.html">Name Generator</a>
+                        <a href="fight.html">Conflict Generator</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">World ▼</a>
+                    <div class="dropdown-content">
+                        <a href="cast.html">The Cast</a>
+                        <a href="library.html">The Library</a>
+                        <a href="home-maker.html">Magic Codex</a>
+                        <a href="otherworld.html">Other Worlds</a>
+                    </div>
+                </li>
+                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="references.html">References</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
     <div id="passwordPrompt">
         <form id="passwordBox" onsubmit="return checkPassword();">
             <h2>Enter Password</h2>
@@ -65,35 +105,242 @@
         </form>
     </div>
     <div id="protectedContent" style="display:none;">
-        <!-- Your family tree content goes here -->
-        <h1>Family Tree</h1>
-        <!-- ... -->
+                <div id="family-app-root" class="w-full h-full"></div>
     </div>
-    <script>
-        function checkPassword() {
-            const correctPassword = "yourpassword"; // Change this to your desired password
-            const input = document.getElementById('passwordInput').value;
-            const error = document.getElementById('passwordError');
-            if (input === correctPassword) {
-                document.getElementById('passwordPrompt').style.display = 'none';
-                document.getElementById('protectedContent').style.display = '';
-                return false;
-            } else {
-                error.textContent = "Incorrect password. Try again.";
-                return false;
-            }
+        <script>
+                function checkPassword() {
+                        const correctPassword = "yourpassword"; // Change this to your desired password
+                        const input = document.getElementById('passwordInput').value;
+                        const error = document.getElementById('passwordError');
+                        if (input === correctPassword) {
+                                document.getElementById('passwordPrompt').style.display = 'none';
+                                document.getElementById('protectedContent').style.display = '';
+                                // after revealing, mount the React demo app (if available)
+                                if (window.mountFamilyTreeDemo) {
+                                        try { window.mountFamilyTreeDemo(); } catch(e) { console.warn(e) }
+                                }
+                                return false;
+                        } else {
+                                error.textContent = "Incorrect password. Try again.";
+                                return false;
+                        }
+                }
+                // Optional: allow Enter key to submit
+                document.getElementById('passwordInput').addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter') {
+                                checkPassword();
+                                e.preventDefault();
+                        }
+                });
+        </script>
+
+        <!-- React + Framer Motion demo injection (built for static server demo). -->
+        <!-- React and ReactDOM UMD -->
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <!-- Framer Motion UMD -->
+        <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+        <!-- Babel for in-browser JSX (development demo only) -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+                const { useState, useMemo, useEffect } = React;
+                // Safe access to Framer Motion UMD. If not present, provide lightweight fallbacks
+                (function(){
+                    const fm = window['framerMotion'] || window['framer-motion'] || window.framerMotion || window['framer-motion.umd'] || window['framerMotionDist'] || null;
+                    if (fm && fm.motion && fm.AnimatePresence) {
+                        window.__FMOTION__ = { motion: fm.motion, AnimatePresence: fm.AnimatePresence };
+                    } else if (window.framerMotion && window.framerMotion.motion) {
+                        window.__FMOTION__ = { motion: window.framerMotion.motion, AnimatePresence: window.framerMotion.AnimatePresence || (({children})=>React.createElement(React.Fragment,null,children)) };
+                    } else if (typeof window['framer-motion'] !== 'undefined' && window['framer-motion'].motion) {
+                        const w = window['framer-motion']; window.__FMOTION__ = { motion: w.motion, AnimatePresence: w.AnimatePresence || (({children})=>React.createElement(React.Fragment,null,children)) };
+                    } else {
+                        // Fallback: simple no-animation wrappers so demo still renders
+                        const noopMotion = { div: (props)=> React.createElement('div', props, props.children) };
+                        const NoopAnimate = ({children})=> React.createElement(React.Fragment, null, children);
+                        window.__FMOTION__ = { motion: noopMotion, AnimatePresence: NoopAnimate };
+                    }
+                })();
+                const { motion, AnimatePresence } = window.__FMOTION__;
+
+        function CharacterNode({ character, onClick, selected, size = 100 }){
+            const diameterClass = `w-[${size}px] h-[${size}px]`;
+            return (
+                // use motion.div for hover/active animations
+                React.createElement(motion.div, {
+                    onClick,
+                    role: 'button',
+                    tabIndex: 0,
+                    whileHover: { scale: 1.06 },
+                    whileTap: { scale: 0.98 },
+                    className: `flex flex-col items-center justify-center focus:outline-none ${diameterClass}`
+                },
+                    React.createElement('img', { src: character.image, alt: character.name, className: `rounded-full object-cover shadow-xl border-2 border-black/30 w-full h-full` }),
+                    React.createElement('div', { className: 'sr-only' }, character.name)
+                )
+            )
         }
-        // Optional: allow Enter key to submit
-        document.getElementById('passwordInput').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-                e.preventDefault();
+
+        function FamilyTreeDemo({ characters = [], radius = 260 }){
+            const containerRef = React.useRef(null);
+            const [positions, setPositions] = useState([]); // {x,y} in px
+            const [selectedId, setSelectedId] = useState(null);
+            const [transitioning, setTransitioning] = useState(false);
+            const [showSelectedLayout, setShowSelectedLayout] = useState(false);
+            const map = useMemo(()=>{ const m=new Map(); characters.forEach(c=>m.set(c.id,c)); return m }, [characters]);
+
+            // compute positions along half-circle anchored at bottom-center
+            useEffect(()=>{
+                function compute(){
+                    const el = containerRef.current; if(!el) return;
+                    const rect = el.getBoundingClientRect();
+                    const cx = rect.width/2; // center x within container
+                    const bottomY = rect.height - 60; // anchor slightly above bottom
+                    const r = Math.min(rect.width, rect.height) * 0.42; // responsive radius
+                    const n = characters.length || 1;
+                    const pts = [];
+                    for(let i=0;i<n;i++){
+                        const t = n===1 ? 0.5 : i/(n-1);
+                        // angles from PI to 0 (left->right across top of half-circle)
+                        const angle = Math.PI - t * Math.PI;
+                        const x = cx + Math.cos(angle) * r;
+                        const y = bottomY - Math.sin(angle) * r;
+                        pts.push({ x, y });
+                    }
+                    setPositions(pts);
+                }
+                compute();
+                window.addEventListener('resize', compute);
+                return ()=> window.removeEventListener('resize', compute);
+            }, [characters]);
+
+            // when a character is clicked: animate a flyer from its position to center
+            function handleClick(chId, idx){
+                setSelectedId(chId);
+                setTransitioning(true);
+                // after a short delay allow flyer animation to start then show selected layout
+                setTimeout(()=>{
+                    setShowSelectedLayout(true);
+                }, 650); // matches animation duration
             }
-        });
-    </script>
-</body>
+
+            // compute central coordinates for popup
+            const popupCenter = useMemo(()=>{
+                const el = containerRef.current; if(!el) return {cx:0, cy:0};
+                const rect = el.getBoundingClientRect(); return { cx: rect.width/2, cy: rect.height/2 };
+            }, [positions]);
+
+            // refs for measuring layout to draw lines
+            const parentRowRef = React.useRef(null);
+            const spouseRef = React.useRef(null);
+            const childrenRowRef = React.useRef(null);
+            const centerRef = React.useRef(null);
+            const [lines, setLines] = useState([]);
+
+            useEffect(()=>{
+                if(!showSelectedLayout) return;
+                const base = containerRef.current.getBoundingClientRect();
+                const cRect = centerRef.current?.getBoundingClientRect();
+                if(!cRect) return;
+                const cx = cRect.left + cRect.width/2 - base.left;
+                const cy = cRect.top + cRect.height/2 - base.top;
+                const newLines = [];
+                if(parentRowRef.current){
+                    const nodes = parentRowRef.current.querySelectorAll('img');
+                    nodes.forEach(n => { const r = n.getBoundingClientRect(); const x = r.left + r.width/2 - base.left; const y = r.top + r.height/2 - base.top; newLines.push({ x1:x, y1:y, x2:cx, y2:cy }); });
+                }
+                if(spouseRef.current){ const img = spouseRef.current.querySelector('img'); if(img){ const r = img.getBoundingClientRect(); newLines.push({ x1:cx, y1:cy, x2: r.left + r.width/2 - base.left, y2: r.top + r.height/2 - base.top }); } }
+                if(childrenRowRef.current){ const nodes = childrenRowRef.current.querySelectorAll('img'); nodes.forEach(n=>{ const r = n.getBoundingClientRect(); newLines.push({ x1:cx, y1:cy, x2: r.left + r.width/2 - base.left, y2: r.top + r.height/2 - base.top }); }); }
+                setLines(newLines);
+            }, [showSelectedLayout, selectedId]);
+
+            const selected = selectedId ? map.get(selectedId) : null;
+
+            return (
+                React.createElement('div', { ref: containerRef, className: 'w-full h-[80vh] relative bg-transparent flex items-end justify-center' },
+                    React.createElement(AnimatePresence, null,
+                        !transitioning && React.createElement(motion.div, { key: 'arc', initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, transition: { duration: 0.4 }, className: 'absolute bottom-0 left-0 right-0 h-[50%] pointer-events-auto' },
+                            positions.map((pos, i)=>{
+                                const ch = characters[i];
+                                const style = { position: 'absolute', left: `${pos.x}px`, top: `${pos.y}px`, transform: 'translate(-50%, -50%)' };
+                                return React.createElement('div', { key: ch.id, style }, React.createElement(CharacterNode, { character: ch, onClick: ()=>handleClick(ch.id, i), selected: false, size: 100 }));
+                            })
+                        )
+                    ),
+
+                    // flyer animation: show a flying copy of the selected icon moving to center when transitioning
+                    transitioning && selected && positions.length > 0 && (()=>{
+                        const idx = characters.findIndex(c=>c.id===selectedId);
+                        const from = positions[idx];
+                        const to = popupCenter;
+                        const flyerStyle = { position: 'absolute', left: `${from.x}px`, top: `${from.y}px`, transform: 'translate(-50%, -50%)' };
+                        return React.createElement(motion.div, { key: 'flyer', initial: { x: 0, y: 0, scale: 1 }, animate: { x: to.cx - from.x, y: to.cy - from.y, scale: 1.6 }, transition: { duration: 0.65, ease: 'easeInOut' }, style: flyerStyle }, React.createElement(CharacterNode, { character: selected, onClick: ()=>{}, selected: true, size: 100 }));
+                    })(),
+
+                    React.createElement(AnimatePresence, null,
+                        showSelectedLayout && selected && React.createElement(motion.div, { key: 'selected', initial: { opacity: 0, scale: 0.96 }, animate: { opacity: 1, scale: 1 }, exit: { opacity: 0 }, transition: { duration: 0.45 }, className: 'absolute inset-0 flex items-center justify-center' },
+                            React.createElement('div', { className: 'relative w-[85%] max-w-6xl bg-black/60 rounded-2xl p-8 flex items-center justify-center' },
+                                React.createElement('div', { ref: centerRef, className: 'flex flex-col items-center justify-center space-y-4' },
+                                    React.createElement(motion.img, { src: selected.image, alt: selected.name, initial: { scale: 0.9 }, animate: { scale: 1 }, transition: { type: 'spring', stiffness: 220, damping: 20 }, className: 'w-[160px] h-[160px] rounded-full object-cover border-4 border-yellow-400 shadow-2xl' }),
+                                    React.createElement('div', { className: 'text-xl font-semibold text-white mt-2' }, selected.name)
+                                ),
+
+                                React.createElement('div', { ref: parentRowRef, className: 'absolute top-8 left-1/2 transform -translate-x-1/2 flex gap-8 items-center justify-center' },
+                                    (selected.parents || []).map(pid=>{ const p = map.get(pid); if(!p) return null; return React.createElement('div', { key: pid, className: 'flex flex-col items-center' }, React.createElement('img', { src: p.image, className: 'w-[110px] h-[110px] rounded-full object-cover border-2 border-gray-700 shadow-lg' }), React.createElement('div', { className: 'text-sm text-gray-100 mt-2' }, p.name) ) })
+                                ),
+
+                                selected.spouse && map.get(selected.spouse) && React.createElement('div', { ref: spouseRef, className: 'absolute right-8 top-1/2 transform -translate-y-1/2 flex flex-col items-center' }, React.createElement('img', { src: map.get(selected.spouse).image, className: 'w-[120px] h-[120px] rounded-full object-cover border-2 border-gray-700 shadow-lg' }), React.createElement('div', { className: 'text-sm text-gray-100 mt-2' }, map.get(selected.spouse).name) ),
+
+                                React.createElement('div', { ref: childrenRowRef, className: 'absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-8 items-center justify-center' },
+                                    (selected.children || []).map(cid=>{ const c = map.get(cid); if(!c) return null; return React.createElement('div', { key: cid, className: 'flex flex-col items-center' }, React.createElement('img', { src: c.image, className: 'w-[100px] h-[100px] rounded-full object-cover border-2 border-gray-700 shadow-lg' }), React.createElement('div', { className: 'text-sm text-gray-100 mt-2' }, c.name) ) })
+                                ),
+
+                                React.createElement('button', { onClick: ()=>{ setTransitioning(false); setShowSelectedLayout(false); setSelectedId(null); setLines([]); }, className: 'absolute top-6 right-6 bg-yellow-400 text-black px-4 py-2 rounded-md shadow' }, 'Close'),
+
+                                React.createElement('svg', { className: 'absolute inset-0 pointer-events-none', width: '100%', height: '100%' },
+                                    lines.map((ln, i)=> React.createElement('line', { key: i, x1: ln.x1, y1: ln.y1, x2: ln.x2, y2: ln.y2, stroke: '#FFD700', strokeWidth: 3, strokeLinecap: 'round' }) )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        }
+
+        // sample data (matches components/sampleData.js)
+        const sampleCharacters = [
+            { id: 'a', name: 'Elder Deta', image: 'nameplate.jpg', parents: [], spouse: 'b', children: ['c','d'] },
+            { id: 'b', name: 'Marin', image: 'main-cast-1.jpg', parents: [], spouse: 'a', children: ['c','d'] },
+            { id: 'c', name: 'Bluma', image: 'Bluma-image1.jpg', parents: ['a','b'], spouse: null, children: ['e'] },
+            { id: 'd', name: 'Gwen', image: 'gwen-1.jpg', parents: ['a','b'], spouse: null, children: [] },
+            { id: 'e', name: 'Young Hero', image: 'tavern-backround.jpg', parents: ['c'], spouse: null, children: [] },
+        ];
+
+        function mountDemo(){
+            const root = ReactDOM.createRoot(document.getElementById('family-app-root'))
+            root.render(<FamilyTreeDemo characters={sampleCharacters} radius={260} />)
+        }
+
+        // expose mount function so the password handler can call it
+        window.mountFamilyTreeDemo = mountDemo
+            // developer quick-open: add ?dev=1 or #dev to the URL to skip password and mount demo automatically
+            try {
+                if (window.location && (window.location.search.indexOf('dev=1') !== -1 || window.location.hash === '#dev')) {
+                    const pp = document.getElementById('passwordPrompt'); if (pp) pp.style.display = 'none';
+                    const pc = document.getElementById('protectedContent'); if (pc) pc.style.display = '';
+                    setTimeout(()=>{ try{ mountDemo(); } catch(e){ console.warn(e) } }, 50);
+                }
+            } catch(e) { /* ignore */ }
+        </script>
+
+        <script type="module" src="navigation.js"></script>
+
 </html>
 <footer>
     <a href="references.html">References</a>
     <span>&copy; 2025 Caleb Jones</span>
 </footer>
+
+
+
+

@@ -158,39 +158,39 @@
 </head>
 <body>
 <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
-            <ul class="nav-menu">
-                <li><a href="home-page.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Tools ▼</a>
-                    <div class="dropdown-content">
-                        <a href="age-calculator.html">Age Calculator</a>
-                        <a href="language-translator.html">Language Translator</a>
-                        <a href="money-converter.html">Money Converter</a>
-                        <a href="name-generator.html">Name Generator</a>
-                        <a href="fight.html">Conflict Generator</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#">World ▼</a>
-                    <div class="dropdown-content">
-                        <a href="cast.html">The Cast</a>
-                        <a href="library.html">The Library</a>
-                        <a href="home-maker.html">Magic Codex</a>
-                        <a href="otherworld.html">Other Worlds</a>
-                    </div>
-                </li>
-                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
-                <li><a href="references.html">References</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">ðŸ° Entine Calculator</a>
+    <ul class="nav-menu">
+      <li><a href="home-page.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Tools â–¼</a>
+        <div class="dropdown-content">
+          <a href="age-calculator.html">Age Calculator</a>
+          <a href="language-translator.html">Language Translator</a>
+          <a href="money-converter.html">Money Converter</a>
+          <a href="name-generator.html">Name Generator</a>
+          <a href="fight.html">Conflict Generator</a>
         </div>
-    </nav>
+      </li>
+      <li class="dropdown">
+        <a href="#">World â–¼</a>
+        <div class="dropdown-content">
+          <a href="cast.html">The Cast</a>
+          <a href="library.html">The Library</a>
+          <a href="home-maker.html">Magic Codex</a>
+          <a href="otherworld.html">Other Worlds</a>
+        </div>
+      </li>
+      <li><a href="online-store-amazon/src/index.html">ðŸ›’ Store</a></li>
+      <li><a href="references.html">References</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
     <header>
         <a href="home-page.html" class="home-link">â† Back to Home</a>
         <!-- Example logo image with lazy loading -->
@@ -351,4 +351,3 @@
     <a href="references.html">References</a>
     <span>&copy; 2025 Caleb Jones</span>
 </footer>
-

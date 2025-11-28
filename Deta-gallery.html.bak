@@ -6,13 +6,13 @@
     <link rel='stylesheet' href='styles.css'>
     
     
-  <title>Gwen Gallery</title>
+  <title>Deta Gallery</title>
   <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
   <style>
     body {
       margin: 0;
       font-family: 'Trebuchet MS', Tahoma, sans-serif;
-      background: linear-gradient(135deg, #1e3a5f 0%, #4682B4 50%, #87CEEB 100%);
+      background: linear-gradient(135deg, #2c1810 0%, #8B4513 50%, #DAA520 100%);
       min-height: 100vh;
       background-attachment: fixed;
     }
@@ -21,14 +21,14 @@
     .character-header {
       text-align: center;
       padding: 40px 20px;
-      background: rgba(135, 206, 235, 0.1);
-      border-bottom: 3px solid #87CEEB;
+      background: rgba(218, 165, 32, 0.1);
+      border-bottom: 3px solid #DAA520;
       margin-bottom: 30px;
     }
 
     .character-title {
       font-size: 3rem;
-      color: #87CEEB;
+      color: #DAA520;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
       margin: 0;
       font-weight: bold;
@@ -36,21 +36,21 @@
 
     .character-subtitle {
       font-size: 1.2rem;
-      color: #B0E0E6;
+      color: #F4A460;
       margin: 10px 0 0 0;
       font-style: italic;
     }
 
     header {
-      background: linear-gradient(135deg, #87CEEB, #4682B4);
+      background: linear-gradient(135deg, #DAA520, #B8860B);
       padding: 15px 25px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      border-bottom: 2px solid #1e3a5f;
+      border-bottom: 2px solid #8B4513;
     }
 
     .home-link {
       text-decoration: none;
-      color: #1e3a5f;
+      color: #2c1810;
       font-size: 18px;
       font-weight: bold;
       transition: all 0.3s ease;
@@ -59,7 +59,7 @@
     }
 
     .home-link:hover {
-      background: rgba(30, 58, 95, 0.1);
+      background: rgba(44, 24, 16, 0.1);
       transform: translateX(-5px);
     }
 
@@ -73,39 +73,39 @@
     }
 
     .image-card {
-      background: linear-gradient(145deg, #B0E0E6, #87CEEB);
+      background: linear-gradient(145deg, #F4A460, #DAA520);
       border-radius: 15px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
       overflow: hidden;
       text-align: center;
       padding: 15px;
       transition: all 0.4s ease;
-      border: 2px solid #4682B4;
+      border: 2px solid #8B4513;
       position: relative;
     }
 
     .image-card:hover {
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(135, 206, 235, 0.4);
+      box-shadow: 0 15px 35px rgba(218, 165, 32, 0.4);
     }
 
     .image-card img {
       width: 100%;
       border-radius: 12px;
-      border: 3px solid #4682B4;
+      border: 3px solid #8B4513;
       transition: all 0.3s ease;
     }
 
     .image-card:hover img {
-      border-color: #1e3a5f;
+      border-color: #2c1810;
     }
 
     .image-card button {
       margin-top: 15px;
       padding: 12px 20px;
-      background: linear-gradient(135deg, #4682B4, #1e3a5f);
-      color: #87CEEB;
-      border: 2px solid #87CEEB;
+      background: linear-gradient(135deg, #8B4513, #2c1810);
+      color: #DAA520;
+      border: 2px solid #DAA520;
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
@@ -115,9 +115,9 @@
     }
 
     .image-card button:hover {
-      background: linear-gradient(135deg, #1e3a5f, #4682B4);
-      color: #B0E0E6;
-      border-color: #B0E0E6;
+      background: linear-gradient(135deg, #2c1810, #8B4513);
+      color: #F4A460;
+      border-color: #F4A460;
       transform: scale(1.05);
     }
 
@@ -126,7 +126,7 @@
       position: fixed;
       z-index: 100;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(30, 58, 95, 0.9);
+      background-color: rgba(44, 24, 16, 0.9);
       justify-content: center;
       align-items: center;
       backdrop-filter: blur(5px);
@@ -134,13 +134,13 @@
 
     .popup-content {
       display: flex;
-      background: linear-gradient(145deg, #B0E0E6, #87CEEB);
+      background: linear-gradient(145deg, #F4A460, #DAA520);
       border-radius: 20px;
       max-width: 1000px;
       width: 90%;
       padding: 30px;
       position: relative;
-      border: 3px solid #4682B4;
+      border: 3px solid #8B4513;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     }
 
@@ -150,14 +150,14 @@
       height: auto;
       border-radius: 15px;
       margin-right: 25px;
-      box-shadow: 0 10px 25px rgba(30, 58, 95, 0.4);
-      border: 3px solid #4682B4;
+      box-shadow: 0 10px 25px rgba(44, 24, 16, 0.4);
+      border: 3px solid #8B4513;
     }
 
     .popup-content .description {
       width: 50%;
       text-align: left;
-      color: #1e3a5f;
+      color: #2c1810;
       font-size: 1rem;
       line-height: 1.6;
     }
@@ -167,7 +167,7 @@
       padding: 15px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
-      border-left: 4px solid #4682B4;
+      border-left: 4px solid #8B4513;
     }
 
     .close-popup {
@@ -175,7 +175,7 @@
       top: 15px;
       right: 20px;
       font-size: 28px;
-      color: #1e3a5f;
+      color: #2c1810;
       cursor: pointer;
       background: rgba(255, 255, 255, 0.2);
       border-radius: 50%;
@@ -188,8 +188,8 @@
     }
 
     .close-popup:hover {
-      background: rgba(70, 130, 180, 0.8);
-      color: #87CEEB;
+      background: rgba(139, 69, 19, 0.8);
+      color: #DAA520;
       transform: scale(1.1);
     }
 
@@ -225,47 +225,47 @@
 </head>
 <body>
 <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
-            <ul class="nav-menu">
-                <li><a href="home-page.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Tools ▼</a>
-                    <div class="dropdown-content">
-                        <a href="age-calculator.html">Age Calculator</a>
-                        <a href="language-translator.html">Language Translator</a>
-                        <a href="money-converter.html">Money Converter</a>
-                        <a href="name-generator.html">Name Generator</a>
-                        <a href="fight.html">Conflict Generator</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#">World ▼</a>
-                    <div class="dropdown-content">
-                        <a href="cast.html">The Cast</a>
-                        <a href="library.html">The Library</a>
-                        <a href="home-maker.html">Magic Codex</a>
-                        <a href="otherworld.html">Other Worlds</a>
-                    </div>
-                </li>
-                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
-                <li><a href="references.html">References</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">ðŸ° Entine Calculator</a>
+    <ul class="nav-menu">
+      <li><a href="home-page.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Tools â–¼</a>
+        <div class="dropdown-content">
+          <a href="age-calculator.html">Age Calculator</a>
+          <a href="language-translator.html">Language Translator</a>
+          <a href="money-converter.html">Money Converter</a>
+          <a href="name-generator.html">Name Generator</a>
+          <a href="fight.html">Conflict Generator</a>
         </div>
-    </nav>
+      </li>
+      <li class="dropdown">
+        <a href="#">World â–¼</a>
+        <div class="dropdown-content">
+          <a href="cast.html">The Cast</a>
+          <a href="library.html">The Library</a>
+          <a href="home-maker.html">Magic Codex</a>
+          <a href="otherworld.html">Other Worlds</a>
+        </div>
+      </li>
+      <li><a href="online-store-amazon/src/index.html">ðŸ›’ Store</a></li>
+      <li><a href="references.html">References</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
 
 <header>
-  <a href="cast-member2.html" class="home-link">â† Back to Gwen</a>
+  <a href="cast-member1.html" class="home-link">â† Back to Deta</a>
 </header>
 
 <div class="character-header">
-  <h1 class="character-title">Gwen Gallery</h1>
-  <p class="character-subtitle">The Half-Elf Warrior â€¢ Grace and Steel</p>
+  <h1 class="character-title">Deta Gallery</h1>
+  <p class="character-subtitle">The Randeth Hero â€¢ Stone and Wood Guardian</p>
 </div>
 
 <div class="gallery-container" id="gallery"></div>
@@ -284,21 +284,21 @@
 <script>
   const imageData = [
     {
-      src: "gwen-1.jpg",
-      alt: "Gwen-Image 1",
-      desc: "This is Gwen's main portrait. I had her commisioned in 2021 to replace Bluma. She is an Incredibly strong and semi independant person, however you will never find her too far from Deta, due to her need to pay him back for saving her. However her past will never leave her as she continues to have flashbacks and episodes. Art by <a href='https://www.facebook.com/karina.romero.794628' target='_blank'>Karina Romero</a>"
+      src: "deta-1.jpg",
+      alt: "Deta-Image 1",
+      desc: "This is Deta's main portrait. He is the Main character of the story, a young Randeth who has never left his home until a young girl came to his door and asked for help. His jorney is long and he ends up giving up more than he bargined for, After Saveing Gwen and Helping the Kingdom of Sumring. He is revered as a hero amoung the surviving townsfolk, but with his mother now gone, he is lost on where to go now. Art by <a href='https://www.facebook.com/karina.romero.794628' target='_blank'>Karina Romero</a>"
     },
     {
-      src: "gwen-2.jpg",
-      alt: "Gwen-Image 2",
-      desc: "Gwen "
+      src: "Deta-image2.jpg",
+      alt: "Deta-Image 2",
+      desc: "Deta"
     },
     {
-      src: "gwen-3.jpg",
-      alt: "Gwen-Image 3",
-      desc: "Gwen"
+      src: "Deta-image3.jpg",
+      alt: "Deta-Image 3",
+      desc: "Deta"
     },
-    // Add more Gwen images and descriptions as needed
+    // Add more Deta images and descriptions as needed
   ];
 
   const gallery = document.getElementById("gallery");
@@ -327,11 +327,10 @@
     <script type="module" src="navigation.js"></script>
 
 </html>
-<footer style="background: linear-gradient(135deg, #87CEEB, #4682B4); padding: 20px; text-align: center; border-top: 3px solid #1e3a5f; margin-top: 40px;">
-    <a href="references.html" style="color: #1e3a5f; text-decoration: none; font-weight: bold; margin-right: 20px;">References</a>
-    <span style="color: #1e3a5f;">&copy; 2025 Gwen Gallery - Entine Calculator</span>
+<footer style="background: linear-gradient(135deg, #DAA520, #B8860B); padding: 20px; text-align: center; border-top: 3px solid #8B4513; margin-top: 40px;">
+    <a href="references.html" style="color: #2c1810; text-decoration: none; font-weight: bold; margin-right: 20px;">References</a>
+    <span style="color: #2c1810;">&copy; 2025 Caleb - Entine Calculator</span>
 </footer>
-
 
 
 

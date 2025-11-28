@@ -1,7 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel='stylesheet' href='styles.css'>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="styles-mobile.css" media="only screen and (max-width: 500px)">
@@ -25,15 +27,15 @@
             text-align: center;
             padding: 24px 0 0 0;
             background: rgba(36,54,39,0.92);
-            border-bottom: 2px solid #4CAF50;
+            border-bottom: 2.5px solid #FFD700;
             box-shadow: 0 2px 8px #0004;
         }
         .home-link {
             display: inline-block;
             margin-bottom: 8px;
             padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white !important;
+            background-color: #FFD700;
+            color: #000 !important;
             border: none;
             border-radius: 8px;
             font-size: 1.08rem;
@@ -44,7 +46,7 @@
             transition: background 0.2s;
         }
         .home-link:hover {
-            background-color: #388e3c;
+            background-color: #FFA500;
         }
         /* Password prompt styles */
         #passwordPrompt {
@@ -66,18 +68,18 @@
             box-shadow: 0 8px 32px #000a;
             text-align: center;
             min-width: 320px;
-            border: 2px solid #4CAF50;
+            border: 2px solid #FFD700;
         }
         #passwordBox h1 {
             margin-bottom: 18px;
-            color: #4CAF50;
+            color: #FFD700;
             letter-spacing: 1px;
         }
         #passwordInput {
             padding: 10px;
             font-size: 17px;
             border-radius: 6px;
-            border: 1px solid #4CAF50;
+            border: 1px solid #FFD700;
             margin-top: 10px;
             width: 80%;
             background: #222;
@@ -125,7 +127,7 @@
             padding: 32px 24px 24px 24px;
             border-radius: 18px;
             box-shadow: 0 8px 32px #000a;
-            border: 2px solid #4CAF50;
+            border: 2px solid #FFD700;
             max-width: 900px;
             margin: 40px auto 0 auto;
             flex: 1;
@@ -134,7 +136,7 @@
             align-items: center;
         }
         .library-screen h1 {
-            color: #4CAF50;
+            color: #FFD700;
             margin-bottom: 24px;
             letter-spacing: 1px;
             font-size: 2.2rem;
@@ -152,13 +154,13 @@
             padding: 22px 14px;
             border: 2px solid #FFD700;
             border-radius: 12px;
-            background: linear-gradient(135deg, #2e7d32 60%, #232526 100%);
+            background: linear-gradient(135deg, #FFD700 60%, #FFA500 100%);
             display: inline-block;
             width: 160px;
             text-align: center;
             cursor: pointer;
             text-decoration: none;
-            color: #FFD700;
+            color: #000;
             font-size: 1.1rem;
             font-weight: bold;
             box-shadow: 0 2px 8px #0004;
@@ -168,13 +170,13 @@
         .library-screen .book:hover {
             transform: scale(1.07);
             box-shadow: 0 4px 16px #0006;
-            background: linear-gradient(135deg, #388e3c 60%, #2e7d32 100%);
+            background: linear-gradient(135deg, #FFA500 60%, #FFB84D 100%);
         }
         .library-screen button {
             padding: 10px 24px;
             font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
             border: none;
             border-radius: 6px;
             cursor: pointer;
@@ -184,8 +186,8 @@
             transition: background-color 0.2s, transform 0.2s;
         }
         .library-screen button:hover {
-            background-color: #388e3c;
             transform: scale(1.05);
+            filter: brightness(0.98);
         }
         @media (max-width: 700px) {
             .library-screen {
@@ -203,6 +205,41 @@
     </style>
 </head>
 <body>
+    <!-- Shared navigation injected so hamburger is available -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            <ul class="nav-menu">
+                <li><a href="home-page.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Tools ▼</a>
+                    <div class="dropdown-content">
+                        <a href="age-calculator.html">Age Calculator</a>
+                        <a href="language-translator.html">Language Translator</a>
+                        <a href="money-converter.html">Money Converter</a>
+                        <a href="name-generator.html">Name Generator</a>
+                        <a href="fight.html">Conflict Generator</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">World ▼</a>
+                    <div class="dropdown-content">
+                        <a href="cast.html">The Cast</a>
+                        <a href="library.html">The Library</a>
+                        <a href="home-maker.html">Magic Codex</a>
+                        <a href="otherworld.html">Other Worlds</a>
+                    </div>
+                </li>
+                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="references.html">References</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
     <!-- Password Prompt -->
     <div id="passwordPrompt">
         <form id="passwordBox" onsubmit="return checkPassword();">
@@ -253,9 +290,13 @@
             window.location.href = "home-page.html";
         }
     </script>
+    <script type="module" src="navigation.js"></script>
 </body>
 </html>
 <footer>
     <a href="references.html">References</a>
     <span>&copy; 2025 Caleb Jones</span>
 </footer>
+
+
+
