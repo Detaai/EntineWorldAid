@@ -1,7 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Load main site styles (use correct relative path from this src/ folder) -->
+    <link rel='stylesheet' href='../../styles.css'>
+    <link rel='stylesheet' href='../../styles-mobile.css' media='only screen and (max-width: 500px)'>
+    
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🏰 Entine Store - Magical Books & Treasures ✨</title>
     <link rel="stylesheet" href="styles/main.css">
@@ -12,10 +17,44 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
+<nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">🏰 Entine Calculator</a>
+            <ul class="nav-menu">
+                <li><a href="#" onclick="navigateOutOfStore(event)">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Tools ▼</a>
+                    <div class="dropdown-content">
+                        <a href="age-calculator.html">Age Calculator</a>
+                        <a href="language-translator.html">Language Translator</a>
+                        <a href="money-converter.html">Money Converter</a>
+                        <a href="name-generator.html">Name Generator</a>
+                        <a href="fight.html">Conflict Generator</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">World ▼</a>
+                    <div class="dropdown-content">
+                        <a href="cast.html">The Cast</a>
+                        <a href="library.html">The Library</a>
+                        <a href="home-maker.html">Magic Codex</a>
+                        <a href="otherworld.html">Other Worlds</a>
+                    </div>
+                </li>
+                <li><a href="online-store-amazon/src/index.html">🛒 Store</a></li>
+                <li><a href="references.html">References</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
     <div class="magical-stars"></div>
     <header class="enchanted-header">
         <div class="header-content">
-            <a href="../../home-page.html" class="home-link">Back to Home</a>
+            <a href="#" class="home-link" onclick="navigateOutOfStore(event)">Back to Home</a>
             <h1 class="store-title magical-title">🏰 Entine Store ✨</h1>
             <p class="store-tagline">Discover the magical world of Entine</p>
             <div class="filter-section">
@@ -127,5 +166,59 @@
     </footer>
     
     <script src="app.js"></script>
-</body>
+    <!-- Ensure navigation behavior/styles come from the site root -->
+    <script type="module" src="../../navigation.js"></script>
+    <script>
+    // Try parent-relative paths upward until we find a home-page.html, then navigate there.
+    // This ensures the store's Home button will leave the `online-store-amazon/src/` folder
+    // and reach the site's root copy of `home-page.html`, whether served or opened via file://.
+    function navigateOutOfStore(e) {
+        e = e || window.event;
+        if (e) e.preventDefault();
+
+        var filename = 'home-page.html';
+        var maxUp = 6; // how many parent levels we'll try
+
+        // If file protocol, try purely relative paths (no fetch)
+        if (location.protocol === 'file:') {
+            for (var i = 1; i <= maxUp; i++) {
+                var rel = Array(i+1).join('../') + filename; // i times ../
+                try {
+                    // try to navigate - this will stop at first that exists in the file system
+                    var win = window.open(rel, '_self');
+                    return;
+                } catch (err) {
+                    // continue trying
+                }
+            }
+            return;
+        }
+
+        // When served over http(s), try relative parent paths via HEAD requests to detect existence.
+        (function tryPaths(level) {
+            if (level > maxUp) {
+                // fallback to simple relative up-two
+                location.href = '../../' + filename;
+                return;
+            }
+            var candidate = Array(level+1).join('../') + filename;
+            var url = new URL(candidate, location.href).href;
+            fetch(url, { method: 'HEAD' }).then(function(resp) {
+                if (resp && resp.ok) {
+                    location.href = url;
+                } else {
+                    tryPaths(level + 1);
+                }
+            }).catch(function() {
+                tryPaths(level + 1);
+            });
+        })(1);
+    }
+    </script>
+
 </html>
+
+
+
+
+

@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='styles.css'>
+    <link rel='stylesheet' href='styles-mobile.css' media='only screen and (max-width: 500px)'>
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ARCHIVED BACKUP
+         This file is an automated backup (index.html.bak) that contained mojibake/encoding artifacts.
+         The live store page is `online-store-amazon/src/index.html` and has been cleaned.
+         Keeping this file here can be confusing if opened directly; it has been sanitized to avoid showing garbled characters.
+         If you want this backup preserved, consider moving it to an `archive/` folder outside of the served `src/` path.
+-->
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Archived backup — Entine Store</title>
+        <style>body{font-family:Arial,Helvetica,sans-serif;background:#111;color:#eee;padding:40px;}a{color:#ffd700}</style>
+    </head>
+    <body>
+        <h1>Archived backup: index.html.bak</h1>
+        <p>This file is an archive and no longer used by the live site. Open <a href="index.html">index.html</a> to view the cleaned store page.</p>
+        <p>If you prefer, I can move this file to an <code>archive/</code> folder or remove it entirely — tell me which.</p>
+    </body>
+</html>
+</head>
+<body>
+<nav class="main-nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">ðŸ° Entine Calculator</a>
+    <ul class="nav-menu">
+      <li><a href="home-page.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Tools â–¼</a>
+        <div class="dropdown-content">
+          <a href="age-calculator.html">Age Calculator</a>
+          <a href="language-translator.html">Language Translator</a>
+          <a href="money-converter.html">Money Converter</a>
+          <a href="name-generator.html">Name Generator</a>
+          <a href="fight.html">Conflict Generator</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="#">World â–¼</a>
+        <div class="dropdown-content">
+          <a href="cast.html">The Cast</a>
+          <a href="library.html">The Library</a>
+          <a href="home-maker.html">Magic Codex</a>
+          <a href="otherworld.html">Other Worlds</a>
+        </div>
+      </li>
+      <li><a href="online-store-amazon/src/index.html">ðŸ›’ Store</a></li>
+      <li><a href="references.html">References</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+    <div class="magical-stars"></div>
+    <header class="enchanted-header">
+        <div class="header-content">
+            <a href="../../home-page.html" class="home-link">Back to Home</a>
+            <h1 class="store-title magical-title">ðŸ° Entine Store âœ¨</h1>
+            <p class="store-tagline">Discover the magical world of Entine</p>
+            <div class="filter-section">
+                <h3>ðŸ† Choose Your Adventure</h3>
+                <button class="filter-btn active" data-category="all">âœ¨ All Treasures</button>
+                <button class="filter-btn" data-category="books">ðŸ“š Epic Chronicles</button>
+                <button class="filter-btn" data-category="pictures">ðŸ–¼ï¸ Mystical Art</button>
+                <button class="filter-btn" data-category="bookmarks">ðŸ”– Ancient Marks</button>
+                <button class="filter-btn donation-btn" data-category="donation">ðŸ’° Support the Quest</button>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="hero-section">
+            <div class="quest-counter">
+                <h3>ðŸ—¡ï¸ Current Quest Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p>1 of 9 Entine Chronicles Available</p>
+            </div>
+        </div>
+        
+        <div id="product-container" class="treasure-grid">
+            <!-- Product cards will be rendered here -->
+        </div>
+        
+        <div class="newsletter-section">
+            <div class="scroll-container">
+                <h3>ðŸ“œ Join the Quest Newsletter</h3>
+                <p>Be the first to know when new Entine adventures are released!</p>
+                <div class="input-group">
+                    <input type="email" placeholder="Enter your email to join the quest..." class="magic-input">
+                    <button class="subscribe-btn">âš”ï¸ Join Quest</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation Section -->
+        <div id="donation-section" class="donation-section" style="display: none;">
+            <div class="donation-container">
+                <h2>ðŸ’° Support the Entine Quest</h2>
+                <p class="donation-subtitle">Help bring more magical adventures to life!</p>
+                
+                <div class="donation-form">
+                    <div class="amount-selection">
+                        <h4>Choose Your Contribution:</h4>
+                        <div class="amount-buttons">
+                            <button class="amount-btn" data-amount="5">ðŸª™ $5</button>
+                            <button class="amount-btn" data-amount="10">ðŸ’° $10</button>
+                            <button class="amount-btn" data-amount="25">ðŸ’Ž $25</button>
+                            <button class="amount-btn" data-amount="50">ðŸ‘‘ $50</button>
+                            <input type="number" class="custom-amount" placeholder="Custom amount" min="1" max="1000">
+                        </div>
+                    </div>
+                    
+                    <div class="message-section">
+                        <h4>âœ‰ï¸ Leave a Message for the Author:</h4>
+                        <textarea class="donation-message" placeholder="Share your thoughts about the Entine series or just say hello! This message will be sent directly to the author's phone." maxlength="500"></textarea>
+                        <div class="char-count">0/500 characters</div>
+                    </div>
+                    
+                    <div class="donor-info">
+                        <h4>ðŸ“± Your Information:</h4>
+                        <input type="text" class="donor-name" placeholder="Your name (optional)" maxlength="50">
+                        <input type="email" class="donor-email" placeholder="Your email (for receipt)" required>
+                    </div>
+                    
+                    <div class="payment-section">
+                        <h4>ðŸ’³ Payment Method:</h4>
+                        <div class="payment-options">
+                            <button class="payment-btn" data-method="paypal">
+                                <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" alt="PayPal" style="height: 20px;">
+                                PayPal
+                            </button>
+                            <button class="payment-btn" data-method="card">ðŸ’³ Credit/Debit Card</button>
+                        </div>
+                        
+                        <!-- PayPal Button Container -->
+                        <div id="paypal-button-container" style="display: none; margin-top: 20px;"></div>
+                        
+                        <!-- Card Payment Form -->
+                        <div id="card-form" style="display: none; margin-top: 20px;">
+                            <p class="payment-note">ðŸ”’ Secure payment processing through PayPal</p>
+                            <button class="donate-btn">ðŸš€ Complete Donation</button>
+                        </div>
+                    </div>
+                    
+                    <div class="donation-info">
+                        <p>ðŸ’« Your donation helps support the creation of new Entine books and magical content!</p>
+                        <p>ðŸ“± Your message will be sent directly to the author via SMS</p>
+                        <p>ðŸ”’ All payments are securely processed and will be transferred to CashApp @detachedguf</p>
+                        <p>ðŸ“ž Questions? The author will receive your message at (928) 716-1710</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="mystical-footer">
+        <p>Â© 2025 Entine Store - Where Adventures Begin âš¡</p>
+        <div class="social-links">
+            <span>Follow the Quest: </span>
+            <a href="#" class="social-link">ðŸ“± Social</a>
+            <a href="#" class="social-link">ðŸ“§ Updates</a>
+            <a href="#" class="social-link">ðŸŒŸ Reviews</a>
+        </div>
+    </footer>
+    
+    <script src="app.js"></script>
+    <script type="module" src="navigation.js"></script>
+
+</html>
+
+
+

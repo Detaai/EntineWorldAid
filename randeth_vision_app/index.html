@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Randeth Vision Filter</title>
+<style>
+  body { font-family: system-ui, -apple-system, Roboto, "Segoe UI", Arial; background:#f4f4f7; margin:0; padding:20px; color:#111; }
+  .container{max-width:900px;margin:0 auto;background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(20,20,30,0.08);}
+  h1{margin-top:0;font-size:20px;}
+  #controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+  label{font-size:13px;}
+  canvas{width:100%;max-height:60vh;background:#222;display:block;border-radius:6px;}
+  .row{display:flex;gap:10px;align-items:center;}
+  input[type=range]{width:160px;}
+  button{padding:8px 12px;border:0;border-radius:6px;background:#2563eb;color:white;cursor:pointer;}
+  button.ghost{background:#eef2ff;color:#111;}
+  .small{font-size:13px;color:#36944c;}
+  footer{margin-top:14px;color:#ff0090;font-size:13px;}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Randeth Vision — Image & Live Camera Filter</h1>
+    <p class="small">Simulates Randeth perception: mostly grayscale with subtle green sensitivity, and options to force-merge foliage & Entian-like colors.</p>
+
+    <div id="controls">
+      <input id="fileInput" type="file" accept="image/*" />
+      <button id="startCam">Start Camera</button>
+      <button id="stopCam" class="ghost">Stop Camera</button>
+      <button id="downloadBtn" class="ghost">Download Result</button>
+    </div>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;">
+      <div class="row">
+        <label>Green Retention <input id="greenRet" type="range" min="0" max="100" value="15"></label>
+      </div>
+      <div class="row">
+        <label>Green Flatten <input id="greenFlat" type="range" min="0" max="100" value="5"></label>
+      </div>
+      <div class="row">
+        <label>Force Merge Greens <input id="forceMerge" type="checkbox"></label>
+      </div>
+      <div class="row">
+        <label>Brightness Boost <input id="bBoost" type="range" min="0" max="100" value="0"></label>
+      </div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <footer>
+      Tip: Upload an image or use your camera. Tweak sliders to control how strongly greens are flattened or boosted. "Force Merge Greens" maps all green-dominant pixels into a narrow brightness band (makes foliage and Entian tones indistinguishable).
+    </footer>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+/* Carousel Album Styles */
+.carousel-album {
+  transition: transform 0.5s cubic-bezier(.4,2,.3,1), opacity 0.5s;
+  position: absolute;
+}
+.carousel-album.inactive {
+  opacity: 0.5;
+  filter: blur(1px) grayscale(0.2);
+  pointer-events: none;
+}
+.carousel-album.active {
+  opacity: 1;
+  filter: none;
+  pointer-events: auto;
+}
+.carousel-track {
+  perspective: 800px;
+  height: 180px;
+  position: relative;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  min-height: 180px;
+}

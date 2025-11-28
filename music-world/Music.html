@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- ...existing code before carousel... -->
+</head>
+<style>
+  /* Carousel specific styles */
+  .carousel{display:flex;flex-direction:column;align-items:center;gap:18px;margin-bottom:22px}
+  .main-album{width:min(720px,95%);background:rgba(0,0,0,0.65);border-radius:12px;padding:20px;position:relative}
+  .album-arrows{position:absolute;top:50%;transform:translateY(-50%);width:100%;pointer-events:none}
+  .album-arrow{position:absolute;pointer-events:auto;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.06);color:#fff;padding:10px;border-radius:8px;cursor:pointer}
+  .album-arrow.left{left:-12px}
+  .album-arrow.right{right:-12px}
+  .spinner{width:260px;height:260px;position:relative;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .spinner-item{position:absolute;width:68px;height:68px;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.5);transition:transform 600ms ease}
+  .spinner-item img{width:100%;height:100%;object-fit:cover}
+  .spinner.rotate{transition:transform 700ms cubic-bezier(.22,.9,.36,1)}
+  .active-label{margin-top:6px;color:#fff;font-weight:600}
+</style>
+
+<div class="carousel" id="albumCarousel">
+  <div class="main-album" id="mainAlbum">
+    <div class="album-arrows">
+      <button class="album-arrow left" id="prevAlbum" aria-label="Previous album">◀</button>
+      <button class="album-arrow right" id="nextAlbum" aria-label="Next album">▶</button>
+    </div>
+    <div id="mainAlbumContent"></div>
+  </div>
+  <div class="spinner" id="albumSpinner" aria-hidden="false" title="Other albums"></div>
+  <div class="active-label" id="carouselLabel"></div>
+</div>
+
+<script>
+(function(){
+  const albumSections = Array.from(document.querySelectorAll('.album'));
+  if(!albumSections.length) return;
+  const spinner = document.getElementById('albumSpinner');
+  const mainContent = document.getElementById('mainAlbumContent');
+  const label = document.getElementById('carouselLabel');
+  let active = 0;
+  const n = albumSections.length;
+  const items = albumSections.map(function(sec){
+    const img = sec.querySelector('.cover');
+    const title = sec.querySelector('.album-title') ? sec.querySelector('.album-title').textContent : '';
+    return { section: sec, imgSrc: img ? img.getAttribute('src') : '', title: title };
+  });
+  document.querySelectorAll('.albums').forEach(function(e){ e.style.display='none'; });
+  function buildSpinner(){
+    spinner.innerHTML='';
+    var R = 100; var cx = 130; var cy = 130;
+    for(var i=0;i<items.length;i++){
+      var ang = (i / items.length) * Math.PI * 2 - Math.PI/2;
+      var x = cx + Math.cos(ang) * R; var y = cy + Math.sin(ang) * R;
+      var div = document.createElement('div'); div.className='spinner-item'; div.style.left = (x - 34) + 'px'; div.style.top = (y - 34) + 'px';
+      var im = document.createElement('img'); im.src = items[i].imgSrc; im.alt = items[i].title;
+      div.appendChild(im);
+      div.dataset.index = i;
+      div.addEventListener('click', (function(idx){ return function(){ goTo(idx); }; })(i));
+      spinner.appendChild(div);
+    }
+  }
+  function renderMain(index){
+    var sec = items[index].section;
+    var clone = sec.cloneNode(true);
+    mainContent.innerHTML = '';
+    mainContent.appendChild(clone);
+    label.textContent = items[index].title || '';
+    Array.from(spinner.children).forEach(function(el, i){
+      el.style.transform = i === index ? 'scale(1.12)' : 'scale(1)';
+      if(i === index){ el.classList.add('active'); } else { el.classList.remove('active'); }
+    });
+    var audios = mainContent.querySelectorAll('audio');
+    audios.forEach(function(audio){
+      audio.addEventListener('play', function(){
+        audios.forEach(function(a){ if(a !== audio){ a.pause(); a.currentTime = 0; } });
+      });
+    });
+  }
+  function goTo(idx){
+    active = idx;
+    renderMain(active);
+  }
+  document.getElementById('prevAlbum').addEventListener('click', function(){
+    active = (active - 1 + n) % n;
+    renderMain(active);
+  });
+  document.getElementById('nextAlbum').addEventListener('click', function(){
+    active = (active + 1) % n;
+    renderMain(active);
+  });
+  buildSpinner();
+  renderMain(active);
+})();

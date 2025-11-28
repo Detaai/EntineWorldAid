@@ -3,6 +3,51 @@
     box-sizing: border-box;
 }
 
+/* Isolation overrides: neutralize global site rules that affect layout when this page
+   is included under the site's root CSS. These ensure the store keeps its intended
+   layout instead of inheriting off-canvas/mobile nav and centered flex-main rules. */
+main {
+    /* restore normal document flow for the store page */
+    display: block;
+    align-items: stretch;
+    padding: 40px 20px;
+}
+
+/* Ensure the main navigation (from the root site) displays as a horizontal bar
+   inside this page instead of the site's off-canvas panel */
+.main-nav {
+    position: relative !important;
+    top: 0 !important;
+    box-shadow: none !important;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.nav-menu {
+    /* render inline (horizontal) instead of the site's fixed off-canvas menu */
+    position: static !important;
+    transform: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 20px !important;
+    width: auto !important;
+    height: auto !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.hamburger { display: none !important; }
+
+
 body {
     font-family: 'Crimson Text', serif;
     margin: 0;
@@ -262,13 +307,17 @@ main {
 }
 
 .product-card img {
+    display: block;              /* ensure margin auto centers image */
+    margin: 0 auto 20px auto;    /* center horizontally and preserve spacing */
     max-width: 100%;
-    height: 220px;
-    object-fit: cover;
+    width: auto;                 /* allow natural width up to max-width */
+    height: 220px;               /* fixed visual box height */
+    object-fit: contain;         /* show whole cover and center inside box */
+    object-position: center center; /* center the image within the box */
     border-radius: 15px;
-    margin-bottom: 20px;
     border: 2px solid #555;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: rgba(0,0,0,0.15); /* subtle backdrop when letterboxed */
 }
 
 .product-card h2 {
